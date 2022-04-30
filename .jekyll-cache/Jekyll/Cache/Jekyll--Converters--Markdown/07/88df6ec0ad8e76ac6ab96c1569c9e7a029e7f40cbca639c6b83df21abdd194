@@ -1,0 +1,491 @@
+I"�c<p><br /></p>
+
+<h2 id="1-연산자란">1. 연산자란?</h2>
+
+<blockquote>
+  <ul>
+    <li>어떤 기능을 수행하는 기호(+,-,*,/ …)</li>
+  </ul>
+</blockquote>
+
+<blockquote>
+  <ul>
+    <li>연산자의 종류와 우선순위 및 결합 방향
+      <blockquote>
+        <table>
+          <thead>
+            <tr>
+              <th style="text-align: left">연산기호</th>
+              <th style="text-align: center">결합방향</th>
+              <th style="text-align: center">우선순위</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td style="text-align: left">(),.</td>
+              <td style="text-align: center"> </td>
+              <td style="text-align: center"> </td>
+            </tr>
+            <tr>
+              <td style="text-align: left">++ – +(부호) -(부호) ~ ! (type):형변환</td>
+              <td style="text-align: center">&lt;-</td>
+              <td style="text-align: center">높음</td>
+            </tr>
+            <tr>
+              <td style="text-align: left">* / %</td>
+              <td style="text-align: center">-&gt;</td>
+              <td style="text-align: center"> </td>
+            </tr>
+            <tr>
+              <td style="text-align: left">+(덧셈) -(뺄셈)</td>
+              <td style="text-align: center">-&gt;</td>
+              <td style="text-align: center"> </td>
+            </tr>
+            <tr>
+              <td style="text-align: left">« » »&gt;</td>
+              <td style="text-align: center">-&gt;</td>
+              <td style="text-align: center"> </td>
+            </tr>
+            <tr>
+              <td style="text-align: left">&lt; &gt; &lt;= &gt;= instanceof</td>
+              <td style="text-align: center">-&gt;</td>
+              <td style="text-align: center"> </td>
+            </tr>
+            <tr>
+              <td style="text-align: left">== !=</td>
+              <td style="text-align: center">-&gt;</td>
+              <td style="text-align: center"> </td>
+            </tr>
+            <tr>
+              <td style="text-align: left">&amp;</td>
+              <td style="text-align: center">-&gt;</td>
+              <td style="text-align: center"> </td>
+            </tr>
+            <tr>
+              <td style="text-align: left">^</td>
+              <td style="text-align: center">-&gt;</td>
+              <td style="text-align: center"> </td>
+            </tr>
+            <tr>
+              <td style="text-align: left">ㅣ</td>
+              <td style="text-align: center">-&gt;</td>
+              <td style="text-align: center"> </td>
+            </tr>
+            <tr>
+              <td style="text-align: left">&amp;&amp;</td>
+              <td style="text-align: center">-&gt;</td>
+              <td style="text-align: center"> </td>
+            </tr>
+            <tr>
+              <td style="text-align: left">ㅣㅣ</td>
+              <td style="text-align: center">-&gt;</td>
+              <td style="text-align: center"> </td>
+            </tr>
+            <tr>
+              <td style="text-align: left">? :</td>
+              <td style="text-align: center">-&gt;</td>
+              <td style="text-align: center"> </td>
+            </tr>
+            <tr>
+              <td style="text-align: left">= *= /= %= += -= «= »= »&gt;= &amp;= ^= ㅣ=</td>
+              <td style="text-align: center">&lt;-</td>
+              <td style="text-align: center">낮음</td>
+            </tr>
+          </tbody>
+        </table>
+      </blockquote>
+      <ul>
+        <li><strong>우선순위는 헷갈리기 쉬우니까 (소괄호) 이용하자</strong></li>
+      </ul>
+    </li>
+  </ul>
+</blockquote>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">산술</span> <span class="n">이항</span> <span class="n">연산자는</span> <span class="n">연산</span> <span class="n">전에</span> <span class="n">피</span> <span class="n">연산자의</span> <span class="n">타입을</span> <span class="n">일치시킨다</span><span class="o">.</span>
+
+<span class="kt">byte</span> <span class="n">b1</span> <span class="o">=</span> <span class="mi">10</span><span class="o">;</span>
+<span class="kt">byte</span> <span class="n">b2</span> <span class="o">=</span> <span class="mi">20</span><span class="o">;</span>
+<span class="kt">byte</span> <span class="n">b3</span> <span class="o">=</span> <span class="n">b1</span> <span class="o">+</span> <span class="n">b2</span><span class="o">;</span> <span class="c1">//Type mismatch: cannot convert from int to byte</span>
+<span class="c1">//피연산자의 크기가 4byte(int) 미만이면 int로 변경한 후 연산 진행</span>
+
+<span class="kt">int</span> <span class="n">i1</span> <span class="o">=</span> <span class="mi">10</span><span class="o">;</span>
+<span class="kt">long</span> <span class="n">l1</span> <span class="o">=</span> <span class="mi">20</span><span class="o">;</span>
+<span class="kt">int</span> <span class="n">i2</span> <span class="o">=</span> <span class="n">i1</span> <span class="o">+</span> <span class="n">l1</span><span class="o">;</span> <span class="c1">//Type mismatch: cannot convert from long to int</span>
+<span class="c1">//두 개의 피연산자 중 큰 타입으로 형 변환 후 연산 진행</span>
+
+<span class="kt">float</span> <span class="n">f1</span> <span class="o">=</span> <span class="mf">10.0</span><span class="o">;</span>
+<span class="kt">float</span> <span class="n">f2</span> <span class="o">=</span> <span class="n">f1</span> <span class="o">+</span> <span class="mf">20.0</span><span class="o">;</span> <span class="c1">//Type mismatch: cannot convert from double to float</span>
+</code></pre></div></div>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">10</span><span class="o">;</span>
+<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">((</span><span class="n">i</span><span class="o">--)%</span><span class="mi">2</span><span class="o">);</span> <span class="c1">//0</span>
+<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(--</span><span class="n">i</span><span class="o">);</span>     <span class="c1">//8</span>
+<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">i</span><span class="o">++);</span>     <span class="c1">//8</span>
+<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(++(</span><span class="n">i</span><span class="o">-</span><span class="mi">2</span><span class="o">));</span> <span class="c1">//컴파일 에러</span>
+<span class="o">++,</span> <span class="o">--</span><span class="n">는</span> <span class="n">변수에만</span> <span class="n">사용할</span> <span class="n">수</span> <span class="n">있다</span><span class="o">.</span>
+</code></pre></div></div>
+
+<h3 id="비트-논리-연산자">비트 논리 연산자</h3>
+
+<blockquote>
+  <ul>
+    <li><strong>2진수 형태로 변환 후 연산</strong>
+      <blockquote>
+        <table>
+          <thead>
+            <tr>
+              <th style="text-align: center">연산자</th>
+              <th>연산자 기능</th>
+              <th style="text-align: center">결합방향</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td style="text-align: center">&amp;</td>
+              <td>두 피 연산자의 비트 값이 모두 1인 경우만 1, 나머지는 0 (ex&gt; a&amp;b)</td>
+              <td style="text-align: center">-&gt;</td>
+            </tr>
+            <tr>
+              <td style="text-align: center">ㅣ</td>
+              <td>두 피 연산자의 비트 값이 모두 0인 경우만 0, 나머지는 1 (ex&gt; aㅣb)</td>
+              <td style="text-align: center">-&gt;</td>
+            </tr>
+            <tr>
+              <td style="text-align: center">^</td>
+              <td>두 피 연산자의 비트 값이 서로 다르면 1, 같으면 0 (ex&gt; a^b)</td>
+              <td style="text-align: center">-&gt;</td>
+            </tr>
+            <tr>
+              <td style="text-align: center">~</td>
+              <td>두 피 연산자의 모든 비트를 반전시킴 -&gt; 1의 보수 (ex&gt; ~a)</td>
+              <td style="text-align: center">&lt;-</td>
+            </tr>
+          </tbody>
+        </table>
+      </blockquote>
+    </li>
+  </ul>
+</blockquote>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>a: 10진수 3 -&gt; 2진수 0 0 0 0 0 0 1 1
+b: 10진수 5 -&gt; 2진수 0 0 0 0 0 1 0 1
+
+a &amp; b : 0 0 0 0 0 0 0 1
+a | b : 0 0 0 0 0 1 1 1
+a ^ b : 0 0 0 0 0 1 1 0
+</code></pre></div></div>
+
+<h3 id="비트-이동-연산자-쉬프트-연산자">비트 이동 연산자 (쉬프트 연산자)</h3>
+
+<blockquote>
+  <ul>
+    <li><strong>*2, /2에 비해 속도가 빠름</strong>
+      <blockquote>
+        <table>
+          <thead>
+            <tr>
+              <th style="text-align: center">연산자</th>
+              <th>연산자 기능</th>
+              <th style="text-align: center">결합방향</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td style="text-align: center">«</td>
+              <td>앞의 피 연산자 비트 열을 뒤 피 연산자 만큼 왼쪽으로 이동하고 이동에 따른 빈 공간은 0으로 채움 (ex&gt; a«2)</td>
+              <td style="text-align: center">-&gt;</td>
+            </tr>
+            <tr>
+              <td style="text-align: center">»</td>
+              <td>앞의 피 연산자 비트 열을 뒤 피 연산자 만큼 오른쪽으로 이동하고 이동에 따른 빈 공간은 음수는 1, 양수는 0으로 채움 (ex&gt; a»2)</td>
+              <td style="text-align: center">-&gt;</td>
+            </tr>
+            <tr>
+              <td style="text-align: center">»&gt;</td>
+              <td>앞의 피 연산자 비트 열을 뒤 피 연산자 만큼 오른쪽으로 이동하고 이동에 따른 빈 공간은 0으로 채움 (ex&gt; a»&gt;2)</td>
+              <td style="text-align: center">-&gt;</td>
+            </tr>
+          </tbody>
+        </table>
+      </blockquote>
+    </li>
+  </ul>
+</blockquote>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>a = 10;
+b = a &lt;&lt; 1   =&gt; *2와 동일
+c = a &gt;&gt; 1   =&gt; /2와 동일
+</code></pre></div></div>
+
+<h3 id="논리-연산자">논리 연산자</h3>
+
+<blockquote>
+  <ul>
+    <li><strong>논리 연산자</strong>
+      <blockquote>
+        <table>
+          <thead>
+            <tr>
+              <th style="text-align: center">연산자</th>
+              <th>연산자 기능</th>
+              <th style="text-align: center">결합방향</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td style="text-align: center">&amp;</td>
+              <td>두 개의 피 연산자 모두 true인 경우 true (ex&gt; a&gt;0 &amp; b&gt;0)</td>
+              <td style="text-align: center">-&gt;</td>
+            </tr>
+            <tr>
+              <td style="text-align: center">ㅣ</td>
+              <td>두 개의 피 연산자가 하나라도 true이면 true (ex&gt; a&gt;0 ㅣ b&lt;0)</td>
+              <td style="text-align: center">-&gt;</td>
+            </tr>
+            <tr>
+              <td style="text-align: center">!</td>
+              <td>단항 연산자로 피 연산자의 값이 false이면 true, true이면 false로 변경 (ex&gt; !a)</td>
+              <td style="text-align: center">&lt;-</td>
+            </tr>
+            <tr>
+              <td style="text-align: center">^</td>
+              <td>두 피 연산자가 서로 다를 경우만 true, 같으면 false (ex&gt; true ^ false -&gt; true, true ^ true -&gt; false)</td>
+              <td style="text-align: center">-&gt;</td>
+            </tr>
+          </tbody>
+        </table>
+      </blockquote>
+    </li>
+  </ul>
+</blockquote>
+
+<blockquote>
+  <table>
+    <tbody>
+      <tr>
+        <td>&amp;</td>
+        <td>T</td>
+        <td>F</td>
+        <td> </td>
+        <td> </td>
+        <td>ㅣ</td>
+        <td>T</td>
+        <td>F</td>
+      </tr>
+      <tr>
+        <td>T</td>
+        <td>T</td>
+        <td>F</td>
+        <td> </td>
+        <td> </td>
+        <td>T</td>
+        <td>T</td>
+        <td>T</td>
+      </tr>
+      <tr>
+        <td>F</td>
+        <td>F</td>
+        <td>F</td>
+        <td> </td>
+        <td> </td>
+        <td>F</td>
+        <td>T</td>
+        <td>F</td>
+      </tr>
+    </tbody>
+  </table>
+</blockquote>
+
+<blockquote>
+  <ul>
+    <li><strong>Short Circuit 연산자</strong>
+      <blockquote>
+        <table>
+          <thead>
+            <tr>
+              <th style="text-align: center">연산자</th>
+              <th>연산자 기능</th>
+              <th style="text-align: center">결합방향</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td style="text-align: center">&amp;&amp;</td>
+              <td>&amp;와 동일한 의미이나 앞의 피 연산자가 false이면 뒤의 피 연산자를 검사하지 않는다. (ex&gt; a&gt;0 &amp;&amp; b&gt;0)</td>
+              <td style="text-align: center">-&gt;</td>
+            </tr>
+            <tr>
+              <td style="text-align: center">ㅣㅣ</td>
+              <td>ㅣ와 동일한 의미이나 앞의 피 연산자가 true이면 뒤의 피 연산자를 검사하지 않는다. (ex&gt; a&gt;0 ㅣㅣ b&gt;0)</td>
+              <td style="text-align: center">-&gt;</td>
+            </tr>
+          </tbody>
+        </table>
+      </blockquote>
+    </li>
+  </ul>
+</blockquote>
+
+<h2 id="2-조건문-if-switch">2. 조건문 (if, switch)</h2>
+
+<blockquote>
+  <ul>
+    <li><strong>if(_____)</strong>
+      <blockquote>
+        <p>(논리형) boolean b;<br />
+(비교식) x&gt;=y<br />
+(Method Call) isEven()</p>
+      </blockquote>
+    </li>
+    <li><strong>switch(_____)</strong>
+      <blockquote>
+        <p>(정수호환) byte, short, char, int x;<br />
+(Enum) Day.MONDAY<br />
+(Class Object) Byte, Short, Character, Integer, String<br />
+(Method Call) getNumber()</p>
+      </blockquote>
+    </li>
+  </ul>
+</blockquote>
+
+<blockquote>
+  <ul>
+    <li>if문 예제</li>
+  </ul>
+</blockquote>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">20</span><span class="o">;</span>
+<span class="nc">String</span> <span class="n">grade</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+
+<span class="k">if</span><span class="o">(</span><span class="n">a</span><span class="o">&gt;=</span><span class="mi">6</span><span class="o">){</span>                                 <span class="k">if</span><span class="o">(</span><span class="n">a</span><span class="o">&gt;=</span><span class="mi">19</span><span class="o">)</span>
+  <span class="n">grade</span> <span class="o">=</span> <span class="s">"아동"</span><span class="o">;</span>                            <span class="n">grade</span> <span class="o">=</span> <span class="s">"성인"</span><span class="o">;</span>
+<span class="o">}</span> <span class="k">else</span> <span class="k">if</span><span class="o">(</span><span class="n">a</span><span class="o">&gt;=</span><span class="mi">13</span><span class="o">){</span>                            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"성인"</span><span class="o">);</span>
+  <span class="n">grade</span> <span class="o">=</span> <span class="s">"청소년"</span><span class="o">;</span>                        <span class="k">else</span> <span class="k">if</span><span class="o">(</span><span class="n">a</span><span class="o">&gt;=</span><span class="mi">13</span><span class="o">)</span>
+<span class="o">}</span> <span class="k">else</span> <span class="k">if</span><span class="o">(</span><span class="n">a</span><span class="o">&gt;=</span><span class="mi">19</span><span class="o">){</span>                            <span class="n">grade</span> <span class="o">=</span> <span class="s">"청소년"</span><span class="o">;</span>
+  <span class="n">grade</span> <span class="o">=</span> <span class="s">"성인"</span><span class="o">;</span>                          <span class="k">else</span> <span class="k">if</span><span class="o">(</span><span class="n">a</span><span class="o">&gt;=</span><span class="mi">6</span><span class="o">)</span>
+<span class="o">}</span> <span class="n">esle</span><span class="o">{</span>                                      <span class="n">grade</span> <span class="o">=</span> <span class="s">"아동"</span><span class="o">;</span>
+  <span class="n">grade</span> <span class="o">=</span> <span class="s">"유아"</span><span class="o">;</span>                          <span class="k">else</span>
+<span class="o">}</span>                                            <span class="n">grade</span> <span class="o">=</span> <span class="s">"유아"</span><span class="o">;</span>
+
+<span class="n">오류</span> <span class="n">코드</span>
+</code></pre></div></div>
+
+<blockquote>
+  <ul>
+    <li>3항 연산자</li>
+  </ul>
+</blockquote>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="n">a</span> <span class="o">=</span><span class="mi">10</span><span class="o">;</span>
+<span class="nc">String</span> <span class="n">str</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+
+<span class="k">if</span><span class="o">(</span><span class="n">a</span><span class="o">&gt;=</span><span class="mi">10</span><span class="o">){</span>
+  <span class="n">str</span> <span class="o">=</span> <span class="s">"10 이상"</span><span class="o">;</span>
+<span class="o">}</span> <span class="k">else</span><span class="o">{</span>
+  <span class="n">str</span> <span class="o">=</span> <span class="s">"10 미만"</span><span class="o">;</span>
+<span class="o">}</span>
+
+<span class="mi">3</span><span class="n">항</span> <span class="n">연산자</span> <span class="n">사용</span>
+<span class="n">str</span> <span class="o">=</span> <span class="n">a</span><span class="o">&gt;=</span><span class="mi">10</span> <span class="o">?</span> <span class="s">"10 이상"</span> <span class="o">:</span> <span class="s">"10 미만"</span><span class="o">;</span>
+</code></pre></div></div>
+
+<blockquote>
+  <ul>
+    <li><em>switch문 예제</em></li>
+  </ul>
+</blockquote>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">switch</span><span class="o">(</span><span class="n">value</span><span class="o">)</span>
+<span class="k">case</span> <span class="mi">1</span><span class="o">:</span> <span class="o">...;</span>
+<span class="k">case</span> <span class="mi">2</span><span class="o">:</span> <span class="o">...;</span> <span class="k">break</span><span class="o">;</span>
+<span class="k">case</span> <span class="mi">3</span><span class="o">:</span> <span class="o">...;</span>
+<span class="k">case</span> <span class="mi">4</span><span class="o">:</span> <span class="o">...;</span>
+<span class="k">case</span> <span class="mi">5</span><span class="o">:</span> <span class="o">...;</span> <span class="k">break</span><span class="o">;</span>
+<span class="k">default</span><span class="o">:</span>
+ <span class="o">=&gt;</span> <span class="o">~</span><span class="n">부터</span> <span class="k">break</span> <span class="n">만나기</span> <span class="n">전</span> <span class="n">까지</span> <span class="n">실행</span>
+ <span class="o">=&gt;</span> <span class="n">value값이</span> <span class="k">case</span> <span class="n">조건에</span> <span class="n">없으면</span> <span class="k">default</span> <span class="n">실행</span>
+</code></pre></div></div>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="n">month</span> <span class="o">=</span> <span class="mi">3</span><span class="o">;</span>
+<span class="kt">int</span> <span class="n">day</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="o">;</span>
+<span class="k">switch</span><span class="o">(</span><span class="n">month</span><span class="o">){</span>
+  <span class="k">case</span> <span class="mi">2</span><span class="o">:</span>
+    <span class="n">day</span> <span class="o">=</span> <span class="mi">29</span><span class="o">;</span> <span class="k">break</span><span class="o">;</span>
+  <span class="k">case</span> <span class="mi">4</span><span class="o">:</span>
+  <span class="k">case</span> <span class="mi">6</span><span class="o">:</span>
+  <span class="k">case</span> <span class="mi">9</span><span class="o">:</span>
+  <span class="k">case</span> <span class="mi">11</span><span class="o">:</span>
+    <span class="n">day</span> <span class="o">=</span> <span class="mi">30</span><span class="o">;</span> <span class="k">break</span><span class="o">;</span>
+  <span class="k">default</span><span class="o">:</span>
+    <span class="n">day</span> <span class="o">=</span> <span class="mi">31</span><span class="o">;</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h2 id="etc-random-수-구현하기">etc. ★Random 수 구현하기★</h2>
+
+<blockquote>
+  <table>
+    <thead>
+      <tr>
+        <th style="text-align: center">구분</th>
+        <th>코드</th>
+        <th>범위</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td style="text-align: center">Math.random()</td>
+        <td>double d = Math.random()</td>
+        <td>0.0 &lt;= d &lt; 1.0</td>
+      </tr>
+      <tr>
+        <td style="text-align: center"> </td>
+        <td>double d = Math.random()*N</td>
+        <td>0.0 &lt;= d &lt; N.0</td>
+      </tr>
+      <tr>
+        <td style="text-align: center"> </td>
+        <td>int i = (int)(Math.random()*N)</td>
+        <td>0 &lt;= i &lt;= N-1</td>
+      </tr>
+      <tr>
+        <td style="text-align: center"> </td>
+        <td>int i = (int)(Math.random()*N)+1</td>
+        <td>1 &lt;= i &lt; N</td>
+      </tr>
+      <tr>
+        <td style="text-align: center">Random rand = new Random();</td>
+        <td> </td>
+        <td> </td>
+      </tr>
+      <tr>
+        <td style="text-align: center">rand.nextInt(N)</td>
+        <td>int i = rand.nextInt(N)</td>
+        <td>0 &lt;= i &lt; N</td>
+      </tr>
+      <tr>
+        <td style="text-align: center"> </td>
+        <td>int i = rand.nextInt(N)+1</td>
+        <td>1 &lt;= i &lt;= N</td>
+      </tr>
+    </tbody>
+  </table>
+</blockquote>
+
+<ul>
+  <li>주사위를 던져서 나올 수 있는 경우의 수(1~6) 구하기 (Random 이용)</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="no">N</span> <span class="o">=</span> <span class="mi">6</span><span class="o">;</span>
+
+<span class="kt">int</span> <span class="n">num</span> <span class="o">=</span> <span class="o">(</span><span class="kt">int</span><span class="o">)(</span><span class="nc">Math</span><span class="o">.</span><span class="na">random</span><span class="o">()*</span><span class="no">N</span><span class="o">)+</span><span class="mi">1</span><span class="o">;</span>
+<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">num</span><span class="o">);</span>
+
+<span class="nc">Random</span> <span class="n">rand</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Random</span><span class="o">();</span>
+<span class="n">num</span> <span class="o">=</span> <span class="n">rand</span><span class="o">.</span><span class="na">nextInt</span><span class="o">(</span><span class="no">N</span><span class="o">)+</span><span class="mi">1</span><span class="o">;</span>
+<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">num</span><span class="o">);</span>
+
+<span class="n">num</span> <span class="o">=</span> <span class="n">rand</span><span class="o">.</span><span class="na">nextInt</span><span class="o">(</span><span class="mi">100</span><span class="o">)%</span><span class="no">N</span><span class="o">+</span><span class="mi">1</span><span class="o">;</span>
+<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">num</span><span class="o">);</span>
+</code></pre></div></div>
+:ET

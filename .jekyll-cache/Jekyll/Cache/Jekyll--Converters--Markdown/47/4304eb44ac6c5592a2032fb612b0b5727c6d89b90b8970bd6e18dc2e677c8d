@@ -1,0 +1,171 @@
+I"�<p><br /></p>
+
+<h2 id="0-자바의-특징">0. 자바의 특징</h2>
+
+<blockquote>
+  <ul>
+    <li>OOP is A.P.I.E ?
+      <ul>
+        <li>OOP(Object-Oriented-Programming = 객체지향 프로그래밍) is Abstraction. Polymorphism. Inheritance. Encapsulation</li>
+      </ul>
+    </li>
+    <li>GC(Garbage Collection)
+      <ul>
+        <li>더 이상 사용하지 않는 메모리를 자동으로 정리하는 기능</li>
+      </ul>
+    </li>
+  </ul>
+</blockquote>
+
+<h2 id="1-변수">1. 변수</h2>
+
+<blockquote>
+  <ul>
+    <li>수학에서는 변하는 수 x</li>
+    <li>컴퓨터에서는 메모리 공간(그릇)</li>
+    <li>메모리 공간에 값(value)을 할당(assign) 후 사용</li>
+    <li>공간의 크기는 타입별로 달라짐</li>
+  </ul>
+</blockquote>
+
+<h2 id="2-type-이란">2. Type 이란?</h2>
+
+<blockquote>
+  <ul>
+    <li>데이터의 종류</li>
+    <li>Primitive Type (기본형)
+      <ul>
+        <li>미리 정해진 크기의 Memory Size로 표현</li>
+        <li>변수 자체에 값 저장</li>
+      </ul>
+    </li>
+    <li>Reference Type (참조형)
+      <ul>
+        <li>크기가 미리 정해질 수 없는 데이터의 표현</li>
+        <li>변수에는 실제 값을 참조할 수 있는 주소만 저장</li>
+      </ul>
+    </li>
+  </ul>
+</blockquote>
+
+<blockquote>
+  <ul>
+    <li>Primitive Type
+      <blockquote>
+        <table>
+          <thead>
+            <tr>
+              <th style="text-align: center">구분</th>
+              <th>Type</th>
+              <th style="text-align: center">bit 수</th>
+              <th>값</th>
+              <th>Wrapper Class</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td style="text-align: center">논리형</td>
+              <td>boolean</td>
+              <td style="text-align: center"> </td>
+              <td>true/false</td>
+              <td>Boolean</td>
+            </tr>
+            <tr>
+              <td style="text-align: center">정수형</td>
+              <td>byte</td>
+              <td style="text-align: center">8</td>
+              <td>-2^7 ~ 2^7-1 (-128 ~ 127)</td>
+              <td>Byte</td>
+            </tr>
+            <tr>
+              <td style="text-align: center"> </td>
+              <td>short</td>
+              <td style="text-align: center">16</td>
+              <td>-2^15 ~ 2^15-1 (-32768 ~ 32767)</td>
+              <td>Short</td>
+            </tr>
+            <tr>
+              <td style="text-align: center"> </td>
+              <td>int</td>
+              <td style="text-align: center">32</td>
+              <td>-2^31 ~ 2^31-1 (-2147483648 ~ 2147483647, 대략 20억)</td>
+              <td>Integer</td>
+            </tr>
+            <tr>
+              <td style="text-align: center"> </td>
+              <td>long</td>
+              <td style="text-align: center">32</td>
+              <td>-2^31 ~ 2^31-1 (-9223372036854775808 ~ 9223372036854775807)</td>
+              <td>Long</td>
+            </tr>
+            <tr>
+              <td style="text-align: center">실수형</td>
+              <td>float</td>
+              <td style="text-align: center">32</td>
+              <td>float f = 0.1234567890123456789f; =&gt; 0.12345679</td>
+              <td>Float</td>
+            </tr>
+            <tr>
+              <td style="text-align: center"> </td>
+              <td>double</td>
+              <td style="text-align: center">64</td>
+              <td>double d = 0.1234567890123456789; =&gt; 0.12345678901234568</td>
+              <td>Double</td>
+            </tr>
+            <tr>
+              <td style="text-align: center">문자형</td>
+              <td>char</td>
+              <td style="text-align: center">16</td>
+              <td>\u0000 ~ \uffff(0~2^16-1)</td>
+              <td>Character</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <ul>
+          <li>총 8개</li>
+        </ul>
+      </blockquote>
+    </li>
+  </ul>
+</blockquote>
+
+<blockquote>
+  <ul>
+    <li>Reference Type
+      <blockquote>
+        <ul>
+          <li>나머지 모든 데이터 타입(String, int[], Node와 같은 사용자 정의 타입 …)</li>
+        </ul>
+      </blockquote>
+    </li>
+  </ul>
+</blockquote>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 기본문제</span>
+<span class="kt">int</span> <span class="n">i1</span> <span class="o">=</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">MAX_VALUE</span><span class="o">;</span>
+<span class="kt">int</span> <span class="n">i2</span> <span class="o">=</span> <span class="n">i1</span><span class="o">+</span><span class="mi">1</span><span class="o">;</span>
+
+<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">i2</span><span class="o">);</span>
+
+<span class="o">==&gt;</span> <span class="n">overflow</span>
+</code></pre></div></div>
+
+<h2 id="3-형-변환">3. 형 변환</h2>
+
+<blockquote>
+  <ul>
+    <li>변수의 타입을 다른 타입으로 변환하는 것
+      <ul>
+        <li>char &lt;= =&gt; int</li>
+      </ul>
+    </li>
+    <li>Primitive는 Primitive끼리, Reference는 Reference기리 형 변환 가능
+      <ul>
+        <li>boolean은 다른 기본 타입과 호환되지 않음</li>
+        <li>기본 타입과 참조형의 형 변환을 위해서 Wrapper 클래스 활용</li>
+      </ul>
+    </li>
+  </ul>
+</blockquote>
+:ET

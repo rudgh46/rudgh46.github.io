@@ -1,0 +1,11 @@
+I"k<ul class="toc__menu">
+  <li><a href="#0-자바의-특징">0. 자바의 특징</a></li>
+  <li><a href="#1-변수">1. 변수</a></li>
+  <li><a href="#2-type-이란">2. Type 이란?</a></li>
+  <li><a href="#3-형-변환type-casting">3. 형 변환(Type Casting)</a>
+    <ul>
+      <li><a href="#wrapper-클래스">Wrapper 클래스?</a></li>
+    </ul>
+  </li>
+</ul>
+:ET

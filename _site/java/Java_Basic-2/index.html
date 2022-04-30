@@ -1,0 +1,1113 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.20.2 by Michael Rose
+  Copyright 2013-2020 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="ko" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>[Java 01. 기본 문법 및 응용(연산자, 조건문)] - rudgh46</title>
+<meta name="description" content="">
+
+
+  <meta name="author" content="김경호">
+  
+  <meta property="article:author" content="김경호">
+  
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:site_name" content="rudgh46">
+<meta property="og:title" content="[Java 01. 기본 문법 및 응용(연산자, 조건문)]">
+<meta property="og:url" content="http://localhost:4000/java/Java_Basic-2/">
+
+
+  <meta property="og:description" content="">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2022-01-05T00:00:00+09:00">
+
+
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="http://localhost:4000/java/Java_Basic-2/">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "김경호(KyoungHo Kim)",
+      "url": "http://localhost:4000/"
+    
+  }
+</script>
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="rudgh46 Feed">
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css">
+
+<!--[if IE]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+
+
+
+    <!-- start custom head snippets -->
+<meta name="naver-site-verification" content="d884164c2f43b5d7cfca36d514355ee3ab493511" />
+<meta name="NaverBot" content="All"/>
+<meta name="NaverBot" content="index,follow"/>
+<meta name="Yeti" content="All"/>
+<meta name="Yeti" content="index,follow"/>
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+<link rel="apple-touch-icon" sizes="180x180" href="/assets/logo.ico/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/logo.ico/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/assets/logo.ico/favicon-16x16.png">
+<link rel="mask-icon" href="/assets/logo.ico/safari-pinned-tab.svg" color="#5bbad5">
+<meta name="msapplication-TileColor" content="#da532c">
+<meta name="theme-color" content="#ffffff">
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single">
+    <nav class="skip-links">
+  <h2 class="screen-reader-text">Skip links</h2>
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          ※핵심정리노트※
+          <span class="site-subtitle">version 1.0</span>
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/about/">Introduce</a>
+            </li><li class="masthead__menu-item">
+              <a href="/categories/">Category</a>
+            </li><li class="masthead__menu-item">
+              <a href="/tags/">Tags</a>
+            </li><li class="masthead__menu-item">
+              <a href="/year-archive/">Year</a>
+            </li></ul>
+        
+        <button class="search__toggle" type="button">
+          <span class="visually-hidden">Toggle search</span>
+          <svg class="icon" width="16" height="16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 15.99 16">
+            <path d="M15.5,13.12L13.19,10.8a1.69,1.69,0,0,0-1.28-.55l-0.06-.06A6.5,6.5,0,0,0,5.77,0,6.5,6.5,0,0,0,2.46,11.59a6.47,6.47,0,0,0,7.74.26l0.05,0.05a1.65,1.65,0,0,0,.5,1.24l2.38,2.38A1.68,1.68,0,0,0,15.5,13.12ZM6.4,2A4.41,4.41,0,1,1,2,6.4,4.43,4.43,0,0,1,6.4,2Z" transform="translate(-.01)"></path>
+          </svg>
+        </button>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">토글 메뉴</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person">
+
+  
+    <div class="author__avatar">
+      
+        <img src="/assets/logo.ico/me.jpg" alt="김경호" itemprop="image">
+      
+    </div>
+  
+
+  <div class="author__content">
+    
+      <h3 class="author__name" itemprop="name">김경호</h3>
+    
+    
+      <div class="author__bio" itemprop="description">
+        <p><strong>Be growing as a Developer</strong><br />2022.01 ~ <br /><br />노력하는 개발자</p>
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">팔로우</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="https://schema.org/Place">
+          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name">Republic of Korea</span>
+        </li>
+      
+
+      
+        
+          
+            <li><a href="mailto:rudgh46@naver.com" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i><span class="label">Email</span></a></li>
+          
+        
+          
+            <li><a href="https://github.com/rudgh46" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
+          
+        
+          
+        
+          
+        
+          
+        
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+  </div>
+
+
+
+  <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="[Java 01. 기본 문법 및 응용(연산자, 조건문)]">
+    <meta itemprop="description" content="">
+    <meta itemprop="datePublished" content="2022-01-05T00:00:00+09:00">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title" itemprop="headline">[Java 01. 기본 문법 및 응용(연산자, 조건문)]
+</h1>
+          
+
+
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+          <aside class="sidebar__right sticky">
+            <nav class="toc">
+              <header><h4 class="nav__title"><i class="fas fa-bookmark"></i> Java 01. 기본 문법 및 응용</h4></header>
+              <ul class="toc__menu">
+  <li><a href="#1-연산자란">1. 연산자란?</a>
+    <ul>
+      <li><a href="#비트-논리-연산자">비트 논리 연산자</a></li>
+      <li><a href="#비트-이동-연산자-쉬프트-연산자">비트 이동 연산자 (쉬프트 연산자)</a></li>
+      <li><a href="#논리-연산자">논리 연산자</a></li>
+    </ul>
+  </li>
+  <li><a href="#2-조건문">2. 조건문</a>
+    <ul>
+      <li><a href="#if문">if문</a></li>
+      <li><a href="#switch문">switch문</a></li>
+    </ul>
+  </li>
+  <li><a href="#etc-random-수-활용">etc. ★Random 수 활용★</a></li>
+</ul>
+
+            </nav>
+          </aside>
+        
+        <p><br /></p>
+
+<h2 id="1-연산자란">1. 연산자란?</h2>
+
+<blockquote>
+  <ul>
+    <li>어떤 기능을 수행하는 기호(+,-,*,/ …)</li>
+  </ul>
+</blockquote>
+
+<blockquote>
+  <ul>
+    <li>연산자의 종류와 우선순위 및 결합 방향
+      <blockquote>
+        <table>
+          <thead>
+            <tr>
+              <th style="text-align: left">연산기호</th>
+              <th style="text-align: center">결합방향</th>
+              <th style="text-align: center">우선순위</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td style="text-align: left">(),.</td>
+              <td style="text-align: center"> </td>
+              <td style="text-align: center"> </td>
+            </tr>
+            <tr>
+              <td style="text-align: left">++ – +(부호) -(부호) ~ ! (type):형변환</td>
+              <td style="text-align: center">&lt;-</td>
+              <td style="text-align: center">높음</td>
+            </tr>
+            <tr>
+              <td style="text-align: left">* / %</td>
+              <td style="text-align: center">-&gt;</td>
+              <td style="text-align: center"> </td>
+            </tr>
+            <tr>
+              <td style="text-align: left">+(덧셈) -(뺄셈)</td>
+              <td style="text-align: center">-&gt;</td>
+              <td style="text-align: center"> </td>
+            </tr>
+            <tr>
+              <td style="text-align: left">« » »&gt;</td>
+              <td style="text-align: center">-&gt;</td>
+              <td style="text-align: center"> </td>
+            </tr>
+            <tr>
+              <td style="text-align: left">&lt; &gt; &lt;= &gt;= instanceof</td>
+              <td style="text-align: center">-&gt;</td>
+              <td style="text-align: center"> </td>
+            </tr>
+            <tr>
+              <td style="text-align: left">== !=</td>
+              <td style="text-align: center">-&gt;</td>
+              <td style="text-align: center"> </td>
+            </tr>
+            <tr>
+              <td style="text-align: left">&amp;</td>
+              <td style="text-align: center">-&gt;</td>
+              <td style="text-align: center"> </td>
+            </tr>
+            <tr>
+              <td style="text-align: left">^</td>
+              <td style="text-align: center">-&gt;</td>
+              <td style="text-align: center"> </td>
+            </tr>
+            <tr>
+              <td style="text-align: left">ㅣ</td>
+              <td style="text-align: center">-&gt;</td>
+              <td style="text-align: center"> </td>
+            </tr>
+            <tr>
+              <td style="text-align: left">&amp;&amp;</td>
+              <td style="text-align: center">-&gt;</td>
+              <td style="text-align: center"> </td>
+            </tr>
+            <tr>
+              <td style="text-align: left">ㅣㅣ</td>
+              <td style="text-align: center">-&gt;</td>
+              <td style="text-align: center"> </td>
+            </tr>
+            <tr>
+              <td style="text-align: left">? :</td>
+              <td style="text-align: center">-&gt;</td>
+              <td style="text-align: center"> </td>
+            </tr>
+            <tr>
+              <td style="text-align: left">= *= /= %= += -= «= »= »&gt;= &amp;= ^= ㅣ=</td>
+              <td style="text-align: center">&lt;-</td>
+              <td style="text-align: center">낮음</td>
+            </tr>
+          </tbody>
+        </table>
+      </blockquote>
+      <ul>
+        <li><strong>우선순위는 헷갈리기 쉬우니까 (소괄호) 이용하자</strong></li>
+      </ul>
+    </li>
+  </ul>
+</blockquote>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">산술</span> <span class="n">이항</span> <span class="n">연산자는</span> <span class="n">연산</span> <span class="n">전에</span> <span class="n">피</span> <span class="n">연산자의</span> <span class="n">타입을</span> <span class="n">일치시킨다</span><span class="o">.</span>
+
+<span class="kt">byte</span> <span class="n">b1</span> <span class="o">=</span> <span class="mi">10</span><span class="o">;</span>
+<span class="kt">byte</span> <span class="n">b2</span> <span class="o">=</span> <span class="mi">20</span><span class="o">;</span>
+<span class="kt">byte</span> <span class="n">b3</span> <span class="o">=</span> <span class="n">b1</span> <span class="o">+</span> <span class="n">b2</span><span class="o">;</span> <span class="c1">//Type mismatch: cannot convert from int to byte</span>
+<span class="c1">//피연산자의 크기가 4byte(int) 미만이면 int로 변경한 후 연산 진행</span>
+
+<span class="kt">int</span> <span class="n">i1</span> <span class="o">=</span> <span class="mi">10</span><span class="o">;</span>
+<span class="kt">long</span> <span class="n">l1</span> <span class="o">=</span> <span class="mi">20</span><span class="o">;</span>
+<span class="kt">int</span> <span class="n">i2</span> <span class="o">=</span> <span class="n">i1</span> <span class="o">+</span> <span class="n">l1</span><span class="o">;</span> <span class="c1">//Type mismatch: cannot convert from long to int</span>
+<span class="c1">//두 개의 피연산자 중 큰 타입으로 형 변환 후 연산 진행</span>
+
+<span class="kt">float</span> <span class="n">f1</span> <span class="o">=</span> <span class="mf">10.0</span><span class="o">;</span>
+<span class="kt">float</span> <span class="n">f2</span> <span class="o">=</span> <span class="n">f1</span> <span class="o">+</span> <span class="mf">20.0</span><span class="o">;</span> <span class="c1">//Type mismatch: cannot convert from double to float</span>
+</code></pre></div></div>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">10</span><span class="o">;</span>
+<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">((</span><span class="n">i</span><span class="o">--)%</span><span class="mi">2</span><span class="o">);</span> <span class="c1">//0</span>
+<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(--</span><span class="n">i</span><span class="o">);</span>     <span class="c1">//8</span>
+<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">i</span><span class="o">++);</span>     <span class="c1">//8</span>
+<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(++(</span><span class="n">i</span><span class="o">-</span><span class="mi">2</span><span class="o">));</span> <span class="c1">//컴파일 에러</span>
+<span class="o">++,</span> <span class="o">--</span><span class="n">는</span> <span class="n">변수에만</span> <span class="n">사용할</span> <span class="n">수</span> <span class="n">있다</span><span class="o">.</span>
+</code></pre></div></div>
+
+<h3 id="비트-논리-연산자">비트 논리 연산자</h3>
+
+<blockquote>
+  <ul>
+    <li><strong>2진수 형태로 변환 후 연산</strong>
+      <blockquote>
+        <table>
+          <thead>
+            <tr>
+              <th style="text-align: center">연산자</th>
+              <th>연산자 기능</th>
+              <th style="text-align: center">결합방향</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td style="text-align: center">&amp;</td>
+              <td>두 피 연산자의 비트 값이 모두 1인 경우만 1, 나머지는 0 (ex&gt; a&amp;b)</td>
+              <td style="text-align: center">-&gt;</td>
+            </tr>
+            <tr>
+              <td style="text-align: center">ㅣ</td>
+              <td>두 피 연산자의 비트 값이 모두 0인 경우만 0, 나머지는 1 (ex&gt; aㅣb)</td>
+              <td style="text-align: center">-&gt;</td>
+            </tr>
+            <tr>
+              <td style="text-align: center">^</td>
+              <td>두 피 연산자의 비트 값이 서로 다르면 1, 같으면 0 (ex&gt; a^b)</td>
+              <td style="text-align: center">-&gt;</td>
+            </tr>
+            <tr>
+              <td style="text-align: center">~</td>
+              <td>두 피 연산자의 모든 비트를 반전시킴 -&gt; 1의 보수 (ex&gt; ~a)</td>
+              <td style="text-align: center">&lt;-</td>
+            </tr>
+          </tbody>
+        </table>
+      </blockquote>
+    </li>
+  </ul>
+</blockquote>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>a: 10진수 3 -&gt; 2진수 0 0 0 0 0 0 1 1
+b: 10진수 5 -&gt; 2진수 0 0 0 0 0 1 0 1
+
+a &amp; b : 0 0 0 0 0 0 0 1
+a | b : 0 0 0 0 0 1 1 1
+a ^ b : 0 0 0 0 0 1 1 0
+</code></pre></div></div>
+
+<h3 id="비트-이동-연산자-쉬프트-연산자">비트 이동 연산자 (쉬프트 연산자)</h3>
+
+<blockquote>
+  <ul>
+    <li><strong>*2, /2에 비해 속도가 빠름</strong>
+      <blockquote>
+        <table>
+          <thead>
+            <tr>
+              <th style="text-align: center">연산자</th>
+              <th>연산자 기능</th>
+              <th style="text-align: center">결합방향</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td style="text-align: center">«</td>
+              <td>앞의 피 연산자 비트 열을 뒤 피 연산자 만큼 왼쪽으로 이동하고 이동에 따른 빈 공간은 0으로 채움 (ex&gt; a«2)</td>
+              <td style="text-align: center">-&gt;</td>
+            </tr>
+            <tr>
+              <td style="text-align: center">»</td>
+              <td>앞의 피 연산자 비트 열을 뒤 피 연산자 만큼 오른쪽으로 이동하고 이동에 따른 빈 공간은 음수는 1, 양수는 0으로 채움 (ex&gt; a»2)</td>
+              <td style="text-align: center">-&gt;</td>
+            </tr>
+            <tr>
+              <td style="text-align: center">»&gt;</td>
+              <td>앞의 피 연산자 비트 열을 뒤 피 연산자 만큼 오른쪽으로 이동하고 이동에 따른 빈 공간은 0으로 채움 (ex&gt; a»&gt;2)</td>
+              <td style="text-align: center">-&gt;</td>
+            </tr>
+          </tbody>
+        </table>
+      </blockquote>
+    </li>
+  </ul>
+</blockquote>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>a = 10;
+b = a &lt;&lt; 1   =&gt; *2와 동일
+c = a &gt;&gt; 1   =&gt; /2와 동일
+</code></pre></div></div>
+
+<h3 id="논리-연산자">논리 연산자</h3>
+
+<blockquote>
+  <ul>
+    <li><strong>논리 연산자</strong>
+      <blockquote>
+        <table>
+          <thead>
+            <tr>
+              <th style="text-align: center">연산자</th>
+              <th>연산자 기능</th>
+              <th style="text-align: center">결합방향</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td style="text-align: center">&amp;</td>
+              <td>두 개의 피 연산자 모두 true인 경우 true (ex&gt; a&gt;0 &amp; b&gt;0)</td>
+              <td style="text-align: center">-&gt;</td>
+            </tr>
+            <tr>
+              <td style="text-align: center">ㅣ</td>
+              <td>두 개의 피 연산자가 하나라도 true이면 true (ex&gt; a&gt;0 ㅣ b&lt;0)</td>
+              <td style="text-align: center">-&gt;</td>
+            </tr>
+            <tr>
+              <td style="text-align: center">!</td>
+              <td>단항 연산자로 피 연산자의 값이 false이면 true, true이면 false로 변경 (ex&gt; !a)</td>
+              <td style="text-align: center">&lt;-</td>
+            </tr>
+            <tr>
+              <td style="text-align: center">^</td>
+              <td>두 피 연산자가 서로 다를 경우만 true, 같으면 false (ex&gt; true ^ false -&gt; true, true ^ true -&gt; false)</td>
+              <td style="text-align: center">-&gt;</td>
+            </tr>
+          </tbody>
+        </table>
+      </blockquote>
+    </li>
+  </ul>
+</blockquote>
+
+<blockquote>
+  <table>
+    <tbody>
+      <tr>
+        <td>&amp;</td>
+        <td>T</td>
+        <td>F</td>
+        <td> </td>
+        <td> </td>
+        <td>ㅣ</td>
+        <td>T</td>
+        <td>F</td>
+      </tr>
+      <tr>
+        <td>T</td>
+        <td>T</td>
+        <td>F</td>
+        <td> </td>
+        <td> </td>
+        <td>T</td>
+        <td>T</td>
+        <td>T</td>
+      </tr>
+      <tr>
+        <td>F</td>
+        <td>F</td>
+        <td>F</td>
+        <td> </td>
+        <td> </td>
+        <td>F</td>
+        <td>T</td>
+        <td>F</td>
+      </tr>
+    </tbody>
+  </table>
+</blockquote>
+
+<blockquote>
+  <ul>
+    <li><strong>Short Circuit 연산자</strong>
+      <blockquote>
+        <table>
+          <thead>
+            <tr>
+              <th style="text-align: center">연산자</th>
+              <th>연산자 기능</th>
+              <th style="text-align: center">결합방향</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td style="text-align: center">&amp;&amp;</td>
+              <td>&amp;와 동일한 의미이나 앞의 피 연산자가 false이면 뒤의 피 연산자를 검사하지 않는다. (ex&gt; a&gt;0 &amp;&amp; b&gt;0)</td>
+              <td style="text-align: center">-&gt;</td>
+            </tr>
+            <tr>
+              <td style="text-align: center">ㅣㅣ</td>
+              <td>ㅣ와 동일한 의미이나 앞의 피 연산자가 true이면 뒤의 피 연산자를 검사하지 않는다. (ex&gt; a&gt;0 ㅣㅣ b&gt;0)</td>
+              <td style="text-align: center">-&gt;</td>
+            </tr>
+          </tbody>
+        </table>
+      </blockquote>
+    </li>
+  </ul>
+</blockquote>
+
+<h2 id="2-조건문">2. 조건문</h2>
+
+<h3 id="if문">if문</h3>
+
+<blockquote>
+  <ul>
+    <li><strong>if(_____)</strong>
+      <blockquote>
+        <p>(논리형) boolean b;<br />
+(비교식) x&gt;=y<br />
+(Method Call) isEven()</p>
+      </blockquote>
+    </li>
+  </ul>
+</blockquote>
+
+<blockquote>
+  <ul>
+    <li><strong>if문 예제</strong></li>
+  </ul>
+</blockquote>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">20</span><span class="o">;</span>
+<span class="nc">String</span> <span class="n">grade</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+
+<span class="k">if</span><span class="o">(</span><span class="n">a</span><span class="o">&gt;=</span><span class="mi">6</span><span class="o">){</span>                                 <span class="k">if</span><span class="o">(</span><span class="n">a</span><span class="o">&gt;=</span><span class="mi">19</span><span class="o">)</span>
+  <span class="n">grade</span> <span class="o">=</span> <span class="s">"아동"</span><span class="o">;</span>                            <span class="n">grade</span> <span class="o">=</span> <span class="s">"성인"</span><span class="o">;</span>
+<span class="o">}</span> <span class="k">else</span> <span class="k">if</span><span class="o">(</span><span class="n">a</span><span class="o">&gt;=</span><span class="mi">13</span><span class="o">){</span>                            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"성인"</span><span class="o">);</span>
+  <span class="n">grade</span> <span class="o">=</span> <span class="s">"청소년"</span><span class="o">;</span>                        <span class="k">else</span> <span class="k">if</span><span class="o">(</span><span class="n">a</span><span class="o">&gt;=</span><span class="mi">13</span><span class="o">)</span>
+<span class="o">}</span> <span class="k">else</span> <span class="k">if</span><span class="o">(</span><span class="n">a</span><span class="o">&gt;=</span><span class="mi">19</span><span class="o">){</span>                            <span class="n">grade</span> <span class="o">=</span> <span class="s">"청소년"</span><span class="o">;</span>
+  <span class="n">grade</span> <span class="o">=</span> <span class="s">"성인"</span><span class="o">;</span>                          <span class="k">else</span> <span class="k">if</span><span class="o">(</span><span class="n">a</span><span class="o">&gt;=</span><span class="mi">6</span><span class="o">)</span>
+<span class="o">}</span> <span class="n">esle</span><span class="o">{</span>                                      <span class="n">grade</span> <span class="o">=</span> <span class="s">"아동"</span><span class="o">;</span>
+  <span class="n">grade</span> <span class="o">=</span> <span class="s">"유아"</span><span class="o">;</span>                          <span class="k">else</span>
+<span class="o">}</span>                                            <span class="n">grade</span> <span class="o">=</span> <span class="s">"유아"</span><span class="o">;</span>
+
+<span class="n">오류</span> <span class="n">코드</span>
+</code></pre></div></div>
+
+<blockquote>
+  <ul>
+    <li><strong>3항 연산자</strong></li>
+  </ul>
+</blockquote>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="n">a</span> <span class="o">=</span><span class="mi">10</span><span class="o">;</span>
+<span class="nc">String</span> <span class="n">str</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+
+<span class="k">if</span><span class="o">(</span><span class="n">a</span><span class="o">&gt;=</span><span class="mi">10</span><span class="o">){</span>
+  <span class="n">str</span> <span class="o">=</span> <span class="s">"10 이상"</span><span class="o">;</span>
+<span class="o">}</span> <span class="k">else</span><span class="o">{</span>
+  <span class="n">str</span> <span class="o">=</span> <span class="s">"10 미만"</span><span class="o">;</span>
+<span class="o">}</span>
+
+<span class="mi">3</span><span class="n">항</span> <span class="n">연산자</span> <span class="n">사용</span>
+<span class="n">str</span> <span class="o">=</span> <span class="n">a</span><span class="o">&gt;=</span><span class="mi">10</span> <span class="o">?</span> <span class="s">"10 이상"</span> <span class="o">:</span> <span class="s">"10 미만"</span><span class="o">;</span>
+</code></pre></div></div>
+
+<h3 id="switch문">switch문</h3>
+
+<blockquote>
+  <ul>
+    <li><strong>switch(_____)</strong>
+      <blockquote>
+        <p>(정수호환) byte, short, char, int x;<br />
+(Enum) Day.MONDAY<br />
+(Class Object) Byte, Short, Character, Integer, String<br />
+(Method Call) getNumber()</p>
+      </blockquote>
+    </li>
+  </ul>
+</blockquote>
+
+<blockquote>
+  <ul>
+    <li><strong>switch문 예제</strong></li>
+  </ul>
+</blockquote>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">switch</span><span class="o">(</span><span class="n">value</span><span class="o">)</span>
+<span class="k">case</span> <span class="mi">1</span><span class="o">:</span> <span class="o">...;</span>
+<span class="k">case</span> <span class="mi">2</span><span class="o">:</span> <span class="o">...;</span> <span class="k">break</span><span class="o">;</span>
+<span class="k">case</span> <span class="mi">3</span><span class="o">:</span> <span class="o">...;</span>
+<span class="k">case</span> <span class="mi">4</span><span class="o">:</span> <span class="o">...;</span>
+<span class="k">case</span> <span class="mi">5</span><span class="o">:</span> <span class="o">...;</span> <span class="k">break</span><span class="o">;</span>
+<span class="k">default</span><span class="o">:</span>
+ <span class="o">=&gt;</span> <span class="o">~</span><span class="n">부터</span> <span class="k">break</span> <span class="n">만나기</span> <span class="n">전</span> <span class="n">까지</span> <span class="n">실행</span>
+ <span class="o">=&gt;</span> <span class="n">value값이</span> <span class="k">case</span> <span class="n">조건에</span> <span class="n">없으면</span> <span class="k">default</span> <span class="n">실행</span>
+</code></pre></div></div>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="n">month</span> <span class="o">=</span> <span class="mi">3</span><span class="o">;</span>
+<span class="kt">int</span> <span class="n">day</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="o">;</span>
+<span class="k">switch</span><span class="o">(</span><span class="n">month</span><span class="o">){</span>
+  <span class="k">case</span> <span class="mi">2</span><span class="o">:</span>
+    <span class="n">day</span> <span class="o">=</span> <span class="mi">29</span><span class="o">;</span> <span class="k">break</span><span class="o">;</span>
+  <span class="k">case</span> <span class="mi">4</span><span class="o">:</span>
+  <span class="k">case</span> <span class="mi">6</span><span class="o">:</span>
+  <span class="k">case</span> <span class="mi">9</span><span class="o">:</span>
+  <span class="k">case</span> <span class="mi">11</span><span class="o">:</span>
+    <span class="n">day</span> <span class="o">=</span> <span class="mi">30</span><span class="o">;</span> <span class="k">break</span><span class="o">;</span>
+  <span class="k">default</span><span class="o">:</span>
+    <span class="n">day</span> <span class="o">=</span> <span class="mi">31</span><span class="o">;</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h2 id="etc-random-수-활용">etc. ★Random 수 활용★</h2>
+
+<blockquote>
+  <table>
+    <thead>
+      <tr>
+        <th style="text-align: center">구분</th>
+        <th>코드</th>
+        <th>범위</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td style="text-align: center">Math.random()</td>
+        <td>double d = Math.random()</td>
+        <td>0.0 &lt;= d &lt; 1.0</td>
+      </tr>
+      <tr>
+        <td style="text-align: center"> </td>
+        <td>double d = Math.random()*N</td>
+        <td>0.0 &lt;= d &lt; N.0</td>
+      </tr>
+      <tr>
+        <td style="text-align: center"> </td>
+        <td>int i = (int)(Math.random()*N)</td>
+        <td>0 &lt;= i &lt;= N-1</td>
+      </tr>
+      <tr>
+        <td style="text-align: center"> </td>
+        <td>int i = (int)(Math.random()*N)+1</td>
+        <td>1 &lt;= i &lt; N</td>
+      </tr>
+      <tr>
+        <td style="text-align: center">Random rand = new Random();</td>
+        <td> </td>
+        <td> </td>
+      </tr>
+      <tr>
+        <td style="text-align: center">rand.nextInt(N)</td>
+        <td>int i = rand.nextInt(N)</td>
+        <td>0 &lt;= i &lt; N</td>
+      </tr>
+      <tr>
+        <td style="text-align: center"> </td>
+        <td>int i = rand.nextInt(N)+1</td>
+        <td>1 &lt;= i &lt;= N</td>
+      </tr>
+    </tbody>
+  </table>
+</blockquote>
+
+<ul>
+  <li>주사위를 던져서 나올 수 있는 경우의 수(1~6) 구하기 (Random 이용)</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="no">N</span> <span class="o">=</span> <span class="mi">6</span><span class="o">;</span>
+
+<span class="kt">int</span> <span class="n">num</span> <span class="o">=</span> <span class="o">(</span><span class="kt">int</span><span class="o">)(</span><span class="nc">Math</span><span class="o">.</span><span class="na">random</span><span class="o">()*</span><span class="no">N</span><span class="o">)+</span><span class="mi">1</span><span class="o">;</span>
+<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">num</span><span class="o">);</span>
+
+<span class="nc">Random</span> <span class="n">rand</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Random</span><span class="o">();</span>
+<span class="n">num</span> <span class="o">=</span> <span class="n">rand</span><span class="o">.</span><span class="na">nextInt</span><span class="o">(</span><span class="no">N</span><span class="o">)+</span><span class="mi">1</span><span class="o">;</span>
+<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">num</span><span class="o">);</span>
+
+<span class="n">num</span> <span class="o">=</span> <span class="n">rand</span><span class="o">.</span><span class="na">nextInt</span><span class="o">(</span><span class="mi">100</span><span class="o">)%</span><span class="no">N</span><span class="o">+</span><span class="mi">1</span><span class="o">;</span>
+<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">num</span><span class="o">);</span>
+</code></pre></div></div>
+
+<ul>
+  <li>주사위를 두 번 던져서 연속적으로 짝수 또는 홀수가 나오면 ‘A’를, 그렇지 않으면 ‘B’를 출력하는 코드</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="no">N</span> <span class="o">=</span> <span class="mi">6</span><span class="o">;</span>
+<span class="nc">Random</span> <span class="n">rand</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Random</span><span class="o">();</span>
+<span class="kt">int</span> <span class="n">num1</span> <span class="o">=</span> <span class="n">rand</span><span class="o">.</span><span class="na">nextInt</span><span class="o">(</span><span class="no">N</span><span class="o">)+</span><span class="mi">1</span><span class="o">;</span>
+<span class="kt">int</span> <span class="n">num2</span> <span class="o">=</span> <span class="n">rand</span><span class="o">.</span><span class="na">nextInt</span><span class="o">(</span><span class="no">N</span><span class="o">)+</span><span class="mi">1</span><span class="o">;</span>
+<span class="nc">String</span> <span class="n">result</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+
+<span class="kt">boolean</span> <span class="n">isNum1Even</span> <span class="o">=</span> <span class="n">num1</span><span class="o">%</span><span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="o">;</span>
+<span class="kt">boolean</span> <span class="n">isNum2Even</span> <span class="o">=</span> <span class="n">num2</span><span class="o">%</span><span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="o">;</span>
+
+<span class="n">result</span> <span class="o">=</span> <span class="n">isNum1Even</span> <span class="o">==</span> <span class="n">isNum2Even</span> <span class="o">?</span> <span class="s">"A"</span> <span class="o">:</span> <span class="s">"B"</span><span class="o">;</span>
+
+<span class="n">또는</span>
+
+<span class="n">result</span> <span class="o">=</span> <span class="o">(</span><span class="n">num1</span> <span class="o">+</span> <span class="n">num2</span><span class="o">)</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span> <span class="o">?</span> <span class="s">"A"</span> <span class="o">:</span> <span class="s">"B"</span><span class="o">;</span>
+</code></pre></div></div>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> 태그: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/tags/#java" class="page__taxonomy-item" rel="tag">Java</a>
+    
+    </span>
+  </p>
+
+
+
+
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> 카테고리: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/categories/#java" class="page__taxonomy-item" rel="tag">Java</a>
+    
+    </span>
+  </p>
+
+
+        
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> 업데이트:</strong> <time datetime="2022-01-05T00:00:00+09:00">January 5, 2022</time></p>
+
+
+      </footer>
+
+      <section class="page__share">
+  
+    <h4 class="page__share-title">공유하기</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?text=%5BJava+01.+%EA%B8%B0%EB%B3%B8+%EB%AC%B8%EB%B2%95+%EB%B0%8F+%EC%9D%91%EC%9A%A9%28%EC%97%B0%EC%82%B0%EC%9E%90%2C+%EC%A1%B0%EA%B1%B4%EB%AC%B8%29%5D%20http%3A%2F%2Flocalhost%3A4000%2Fjava%2FJava_Basic-2%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2Fjava%2FJava_Basic-2%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4000%2Fjava%2FJava_Basic-2%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="/java/Java_Basic-1/" class="pagination--pager" title="[Java 01. 기본 문법 및 응용 (Java의 특징, 변수, 데이터 타입)]
+">이전</a>
+    
+    
+      <a href="#" class="pagination--pager disabled">다음</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      <h4 class="page__related-title">참고</h4>
+      <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/java/Java_Basic-1/" rel="permalink">[Java 01. 기본 문법 및 응용 (Java의 특징, 변수, 데이터 타입)]
+</a>
+      
+    </h2>
+    
+
+
+    <p class="archive__item-excerpt" itemprop="description">
+</p>
+
+    
+    <span class="page__date"><i class="far fa-clock" aria-hidden="true"></i>2022-01-05</span>
+    
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/markdown/aboutMarkDown/" rel="permalink">[Markdown Basic Sytax]
+</a>
+      
+    </h2>
+    
+
+
+    <p class="archive__item-excerpt" itemprop="description">
+</p>
+
+    
+    <span class="page__date"><i class="far fa-clock" aria-hidden="true"></i>2022-01-04</span>
+    
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/git%20&%20github/gitTestPost/" rel="permalink">[Git test]
+</a>
+      
+    </h2>
+    
+
+
+    <p class="archive__item-excerpt" itemprop="description">
+</p>
+
+    
+    <span class="page__date"><i class="far fa-clock" aria-hidden="true"></i>2022-01-03</span>
+    
+  </article>
+</div>
+
+        
+      </div>
+    </div>
+  
+  
+</div>
+
+    </div>
+
+    
+      <div class="search-content">
+        <div class="search-content__inner-wrap"></div>
+
+      </div>
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>팔로우:</strong></li>
+    
+
+    
+      
+        
+          <li><a href="mailto:rudgh46@naver.com" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i> Email</a></li>
+        
+      
+        
+      
+        
+      
+        
+          <li><a href="https://github.com/rudgh46" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+        
+      
+        
+      
+        
+      
+        
+      
+    
+
+    <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> 피드</a></li>
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2022 김경호(KyoungHo Kim). Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+
+
+
+
+
+
+
+    
+  <script>
+    var disqus_config = function () {
+      this.page.url = "http://localhost:4000/java/Java_Basic-2/";  /* Replace PAGE_URL with your page's canonical URL variable */
+      this.page.identifier = "/java/Java_Basic 2"; /* Replace PAGE_IDENTIFIER with your page's unique identifier variable */
+    };
+    (function() { /* DON'T EDIT BELOW THIS LINE */
+      var d = document, s = d.createElement('script');
+      s.src = 'https://rudgh46-github-io.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  </script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+  
+
+
+
+
+
+  </body>
+</html>
