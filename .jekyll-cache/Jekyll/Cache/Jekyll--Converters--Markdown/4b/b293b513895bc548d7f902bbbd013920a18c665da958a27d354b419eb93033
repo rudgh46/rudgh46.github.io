@@ -1,0 +1,1321 @@
+I"p�<p><br /></p>
+
+<h2 id="1-자료구조">1. 자료구조</h2>
+
+<blockquote>
+  <ul>
+    <li><strong>자료구조의 분류</strong>
+      <ul>
+        <li><strong>정의</strong>
+          <ul>
+            <li>자료를 효율적으로 표현하고 처리할 수 있도록 정리하는것</li>
+          </ul>
+        </li>
+        <li><strong>자료의 분류</strong>
+          <ul>
+            <li>단순구조 (정수, 실수, 문자, 문자열 등의 기본 자료형)</li>
+            <li>선형구조 (자료들 사이의 관계가 1:1관계/ 순차 리스트, 연결 리스트, 스택, 큐, 데크 등)</li>
+            <li>비선형구조 (자료들 사이의 관계가 1:다, 또는 다:다 관계/트리, 그레프 등)</li>
+            <li>파일 구조 (서로 관련있는 필드로 구성된 레코드 집합인 파일에 대한 구조, 순차파일, 색인파일, 직접파일 등)</li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</blockquote>
+
+<blockquote>
+  <ul>
+    <li><strong>순차 자료구조</strong>
+      <ul>
+        <li><strong>순차 자료구조의 개념</strong>
+          <ul>
+            <li>구현할 자료들을 논리적 순서로 메모리에 연속 저장하는 구현 방식</li>
+            <li>논리적인 순서와 물리적인 순서가 항상 일치해야 함</li>
+            <li>C프로그래밍에서 순차 자료구조의 구현 방식 제공하는 프로그램 기법은 배열</li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</blockquote>
+
+<blockquote>
+  <ul>
+    <li><strong>선형리스트</strong>
+      <ul>
+        <li><strong>리스트</strong>
+          <ul>
+            <li>자료를 구조화 하는 가장 기본적인 방법은 나열하는 것</li>
+          </ul>
+        </li>
+        <li><strong>선형 리스트</strong>
+          <ul>
+            <li>순서 리스트</li>
+            <li>자료들 간에 순서를 갖는 리스트</li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</blockquote>
+
+<blockquote>
+  <ul>
+    <li><strong>연결자료구조</strong>
+      <ul>
+        <li><strong>자료의 논리적인 순서와 물리적인 순서가 불일치</strong>
+          <ul>
+            <li>각 원소에 저장되어 있는 다음 원소의 주소에 의해 순서가 연결되는 방식</li>
+            <li>물리적인 순서를 맞추기 위한 오버헤드가 발생하지 않음</li>
+          </ul>
+        </li>
+        <li><strong>연결리스트의 종류</strong>
+          <ul>
+            <li>연결하는 방식에 따라 단순 연결 리스트와 원형 연결 리스트, 이중 연결</li>
+            <li>리스트, 이중 원형 연결 리스트</li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</blockquote>
+
+<blockquote>
+  <ul>
+    <li><strong>연결리스트</strong>
+      <ul>
+        <li><strong>단순 연결 리스트</strong>
+          <ul>
+            <li>단순 연결리스트의 개념
+              <ul>
+                <li>노드가 하나의 링크 필드에 의해서 다음 노드와 연결되는 구조를 가짐</li>
+                <li>연결 리스트, 선형 연결 리스트, 단순 연결 선형 리스트</li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li><strong>원형 연결 리스트</strong>
+          <ul>
+            <li>단순 연결 리스트에서 마지막 노드가 리스트의 첫 번째 노드와 연결된 리스트</li>
+            <li>단순 연결 리스트의 마지막 노드의 링크 필드에 첫 번째 노드 연결</li>
+            <li>링크를 따라 계속 순회하면 이전 노드에 접근 가능</li>
+          </ul>
+        </li>
+        <li><strong>이중 연결 리스트</strong>
+          <ul>
+            <li>양쪽 방향으로 순회할 수 있도록 노드를 연결한 리스트</li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</blockquote>
+
+<blockquote>
+  <ul>
+    <li><strong>순차 자료구조와 연결 자료구조의 비교</strong></li>
+  </ul>
+</blockquote>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center">구분</th>
+      <th style="text-align: left">순차 자료구조</th>
+      <th style="text-align: left">연결 자료구조</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center">메모리 저장 방식</td>
+      <td style="text-align: left">메모리의 저장 시작 위치부터 빈자리 없이 자료를 <br /> 순서대로 연속하여 저장, 논리적 순서와 물리적 순서가 일치</td>
+      <td style="text-align: left">메모리에 저장된 물리적 위치가 순서와 상관없이 <br /> 링크에 의해서 논리적인 순서를 표현하는 구현 방식</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">연산 특징</td>
+      <td style="text-align: left">삽입, 삭제 연산 후 자료가 순서대로 연속하여 저장 <br /> 변경된 논리적인 순서와 물리적 순서가 일치</td>
+      <td style="text-align: left">삽입, 삭제 연산을 하여 논리적인 순서가 변경되어도, <br /> 링크 정보만 변경되고, 물리적인 순서가 변경되지 않음</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">프로그램 기법</td>
+      <td style="text-align: left">배열을 이용</td>
+      <td style="text-align: left">포인터를 이용</td>
+    </tr>
+  </tbody>
+</table>
+
+<blockquote>
+  <ul>
+    <li><strong>스택</strong>
+      <ul>
+        <li><strong>스택의 정의</strong>
+          <ul>
+            <li>접시를 쌓듯이 자료를 차곡차곡 쌓아 올린 형태의 자료구조</li>
+            <li>스택에 저장된 원소는 top으로 정한 곳에서만 접근 가능</li>
+            <li>Top의 위치에서만 원소를 삽입하므로, 먼저 삽입한 원소는 밑에 쌓이고, 나중에 삽입한 원소는 위에 쌓이는 구조</li>
+            <li>마지막에 삽입(Last-In)한 원소는 맨 위에 쌓여있다가 가장 먼저 삭제(First-Out)됨</li>
+            <li>후입선출 구조(LIFO, Last-In-First-Out)</li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</blockquote>
+
+<blockquote>
+  <ul>
+    <li><strong>큐</strong>
+      <ul>
+        <li><strong>큐의 정의</strong>
+          <ul>
+            <li>스택과 비슷한 삽입과 삭제의 위치가 제한되어 있는 유한 순서 리스트</li>
+            <li>큐는 뒤에서는 삽입만 하고, 앞에서는 삭제만 할 수 있는 구조</li>
+            <li>삽입한 순서대로 원소가 나열되어 가장 먼저 삽입(First-In)한 원소는 맨 앞에 있다가 가장 먼저 삭제(First-Out)됨</li>
+            <li>선입선출 구조(FIFO, First-In-First-Out)</li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</blockquote>
+
+<blockquote>
+  <ul>
+    <li><strong>스택과 큐의 연산 비교</strong></li>
+  </ul>
+</blockquote>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center"> </th>
+      <th style="text-align: center">삽입연산</th>
+      <th style="text-align: center"> </th>
+      <th style="text-align: center">삭제연산</th>
+      <th style="text-align: center"> </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center">자료구조</td>
+      <td style="text-align: center">연산자</td>
+      <td style="text-align: center">삽입위치</td>
+      <td style="text-align: center">연산자</td>
+      <td style="text-align: center">삭제위치</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">스택</td>
+      <td style="text-align: center">PUSH</td>
+      <td style="text-align: center">TOP</td>
+      <td style="text-align: center">POP</td>
+      <td style="text-align: center">TOP</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">큐</td>
+      <td style="text-align: center">enQueue</td>
+      <td style="text-align: center">rear</td>
+      <td style="text-align: center">deQueue</td>
+      <td style="text-align: center">front</td>
+    </tr>
+  </tbody>
+</table>
+
+<blockquote>
+  <ul>
+    <li><strong>데크(Deque : Double-ended queue)</strong>
+      <ul>
+        <li><strong>데크의 정의</strong>
+          <ul>
+            <li>큐 두 개 중 하나를 좌우로 뒤집어서 붙인 구조</li>
+            <li>큐의 양쪽 끝에서 삽입 연산과 삭제 연산을 수행할 수 있도록 확장한 자료구조</li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</blockquote>
+
+<blockquote>
+  <ul>
+    <li><strong>트리</strong>
+      <ul>
+        <li><strong>트리(tree)의 정의</strong>
+          <ul>
+            <li>원소들 간에 1:n 관계를 가지는 비선형 자료구조</li>
+            <li>원소들 간에 계층관계를 가지는 계층형 자료구조 (Hierarchical Data Structure)</li>
+            <li>상위 원소에서 하위 원소로 내려가면서 확장되는 트리 모양의 구조</li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</blockquote>
+
+<blockquote>
+  <ul>
+    <li><strong>이진트리</strong>
+      <ul>
+        <li><strong>이진트리의 정의</strong>
+          <ul>
+            <li>트리의 모든 노드의 차수를 2 이하로 제한하여 전체 트리의 차수가 2 이하가 되도록 정의</li>
+            <li>이진트리의 모든 노드는 왼쪽 자식 노드와 오른쪽 자식 노드만 가짐</li>
+            <li>부모 노드와 자식 노드 수와의 관계 -&gt; 1:2</li>
+            <li>공백 노드도 자식 노드로 취급</li>
+            <li>0&lt;= 노드의 차수 &lt;= 2</li>
+          </ul>
+        </li>
+        <li><strong>이진트리의 종류</strong>
+          <ul>
+            <li><strong>포화 이진트리</strong> Full Binary Tree
+              <ul>
+                <li>모든 레벨에 노드가 포화상태로 차 있는 이진트리</li>
+              </ul>
+            </li>
+            <li><strong>완전 이진트리</strong> Complete Binary Tree
+              <ul>
+                <li>높이가 h이고 노드 수가 n개일 때 (단, n &lt; 2h+1-1), 노드 위치가 포화 이진트리에서의 노드 1번부터 n번까지의 위치와 완전히 일치하는 이진트리</li>
+              </ul>
+            </li>
+            <li><strong>편향 이진트리</strong> Skewed Binary Tree
+              <ul>
+                <li>높이가 h일 때 h+1개의 노드를 가지면서 모든 노드가 왼쪽이나 오른쪽 중 한 방향으로만 서브 트리를 가지고 있는 트리</li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</blockquote>
+
+<blockquote>
+  <ul>
+    <li><strong>그래프</strong>
+      <ul>
+        <li><strong>그래프의 정의</strong>
+          <ul>
+            <li>연결되어 있는 원소 사이의 다:다 관계를 표현하는 자료구조</li>
+          </ul>
+        </li>
+        <li><strong>그래프 G</strong>
+          <ul>
+            <li>객체를 나타내는 정점(vertex)과 객체를 연결하는 간선(edge)의 집합</li>
+            <li>G = (V,E)</li>
+            <li>V 는 그래프에 있는 정점들의 집합</li>
+            <li>E는 정점을 연결하는 간선들의 집합</li>
+          </ul>
+        </li>
+        <li><strong>그래프의 종류</strong>
+          <ul>
+            <li><strong>무방향 그래프(undirected graph)</strong>
+              <ul>
+                <li>두 정점을 연결하는 간선에 방향이 없는 그래프</li>
+              </ul>
+            </li>
+            <li><strong>방향 그래프(directed graph), 다이그래프(digraph)</strong>
+              <ul>
+                <li>간선에 방향이 있는 그래프</li>
+              </ul>
+            </li>
+            <li><strong>완전 그래프(complete graph)</strong>
+              <ul>
+                <li>각 정점에서 다른 모든 정점을 연결하여 최대로 많은 간선 수를 가진 그래프</li>
+              </ul>
+            </li>
+            <li><strong>부분 그래프(subgraph)</strong>
+              <ul>
+                <li>원래의 그래프에서 정점이나 간선을 일부만 제외하여 만든 그래프</li>
+              </ul>
+            </li>
+            <li><strong>가중 그래프(weight graph), 네트워크(network)</strong>
+              <ul>
+                <li>정점을 연결하는 간선에 가중치(weight)를 할당한 그래프</li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</blockquote>
+
+<blockquote>
+  <ul>
+    <li><strong>알고리즘</strong>
+      <ul>
+        <li><strong>알고리즘의 정의</strong>
+          <ul>
+            <li>문제해결 방법을 추상화 하여 단계적 절차를 논리적으로 기술해 놓은 명세서</li>
+          </ul>
+        </li>
+        <li><strong>알고리즘의 조건</strong>
+          <ul>
+            <li>입력 : 알고리즘 수행에 필요한 자료가 외부에서 입력으로 제공</li>
+            <li>출력 : 알고리즘 수행 후 하나 이상의 결과를 출력</li>
+            <li>명확성 : 수행할 작업의 내용과 순서를 나타내는 알고리즘의 명령어들은 명확하게 정의되어야 함</li>
+            <li>유한성 : 알고리즘은 수행 뒤에 반드시 종료</li>
+            <li>효과성 : 알고리즘의 모든 명령어들은 기본적이며 실행이 가능해야 함</li>
+          </ul>
+        </li>
+        <li><strong>알고리즘 표현방법</strong>
+          <ul>
+            <li>자연어를 이용한 서술적 표현 방법</li>
+            <li>순서도(Flow chart)를 이용한 도식화 표현 방법</li>
+            <li>프로그래밍 언어를 이용한 구체화 방법</li>
+            <li>가상코드(Pseudo-code)를 이용한 추상화 방법</li>
+          </ul>
+        </li>
+        <li><strong>알고리즘 성능기준</strong>
+          <ul>
+            <li>정확성 : 올바른 자료 입력 시 유한한 시간 내에 올바른 결과 출력 여부</li>
+            <li>명확성 : 알고리즘이 얼마나 이해하기 쉽고 명확하게 작성되었는가</li>
+            <li>수행량 : 일반적인 연산 제외, 알고리즘 특성 나타내는 중요 연산 모두 분석</li>
+            <li>메모리 사용량 : 알고리즘 연산시 메모리의 사용량</li>
+            <li>최적성 : 가장 중요한 요소로 최적화 된 성능을 가져야 함</li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><strong>정렬</strong>
+      <ul>
+        <li><strong>정렬의 정의</strong>
+          <ul>
+            <li>순서 없이 배열된 자료를 작은 것부터 큰 것 순서인 오름차순(Ascending)이나 큰 것부터 작은 것 순서인 내림차순(Descending)으로 재배열하는 것</li>
+            <li>키(Key) - 자료를 정렬하는데 사용하는 기준이 되는 특정 값</li>
+          </ul>
+        </li>
+        <li><strong>정렬의 종류</strong>
+          <ul>
+            <li><strong>선택 정렬</strong>(selection sort)
+              <ul>
+                <li>전체 원소들 중에서 기준 위치에 맞는 원소를 선택하여 자리를 교환하는 방식으로 정렬</li>
+              </ul>
+            </li>
+            <li><strong>버블 정렬</strong>(bubble sort)
+              <ul>
+                <li>인접한 두 개의 원소를 비교하여 자리를 교환하는 방식</li>
+              </ul>
+            </li>
+            <li><strong>퀵 정렬</strong>(quick sort)
+              <ul>
+                <li>정렬할 전체 원소에 대해서 정렬을 수행하지 않고, 기준 값을 중심으로 왼쪽 부분 집합과 오른쪽 부분 집합으로 분할하여 정렬하는 방법</li>
+              </ul>
+            </li>
+            <li><strong>삽입 정렬</strong>(insert sort)
+              <ul>
+                <li>정렬되어있는 부분집합에 정렬할 새로운 원소의 위치를 찾아 삽입하는 방법</li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><strong>검색(search)</strong>
+      <ul>
+        <li><strong>검색의 정의</strong>
+          <ul>
+            <li>컴퓨터에 저장한 자료 중에서 원하는 항목을 찾는 작업</li>
+            <li>탐색 키를 가진 항목을 찾는 것</li>
+          </ul>
+        </li>
+        <li><strong>탐색 키</strong>(search key)
+          <ul>
+            <li>자료를 구별하여 인식할 수 있는 키</li>
+          </ul>
+        </li>
+        <li><strong>삽입/삭제 작업에서의 검색</strong>
+          <ul>
+            <li>원소를 삽입하거나 삭제할 위치를 찾기 위해서 검색 연산 수행</li>
+          </ul>
+        </li>
+        <li><strong>수행 위치에 따른 분류</strong>
+          <ul>
+            <li>내부 검색 : 메모리 내의 자료에 대해서 검색 수행</li>
+            <li>외부 검색 : 보조 기억 장치에 있는 자료에 대해서 검색 수행</li>
+          </ul>
+        </li>
+        <li><strong>검색 방식에 따른 분류</strong>
+          <ul>
+            <li>비교 검색 방식 : 검색 대상의 키를 비교하여 검색, 순차검색, 이진검색, 트리검색</li>
+            <li>계산 검색 방식 : 계수적인 성질을 이용한 계산으로 검색, 해싱</li>
+          </ul>
+        </li>
+        <li><strong>순차 검색</strong>(sequential search), <strong>선형 검색</strong>(linear search)
+          <ul>
+            <li>일렬로 된 자료를 처음부터 마지막까지 순서대로 검색하는 방법</li>
+          </ul>
+        </li>
+        <li><strong>색인 순차 검색</strong>(index sequential search)
+          <ul>
+            <li>정렬되어 있는 자료에 대한 인덱스 테이블(index)을 추가로 사용하여 탐색 효율을 높인 검색 방법</li>
+          </ul>
+        </li>
+        <li><strong>이진 검색, 이분 검색, 보간 검색</strong>
+          <ul>
+            <li>자료의 가운데에 있는 항목을 키 값과 비교하여 다음 검색 위치를 결정하여 검색을 계속하는 방법</li>
+          </ul>
+        </li>
+        <li><strong>이진트리 검색</strong>
+          <ul>
+            <li>이진 탐색 트리를 사용한 검색 방법</li>
+          </ul>
+        </li>
+        <li><strong>해싱</strong>
+          <ul>
+            <li>산술적인 연산을 이용하여 키가 있는 위치를 계산하여 바로 찾아가는 계산 검색 방식</li>
+            <li>검색 방법
+              <ul>
+                <li>키 값에 대해서 해시 함수를 계산하여 주소를 구하고, 구한 주소에 해당하는 해시 테이블로 바로 이동</li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</blockquote>
+
+<h2 id="2-데이터베이스">2. 데이터베이스</h2>
+
+<blockquote>
+  <ul>
+    <li><strong>데이터의 분류</strong>
+      <ul>
+        <li><strong>정형 데이터</strong>
+          <ul>
+            <li>구조화된 데이터, 즉 미리 <strong>정해진 구조에 따라 저장된 데이터</strong> <br /> 예) 엑셀의 스프레드시트, 데이터베이스의 테이블</li>
+          </ul>
+        </li>
+        <li><strong>반정형 데이터</strong>
+          <ul>
+            <li>구조에 따라 저장된 데이터이지만 데이터 내용 안에 구조에 대한 설명이 함께 존재</li>
+            <li>구조를 파악하는 파싱(parsing) 과정이 필요 <br /> 예) <strong>HTML, XML, JSON 문서나 웹 로그, 센서 데이터</strong></li>
+          </ul>
+        </li>
+        <li><strong>비정형 데이터</strong>
+          <ul>
+            <li>정해진 <strong>구조가 없이 저장된 데이터</strong> <br /> 예) <strong>소셜 데이터의 텍스트</strong>, 영상, 이미지, 워드나 PDF 문서와 같은 멀티미디어 데이터</li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</blockquote>
+
+<blockquote>
+  <ul>
+    <li><strong>데이터베이스 관리시스템의 정의</strong>
+      <ul>
+        <li><strong>1세대</strong>
+          <ul>
+            <li>네트워크 DBMS(그래프 형태), 계층 DBMS(트리 형태)</li>
+          </ul>
+        </li>
+        <li><strong>2세대</strong> (관계 DBMS)
+          <ul>
+            <li>데이터베이스를 테이블 형태로 구성
+              <ul>
+                <li>오라클, MS SQL 서버, MySQL</li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li><strong>3세대</strong> (객체지향 DBMS, 객체관계 DBMS)
+          <ul>
+            <li>객체지향 DBMS : 객체를 이용해 데이터베이스를 구성
+              <ul>
+                <li>오투(O2), 온투스(ONTOS), 젬스톤(GemStone)</li>
+              </ul>
+            </li>
+            <li>객체관계 DBMS : 객체 DBMS + 관계 DBMS</li>
+          </ul>
+        </li>
+        <li><strong>4세대</strong> (NoSQL/NewSQL DBMS)
+          <ul>
+            <li>NoSQL DBMS : 비정형 데이터를 처리하는데 적합하고 확장성이 뛰어남
+              <ul>
+                <li>몽고디비(MongoDB), 카산드라(Cassandra)</li>
+              </ul>
+            </li>
+            <li>NewSQL DBMS : 관계 DBMS의 장점 + NoSQL의 확장성 및 유연성
+              <ul>
+                <li>구글 스패너(Spanner), 볼트DB(VoltDB), 누오DB(NuoDB)</li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</blockquote>
+
+<blockquote>
+  <ul>
+    <li><strong>데이터베이스 용어</strong>
+      <ul>
+        <li><strong>스키마(schema) == 테이블(Table)</strong>
+          <ul>
+            <li>데이터베이스에 저장되는 데이터 구조와 제약조건을 정의한 것</li>
+          </ul>
+        </li>
+        <li><strong>인스턴스</strong>(instance)
+          <ul>
+            <li>스키마에 따라 데이터베이스에 실제로 저장된 값</li>
+          </ul>
+        </li>
+        <li><strong>데이터 독립성</strong>(data independency)
+          <ul>
+            <li>하위 스키마를 변경하더라도 상위 스키마가 영향을 받지 않는 특성</li>
+            <li>논리적 데이터 독립성
+              <ul>
+                <li>개념 스키마가 변경되어도 외부 스키마는 영향을 받지 않음</li>
+              </ul>
+            </li>
+            <li>물리적 데이터 독립성
+              <ul>
+                <li>내부 스키마가 변경되어도 개념 스키마는 영향을 받지 않음</li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</blockquote>
+
+<blockquote>
+  <ul>
+    <li><strong>데이터베이스 언어</strong>
+      <ul>
+        <li><strong>데이터 정의어</strong>(DDL; Data Definition Language)
+          <ul>
+            <li>스키마를 정의하거나, 수정 또는 삭제하기 위해 사용</li>
+            <li>CREATE, ALTER, DROP, RENAME, TRUNCATE</li>
+          </ul>
+        </li>
+        <li><strong>데이터 조작어</strong>(DML; Data Manipulation Language)
+          <ul>
+            <li>데이터의 삽입, 삭제, 수정, 검색 등의 처리를 요구하기 위해 사용</li>
+            <li>절차적 데이터 조작어와 비절차적 데이터 조작어로 구분</li>
+            <li>SELECT, INSERT, UPDATE, DELETE</li>
+          </ul>
+        </li>
+        <li><strong>데이터 제어어</strong>(DCL; Data Control Language)
+          <ul>
+            <li>내부적으로 필요한 규칙이나 기법을 정의하기 위해 사용</li>
+            <li>GRANT, REVOKE</li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</blockquote>
+
+<blockquote>
+  <ul>
+    <li><strong>View의 정의</strong>
+      <ul>
+        <li>관계 데이터베이스의 데이터베이스 언어 SQL에서 하나 이상의 테이블(또는 다른 뷰)에서 원하는 모든 데이터를 선택하여, 그들을 사용자 정의하여 나타낸 것</li>
+        <li>데이터를 실제로 저장하지 않고 <strong>논리적으로만 존재하는 테이블</strong>이지만, 일반 테이블과 동일한 방법으로 사용함</li>
+      </ul>
+    </li>
+  </ul>
+</blockquote>
+
+<blockquote>
+  <ul>
+    <li><strong>데이터베이스 인덱스</strong>
+      <ul>
+        <li><strong>인덱스의 정의</strong>
+          <ul>
+            <li>데이터베이스 분야에 있어서 테이블에 대한 <strong>동작의 속도를 높여주는 자료 구조</strong></li>
+            <li>인덱스는 테이블 내의 1개의 컬럼, 혹은 여러 개의 컬럼을 이용하여 생성</li>
+            <li>고속의 검색 동작 뿐만 아니라 레코드 접근과 관련 효율적인 순서 매김 동작에 대한 기초를 제공</li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</blockquote>
+
+<blockquote>
+  <ul>
+    <li><strong>관계 데이터 모델 키(Key)</strong>
+      <ul>
+        <li>릴레이션에서 투플들을 유일하게 구별하는 속성 또는 속성들의 집합</li>
+      </ul>
+    </li>
+    <li><strong>키의 특성</strong>
+      <ul>
+        <li>유일성(uniqueness) : 하나의 릴레이션에서 모든 투플은 서로 다른 키 값을 가져야 함</li>
+        <li>최소성(minimality) : 꼭 필요한 최소한의 속성들로만 키를 구성함</li>
+      </ul>
+    </li>
+    <li><strong>키의 종류</strong>
+      <ul>
+        <li><strong>슈퍼키</strong>(super key) : 유일성을 만족하는 속성 또는 속성들의 집합, 고객아이디, (고객아이디, 고객이름)</li>
+        <li><strong>후보키</strong>(candidate key) : 유일성과 최소성을 만족하는 속성 또는 속성들의 집합, 고객아이디, (고객이름, 주소) 등</li>
+        <li><strong>기본키</strong>(primary key) : 후보키 중에서 기본적으로 사용하기 위해 선택한 키, 고객아이디</li>
+        <li><strong>대체키</strong>(alternate key) : 기본키로 선택되지 못한 후보키</li>
+        <li><strong>외래키</strong>(foreign key) : 다른 릴레이션의 기본키를 참조하는 속성 또는 속성들의 집합</li>
+      </ul>
+    </li>
+  </ul>
+</blockquote>
+
+<blockquote>
+  <ul>
+    <li><strong>제약조건</strong>
+      <ul>
+        <li><strong>무결성 제약조건</strong>(integrity constraint)
+          <ul>
+            <li>데이터의 무결성을 보장하고 일관된 상태로 유지하기 위한 규칙</li>
+            <li>무결성 : 데이터를 결함이 없는 상태, 즉 정확하고 유효하게 유지하는 것</li>
+          </ul>
+        </li>
+        <li><strong>개체 무결성 제약조건</strong>(entity integrity constraint)
+          <ul>
+            <li>기본키를 구성하는 모든 속성은 널 값을 가질 수 없는 규칙</li>
+          </ul>
+        </li>
+        <li><strong>참조 무결성 제약조건</strong>(referential integrity constraint)
+          <ul>
+            <li>외래키는 참조할 수 없는 값을 가질 수 없는 규칙</li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</blockquote>
+
+<h3 id="데이터베이스-기출문제">데이터베이스 기출문제</h3>
+
+<blockquote>
+  <ul>
+    <li><strong>View에 대해 설명하시오.</strong></li>
+  </ul>
+</blockquote>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>답변 Point : View 사용 경험을 예를 들어서 설명하자
+
+예시 : 관광정보 정보서비스 제공 프로젝트를 개발할 때 제공되는
+정보에는 관광정보에 관광 후기 / 사진정보 등의 여러 정보를 제공해야 했는데,
+하나의 쿼리로 데이터를 불러오는 것이 쉽지 않아서 관광정보의 목록을 보여주는 View와
+관광지의 정보를 보여주는 View를 만들어서 사용하였습니다.
+</code></pre></div></div>
+
+<blockquote>
+  <ul>
+    <li><strong>인덱스에 대해 설명하시오.</strong></li>
+  </ul>
+</blockquote>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>답변 Point : 인덱스 사용 경험을 예를 들어서 설명하자.
+인덱스를 사용할 때와 사용하지 않을 때의 결과를 비교해서 설명하자.
+
+예시 : 관광정보를 제공하는 서비스를 개발하면서 관광정보에 대한 사용자 후기 정보를 크롤링해서 수집했습니다.
+관광정보의 후기 정보의 수집건수가 만 건 이상이 수집되면서 조회속도와 검색 속도가 많이 늦어졌습니다.
+이 부분을 해결하기 위해서 검색의 대상이 되는 필드에 대해서 인덱스를 설정하여 속도를 향상하였습니다.
+
+</code></pre></div></div>
+
+<h2 id="3-컴퓨터구조">3. 컴퓨터구조</h2>
+
+<blockquote>
+  <ul>
+    <li><strong>폰노이만 구조</strong>
+      <ul>
+        <li><strong>개요</strong>
+          <ul>
+            <li>CPU, 메모리, 입출력장치, 저장장치가 버스로 연결되어 있는 구조</li>
+            <li>폰노이만 구조의 가장 큰 특징은 저장장치에서 바로 실행할 수 없고 메모리로 가지고 올라와야 실행이 가능함
+              <ul>
+                <li>메모리 관리가 중요한 이슈</li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</blockquote>
+
+<blockquote>
+  <ul>
+    <li><strong>컴퓨터 시스템 구성요소</strong>
+      <ul>
+        <li><strong>프로세서(Processor)</strong>
+          <ul>
+            <li>운영체제와 가장 밀접한 하드웨어로 각 부분의 동작 제어 및 연산 수행</li>
+          </ul>
+        </li>
+        <li><strong>버스(Bus)</strong>
+          <ul>
+            <li>프로세서를 포함한 각 장치 간 또는 서브시스템을 서로 연결하여 정보(데이터)를 주고받을 수 있게 해주는 통로</li>
+          </ul>
+        </li>
+        <li><strong>레지스터(Register)</strong>
+          <ul>
+            <li>프로세서에 위치한 고속 메모리로 프로세서가 바로 사용할 수 있는 데이터 저장</li>
+          </ul>
+        </li>
+        <li><strong>메모리(Memory)</strong>
+          <ul>
+            <li>메모리 계층 구조는 1950년 ~ 1960년대 메인 메모리의 높은 가격으로 인해 제안된 방법으로, 다양한 레벨의 메모리를 연결하여 비용, 속도, 용량, 접근 시간 등을 상호 보완</li>
+          </ul>
+        </li>
+        <li><strong>주변장치</strong>
+          <ul>
+            <li>컴퓨터의 기능을 향상시키기 위한 추가 장비</li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</blockquote>
+
+<blockquote>
+  <ul>
+    <li><strong>운영체제 아키텍쳐</strong>
+      <ul>
+        <li><strong>모놀리식 커널</strong>
+          <ul>
+            <li>모든 컴포넌트 커널에 포함</li>
+            <li>호출 기능만으로 다른 구성 요소와 통신 가능</li>
+            <li>컴퓨터 시스템에 제한 없이 접근</li>
+            <li>높은 성능</li>
+            <li>오류나 악성 코드에 취약</li>
+          </ul>
+        </li>
+        <li><strong>마이크로커널</strong>
+          <ul>
+            <li>소수의 서비스만 제공</li>
+            <li>커널 규모 감소, 규모 확장성 향상</li>
+            <li>구성 요소를 낮은 수준의 권한으로 커널 외부에서 실행</li>
+            <li>확장성, 이식성, 규모 확장성 향상</li>
+            <li>모듈 간의 통신이 많아 성능 감소</li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</blockquote>
+
+<blockquote>
+  <ul>
+    <li><strong>커널</strong>
+      <ul>
+        <li><strong>프로세스 관리, 메모리 관리, 저장장치 관리와 같은 운영체제의 핵심적인 기능을 모아 놓은 것</strong></li>
+        <li><strong>단일형 구조 커널</strong>
+          <ul>
+            <li>모듈 간의 통신 비용이 줄어들어 효율적인 운영이 가능</li>
+          </ul>
+        </li>
+        <li><strong>계층형 구조 커널</strong>
+          <ul>
+            <li>비슷한 기능을 가진 모듈을 묶어서 하나의 계층으로 만들고 계층 간의 통신을 통해 운영체제를 구현하는 방식</li>
+          </ul>
+        </li>
+        <li><strong>마이크로 구조 커널</strong>
+          <ul>
+            <li>프로세스 관리, 메모리 관리, 프로세스 간 통신 관리 등 가장 기본적인 기능만 제공</li>
+            <li>커널의 각 모듈은 세분화되어 존재하고 모듈 간의 정보교환은 프로세스 간 통신을 이용하여 이루어짐</li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</blockquote>
+
+<blockquote>
+  <ul>
+    <li><strong>가상머신</strong>
+      <ul>
+        <li><strong>가상머신의 정의</strong>
+          <ul>
+            <li>운영체제와 응용 프로그램 사이에서 작동하는 프로그램</li>
+            <li>가상머신을 설치하면 응용 프로그램이 모두 동일한 환경에서 작동하는 것처럼 보임</li>
+            <li>자바는 유닉스와 윈도우에서 작동하는 다양한 가상머신을 만들어 배포하는데 이를 자바 가상머신 JavaVirtual Machine, JVM 이라고 함</li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</blockquote>
+
+<blockquote>
+  <ul>
+    <li><strong>시스템의 주요개념</strong>
+      <ul>
+        <li><strong>캐시</strong>
+          <ul>
+            <li>고속 메모리</li>
+            <li>캐시 적중(cache hit) - 참조하는 정보가 캐시 메모리에 있는 경우</li>
+            <li>캐시 실패(cache miss) - 참조하는 정보가 메모리에 없는 경우</li>
+            <li>메모리 참조의 상당수가 캐시 적중되어야 성능 향상 가능</li>
+            <li>캐시의 예 - L1과 L2 프로세서 캐시</li>
+            <li>메인 메모리의 일정 부분을 할당해 2차 저장소의 데이터를 캐시하는데 활용</li>
+          </ul>
+        </li>
+        <li><strong>버퍼</strong>
+          <ul>
+            <li>장치들 사이 혹은 다른 속도로 동작하는 프로세스들 사이에서 데이터를 전송할 때 일시적으로 데이터를 보관하는 저장영역</li>
+            <li>소프트웨어와 하드웨어 장치들이 데이터를 비동기적으로 전송하게 함으로써 시스템 성능 향상</li>
+          </ul>
+        </li>
+        <li><strong>스풀링</strong>
+          <ul>
+            <li>한 프로세스와 저속 또는 버퍼가 제한된 입출력 장치 사이에 디스크와 같은 중간 매개체를 두는 기술</li>
+          </ul>
+        </li>
+        <li><strong>폴링</strong>
+          <ul>
+            <li>CPU가 직접 입출력장치에서 데이터를 가져오거나 내보내는 방식</li>
+            <li>CPU가 입출력장치의 상태를 주기적으로 검사하여 일정한 조건을 만족할 때 데이터를 처리</li>
+            <li>CPU가 명령어 해석과 실행이라는 본래 역할 외에 모든 입출력까지 관여해야 하므로 작업 효율이 떨어짐</li>
+          </ul>
+        </li>
+        <li><strong>인터럽트</strong>
+          <ul>
+            <li>입출력 관리자가 대신 입출력을 해주는 방식</li>
+            <li>CPU의 작업과 저장장치의 데이터 이동을 독립적으로 운영함으로써 시스템의 효율을 높임</li>
+            <li>데이터의 입출력이 이루어지는 동안 CPU가 다른 작업을 할 수 있음</li>
+          </ul>
+        </li>
+        <li><strong>인터럽트의 종류</strong>
+          <ul>
+            <li>외부 인터럽트 : 입출력장치로부터 오는 인터럽트뿐 아니라 전원 이상이나 기계적인 오류 때문에 발생하는 인터럽트를 포함</li>
+            <li>내부 인터럽트 : 프로세스의 잘못이나 예상치 못한 문제 때문에 발생하는 인터럽트</li>
+            <li>시그널 : 사용자가 직접 발생시키는 인터럽트</li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</blockquote>
+
+<blockquote>
+  <ul>
+    <li><strong>리눅스 커널</strong>
+      <ul>
+        <li><strong>리눅스 커널의 역할</strong>
+          <ul>
+            <li>기본적으로 인터럽트 또는 시스템 콜에 의해 수행됨</li>
+            <li>모든 작업에 우선하여 동작하는 프로그램</li>
+            <li>CPU, 메모리, 하드디스크 등의 하드웨어 자원을 제어하여 운영체제의 기본적인 기능을 사용자에게 제공
+              <ul>
+                <li>프로세스 스케줄링</li>
+                <li>기억장치 관리</li>
+                <li>파일 시스템 관리</li>
+                <li>네트워크 관리</li>
+                <li>시스템 콜 인터페이스</li>
+                <li>오퍼레이터 콘솔 및 인터페이스 기능</li>
+                <li>멀티 프로그래밍 지원</li>
+                <li>파일시스템 서비스</li>
+                <li>입출력 서비스 등</li>
+              </ul>
+            </li>
+            <li>명령 인터프리터(interpreter) 부분은 커널에 내장되어 있지 않으며, 다른 사용자 프로그램과 똑같이 애플리케이션(application) 프로그램으로 독립되어 있음</li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</blockquote>
+
+<h2 id="4-네트워크">4. 네트워크</h2>
+
+<blockquote>
+  <ul>
+    <li><strong>TCP/IP</strong>
+      <ul>
+        <li><strong>TCP/IP의 시작</strong>
+          <ul>
+            <li>네트워크는 서로 다른 기종의 컴퓨터로 구성되어 있어 각 네트워크 간에 공통으로 사용할 수 있는 프로토콜이 필요</li>
+            <li>인터넷에서 컴퓨터 간의 통신이 가능하도록 표준화하여 채택한 <strong>국제표준통신규약</strong></li>
+            <li>네트워크와 네트워크를 연결하는 데 사용하는 프로토콜인 TCP/IP는 ‘전송 제어 프로토콜(TCP;Transmission Control Protocol)’과 ‘인터넷 프로토콜(IP; Internet Protocol)’을 의미</li>
+            <li>인터넷에서 사용하는 응용 프로그램은 대부분 이 TCP/IP 프로토콜을 이용하여 데이터를 교환</li>
+          </ul>
+        </li>
+        <li><strong>TCP/IP의 구조</strong>
+          <ul>
+            <li>응용 계층 - FTP, 텔넷, SMTP, DNS, DHCP</li>
+            <li>전송 계층 - TCP, TDP -&gt; 포트 주소</li>
+            <li>네트워크 계층 - IP, ARP, ICMP -&gt; IP 주소</li>
+            <li>네트워크 접속 계층 - PPP, SLIP -&gt; 물리 주소</li>
+            <li><strong>물리주소</strong>
+              <ul>
+                <li>물리 주소(MAC 주소)는 링크 주소 또는 통신망에서 정의된 노드의 주소, 이더넷 네트워크 인터페이스 카드(NIC) 6바이트(48비트) 주소 등을 말한다.</li>
+              </ul>
+            </li>
+            <li><strong>인터넷 주소</strong>
+              <ul>
+                <li>인터넷에서는 기존 물리 주소와는 별도로 각 호스트를 식별할 수 있는 유일한 주소를 지정해야 한다.</li>
+              </ul>
+            </li>
+            <li><strong>포트주소</strong>
+              <ul>
+                <li>수신지 컴퓨터까지 전송하려면 IP 주소와 물리 주소가 필요하다.</li>
+                <li>인터넷 통신의 최종 목적은 한 프로세스가 다른 프로세스와 통신할 수 있도록 하는 것이다.</li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li><strong>TCP/IP의 이해</strong>
+          <ul>
+            <li><strong>프로토콜의 필요성</strong>
+              <ul>
+                <li>네트워크는 서로 다른 기종의 컴퓨터로 구성되어 있어 각 네트워크 간에 공통으로 사용할 수 있는 프로토콜의 필요성이 대두</li>
+              </ul>
+            </li>
+            <li><strong>프로토콜의 정의</strong>
+              <ul>
+                <li>컴퓨터 간의 통신이 가능하도록 표준화 하여 채택한 통신규약</li>
+              </ul>
+            </li>
+            <li><strong>TCP/IP의 정의</strong>
+              <ul>
+                <li>네트워크와 네트워크를 연결하는 데 사용하는 프로토콜인 TCP/IP는 ‘전송 제어 프로토콜(TCP;Transmission Control Protocol)’과 ‘인터넷 프로토콜(IP; Internet Protocol)’을 의미</li>
+                <li>인터넷에서 사용하는 응용 프로그램은 대부분 이 TCP/IP 프로토콜을 이용하여 데이터를 교환</li>
+              </ul>
+            </li>
+            <li><strong>TCP/IP vs OSI 7</strong></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</blockquote>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">유사점</th>
+      <th style="text-align: left">차이점</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left">1. 계층 모델이다</td>
+      <td style="text-align: left">1. TCP/IP 모델의 응용 프로그램 계층은 <br /> OSI 계층 모델의 표현 계층과 세션 계층은 포함한다.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">2. 응용 프로그램 계층</td>
+      <td style="text-align: left">2. TCP/IP 모델의 네트워크 액세스 계층은 OSI 계층 모델의 데이터 링크 계층과 물리 계층을 포함한다.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">3. 트랜스 포트 계층/ 네트워크 계층과 호환되는 계층</td>
+      <td style="text-align: left">3. TCP/IP 프로토콜은 인터넷 표준</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">4. 패킷 스위칭 기술 기반</td>
+      <td style="text-align: left"> </td>
+    </tr>
+  </tbody>
+</table>
+
+<blockquote>
+  <ul>
+    <li><strong>TCP/IP 주소</strong>
+      <ul>
+        <li><strong>IP Address</strong>
+          <ul>
+            <li>인터넷에 연결된 모든 컴퓨터에는 고유의 주소가 부여</li>
+            <li>현재 사용하는 IP 주소 체계는 IP ver.4이다.</li>
+            <li>일반 우편 주소를 시, 동, 번지 등으로 구분하는 것처럼 IP 주소도 네트워크 주소(Net ID)와 호스트 주소(Host ID)로 구분</li>
+            <li>IP 주소를 효율적으로 배정하려고 클래스라는 개념 도입</li>
+            <li>클래스에는 A,B,C,D,E 다섯 종류
+              <ul>
+                <li>Class A : NET ID (1 Byte) + HOST ID (3 Byte)</li>
+                <li>Class B : NET ID (2 Byte) + HOST ID (2 Byte)</li>
+                <li>Class C : NET ID (3 Byte) + HOST ID (1 Byte)</li>
+                <li>Class D : MULTICAST ADDRESS (4 Byte)</li>
+                <li>Class E : RESERVED (4 Byte)</li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><strong>IPv4 vs IPv6</strong></li>
+  </ul>
+</blockquote>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center">구분</th>
+      <th style="text-align: left">IPv4</th>
+      <th style="text-align: left">IPv6</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center">주소 길이</td>
+      <td style="text-align: left">32비트</td>
+      <td style="text-align: left">128비트</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">표시 방법</td>
+      <td style="text-align: left">8비스씩 4부분 10진수 표시 <br /> ex) 203.252.53.55</td>
+      <td style="text-align: left">16비트 8부분 16진수로 표시 <br /> ex) 2002:0221:ABCD:DCBA:0000:FFFF:4002</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">주소 개수</td>
+      <td style="text-align: left">약 43억개</td>
+      <td style="text-align: left">2^128개 (약 43억x43억x43억x43억)</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">주소할당 방식</td>
+      <td style="text-align: left">A,B,C,D 등의 클래스 단위 비순차 할당</td>
+      <td style="text-align: left">네트워크 규모, 단말기수에 따라 순차할당</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">브로드캐스트 주소</td>
+      <td style="text-align: left">있음</td>
+      <td style="text-align: left">없음(대신, 로컬범위 내에서 모든 노드에 대한 멀티캐스트 주소 사용</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">헤더 크기</td>
+      <td style="text-align: left">가변</td>
+      <td style="text-align: left">고정</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">QoS 제공</td>
+      <td style="text-align: left">미흡</td>
+      <td style="text-align: left">제공</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">보안</td>
+      <td style="text-align: left">IPSec 프로토콜 별도 설치</td>
+      <td style="text-align: left">IPSec 자체 지원</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">서비스 품질</td>
+      <td style="text-align: left">제한적 품질 보장 (Type of Service에 의한 서비스 품질 일부 지원)</td>
+      <td style="text-align: left">확장된 품질 보장 (트래픽 클래스, 플로우 레이블에 의한 서비스 품질 지원)</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">Plug &amp; Play</td>
+      <td style="text-align: left">불가(DHCP 이용 시 가능)</td>
+      <td style="text-align: left">가능</td>
+    </tr>
+  </tbody>
+</table>
+
+<blockquote>
+  <ul>
+    <li><strong>Routing</strong>
+      <ul>
+        <li>패킷의 전송 경로를 지정</li>
+        <li>전송 경로 결정시 고려 사항
+          <ul>
+            <li><strong>공평 원칙</strong> : 다른 패킷의 우선 처리를 위해 다른 패킷이 손해를 보면 안됨</li>
+            <li><strong>효율 원칙</strong> : 전체 네트워크의 효율성에 대해 고려해야 함</li>
+          </ul>
+        </li>
+        <li><strong>Routing algorithm</strong>
+          <ul>
+            <li>간결성과 시스템 및 네트워크 자원의 최소 사용</li>
+            <li>라우팅 정보의 안정성과 견고성</li>
+            <li>라우터간의 라우팅 테이블의 빠른 갱신</li>
+            <li>네트워크 환경 변화에 따른 갱신</li>
+          </ul>
+        </li>
+        <li><strong>Static Routing vs Dynamic Routing</strong>
+          <ul>
+            <li><strong>정적 라우팅</strong>(Static Routing)
+              <ul>
+                <li>패킷 전송이 이루어지기 전에 경로 정보를 라우터가 미리 저장하여 중개</li>
+                <li>단점 : 경로 정보의 갱신이 어려우므로, 네트워크 변화/ 네트워크 혼잡도 대처 부족</li>
+              </ul>
+            </li>
+            <li><strong>동적 라우팅</strong>(Dynamic Routing)
+              <ul>
+                <li>라우터의 경로 정보가 네트워크 상황에 따라 적절히 조절됨</li>
+                <li>단점 : 경로 정보의 수집과 관리로 인한 성능 저하</li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li><strong>Router</strong>
+          <ul>
+            <li>라우터(Router)는 서로 구조가 다른 망을 연결할 수 있어 <strong>근거리 통신망(LAN)과 대도시 통신말(MAN), 광대역 통신망(WAN)</strong>을 연결하는 데 사용</li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</blockquote>
+
+<blockquote>
+  <ul>
+    <li><strong>HTTP 프로토콜</strong>
+      <ul>
+        <li><strong>정의</strong>
+          <ul>
+            <li>HTTP(Hypertext Transfer Protocol)는 웹의 기본 통신 프로토콜이다.
+              <ul>
+                <li>프로토콜이란 상호 간에 정의한 규칙을 의미하며 특정 기기 간에 데이터를 주고받기 위해 정의되었다.</li>
+              </ul>
+            </li>
+            <li>웹에서 브라우저와 서버 간에 데이터를 주고받기 위한 방식</li>
+          </ul>
+        </li>
+        <li><strong>특징</strong>
+          <ul>
+            <li>HTTP 프로토콜은 상태가 없는(stateless) 프로토콜이다.</li>
+            <li>여기서 상태가 없다 라는 말은 데이터를 주고 받기 위한 각각의 데이터 요청이 서로 독립적으로 관리가 된다는 뜻</li>
+            <li>좀 더 쉽게 말해서 이전 데이터 요청과 다음 데이터 요청이 서로 관련이 없다는 뜻</li>
+            <li>이러한 특징으로 서버는 세션과 같은 별도의 추가 정보를 관리하지 않아도 되고, 다수의 요청 처리 및 서버의 부하를 줄일 수 있는 성능 상의 이점이 생김</li>
+            <li>HTTP 프로토콜은 일반적으로 TCP/IP 통신 위에서 동작하며 기본 포트는 80번이다.</li>
+          </ul>
+        </li>
+        <li><strong>HTTP Request &amp; HTTP Response</strong>
+          <ul>
+            <li>요청과 응답을 이해하기 위해서는 클라이언트(Client)와 서버(Server)를 이해해야 한다.</li>
+            <li>클라이언트란 요청을 보내는 쪽을 의미하며 일반적으로 웹 관점에서는 브라우저를 의미</li>
+            <li>서버란 요청을 받는 쪽을 의미하며 일반적으로 데이터를 보내주는 원격지의 컴퓨터를 의미</li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</blockquote>
+
+<blockquote>
+  <ul>
+    <li><strong>URL</strong>
+      <ul>
+        <li><strong>URL의 정의</strong>
+          <ul>
+            <li>서버에 자원을 요청하기 위해 입력하는 영문 주소</li>
+            <li>숫자로 되어 있는 IP 주소보다는 기억하기 쉽기 때문에 사용</li>
+          </ul>
+        </li>
+        <li><strong>URL 구조</strong>
+          <ul>
+            <li>http://www.domain.com:1234/path/to/resource?a=b&amp;x=y
+              <ul>
+                <li>http : protocol</li>
+                <li>www.domain.com : host</li>
+                <li>1234 : port</li>
+                <li>path/to/resource : resource path</li>
+                <li>?a=b&amp;x=y : query</li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</blockquote>
+
+<blockquote>
+  <ul>
+    <li><strong>HTTP 요청메소드</strong>
+      <ul>
+        <li>요청한 URL을 이용하여 서버에 특정 데이터를 요청</li>
+        <li>요청하는 데이터에 특정 동작을 수행하고 싶으면 HTTP 요청 메서드(Http Request Methods)를 이용</li>
+        <li><strong>HTTP 요청 메소드</strong>
+          <ul>
+            <li>GET : 존재하는 자원에 대한 요청</li>
+            <li>POST : 새로운 자원을 생성</li>
+            <li>PUT : 존재하는 자원에 대한 변경</li>
+            <li>DELETE : 존재하는 자원에 대한 삭제</li>
+          </ul>
+        </li>
+        <li>이와 같이 데이터에 대한 조회, 생성, 변경, 삭제 동작을 HTTP 요청 메서드로 정의</li>
+        <li><strong>기타 요청 메서드</strong>
+          <ul>
+            <li>HEAD : 서버 헤더 정보를 획듯. GET과 비슷하나 Response Body를 반환하지 않음</li>
+            <li>OPTIONS : 서버 옵션들을 확인하기 위한 요청. CORS에서 사용</li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</blockquote>
+
+<blockquote>
+  <ul>
+    <li><strong>HTTP 상태코드</strong>
+      <ul>
+        <li><strong>HTTP 상태코드(HTTP Status Code)</strong>
+          <ul>
+            <li>서버에서 설정해주는 응답(Response) 정보</li>
+          </ul>
+        </li>
+        <li><strong>2xx - 성공</strong>
+          <ul>
+            <li>200번 대의 사애 코드는 대부분 성공을 의미한다.</li>
+            <li>200 : GET 요청에 대한 성공</li>
+            <li>204 : No Content. 성공했으나 응답 본문에 데이터가 없음</li>
+            <li>205 : Reset Content. 성공했으나 클라이언트의 화면을 새로고침 하도록 권고</li>
+            <li>206 : Partial Content. 성공했으나 일부 범위의 데이터만 반환</li>
+          </ul>
+        </li>
+        <li><strong>3xx - 리다이렉션</strong>
+          <ul>
+            <li>300번 대의 상태 코드는 대부분 클라이언트가 이전 주소로 데이터를 요청하여 서버에서 새 URL로 리다이렉트를 유도하는 경우이다.</li>
+            <li>301 : Moved Permanently, 요청한 자원이 새 URL에 존재</li>
+            <li>303 : See Other, 요청한 자원이 임시 주소에 존재</li>
+            <li>304 : Not Modified, 요청한 자원이 변경되지 않았으므로 클라이언트에서 캐싱된 자원을 사용하도록 권고. ETag와 같은 정보를 활용하여 변경 여부를 확인</li>
+          </ul>
+        </li>
+        <li><strong>4xx - 클라이언트 에러</strong>
+          <ul>
+            <li>400번 대의 상태 코드는 대부분 클라이언트의 코드가 잘못된 경우로 유효하지 않은 자원을 요청했거나 요청이나 권한이 잘못된 경우 발생.</li>
+            <li>400 : Bad Request, 잘못된 요청</li>
+            <li>401 : Unauthorized, 권한 없이 요청. Authorization 헤더가 잘못된 경우</li>
+            <li>403 : Foribidden, 서버에서 해당 자원에 대한 접근 금지</li>
+            <li>405 : Method Not Allowed, 허용되지 않은 요청 메서드</li>
+            <li>409 : Conflict, 최신 자원이 아닌데 업데이트 하는 경우. ex) 파일 업로드 시 버전 충돌</li>
+          </ul>
+        </li>
+        <li><strong>5xx - 서버에러</strong>
+          <ul>
+            <li>500번 대의 상태 코드는 서버 쪽에서 오류가 난 경우이다.</li>
+            <li>501 : Not Implemented, 요청한 동작에 대해 서버가 수행할 수 없는 경우</li>
+            <li>503 : Service Unavailable, 서버가 과부하 또는 유지 보수로 내려간 경우</li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</blockquote>
+
+<h3 id="네트워크-기출문제">네트워크 기출문제</h3>
+
+<blockquote>
+  <ul>
+    <li><strong>https://www.test.com 이라면 어떻게 동작하는지 설명하시오.</strong></li>
+  </ul>
+</blockquote>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>답변 Point : 네트워크 관점에서 동작을 설명하자.
+예시 : 이용자가 웹 브라우저에서 www.test.com을 주소창에 입력하면,
+웹 브라우저에서는 www.test.com 도메인에 대한 실제 IP ADDRESS를 .RP 프로토콜을 이용해서 DNS에 조회하게 됩니다.
+그 이후에 실제 IP ADDRESS를 이용해서 서버의 80 포트를 통해서 서비스를 제공하는 웹 서버에 해당 도메인에 대한 웹 컨텐츠를 요청합니다.
+웹 서버는 웹 브라우저를 위한 별도의 포트에 소켓을 개설하고, 그 소켓은 웹 브라우저와 연결됩니다.
+웹 서버는 요청 받은 컨텐츠를 웹 브라우저로 보내게 됩니다.
+</code></pre></div></div>
+
+<blockquote>
+  <ul>
+    <li><strong>IPv4와 IPv6에 대해서 비교 설명하시오.</strong></li>
+  </ul>
+</blockquote>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>답변 Point : IPv4와 IPv6에 대해서 비교 설명하자.
+예시 : IPv4가 확장성과 용량 면에서 그 한계가 드러나면서 인터넷 요구 사항의 폭증을 수용하기 위해서 IPv6가 개발되었습니다.
+IPv6는 IPv4에 비해 다음과 같은 개선점이 있습니다.
+
+1. 패킷을 단편화하지 않고 효율적인 라우팅을 제공함
+2. 시간 지연에 민감한 패킷을 구분하는 기본적인 QoS(Quality of Service)를 제공
+3. NAT를 없앰으로써 주소 공간을 32비트에서 128비트로 확장
+4. 네트워크 레이어 보안을 내장하고 있음 (IPsec)
+5. 손쉬운 네트워크 관리를 위한 스테이트리스 주소 자동 구성하고 처리 오버헤드가 줄어든 개선된 헤더 구조를 가지고 있습니다.
+</code></pre></div></div>
+:ET
