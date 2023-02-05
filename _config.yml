@@ -20,7 +20,7 @@ title: "경호의 블로그"
 title_separator: "-"
 subtitle: "version 1.0" # site tagline that appears below site title in masthead
 name: "김경호(KyoungHo Kim)"
-description: "느리지만 천천히 성장하는 블로그입니다."
+description: "느리더라도 천천히 성장하는 블로그입니다."
 url: "https://rudgh46.github.io" # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
 baseurl: # the subpath of your site, e.g. "/blog"
 repository: "https://github.com/rudgh46/rudgh46.github.io" # GitHub username/repo-name e.g. "mmistakes/minimal-mistakes"
@@ -95,7 +95,7 @@ analytics:
 author:
   name: "김경호"
   avatar: "assets/logo.ico/me.jpg" # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
-  bio: "**Slowly but Steadily**<br>2022.01 ~ <br><br> ***천천히 꾸준하게...***"
+  bio: "**Slow but steady wins the race**<br>2022.01 ~ <br><br> ***느리더라도 꾸준하게...***"
   location: "Republic of Korea"
   email: #"rudgh46@naver.com"
   links:
@@ -278,3 +278,7 @@ defaults:
     values:
       layout: single
       author_profile: true
+
+#Disqus Comment
+disqus_url: <disqus url>
+dusqus_id: <disqus id>
