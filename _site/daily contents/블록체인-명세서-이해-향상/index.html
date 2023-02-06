@@ -1,0 +1,780 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.20.2 by Michael Rose
+  Copyright 2013-2020 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="ko" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>[Daily Contents] 블록체인 명세서 이해 향상 - 경호의 블로그</title>
+<meta name="description" content="">
+
+
+  <meta name="author" content="김경호">
+  
+  <meta property="article:author" content="김경호">
+  
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:site_name" content="경호의 블로그">
+<meta property="og:title" content="[Daily Contents] 블록체인 명세서 이해 향상">
+<meta property="og:url" content="http://localhost:4000/daily%20contents/%EB%B8%94%EB%A1%9D%EC%B2%B4%EC%9D%B8-%EB%AA%85%EC%84%B8%EC%84%9C-%EC%9D%B4%ED%95%B4-%ED%96%A5%EC%83%81/">
+
+
+  <meta property="og:description" content="">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2022-09-02T00:00:00+09:00">
+
+
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="http://localhost:4000/daily%20contents/%EB%B8%94%EB%A1%9D%EC%B2%B4%EC%9D%B8-%EB%AA%85%EC%84%B8%EC%84%9C-%EC%9D%B4%ED%95%B4-%ED%96%A5%EC%83%81/">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "김경호(KyoungHo Kim)",
+      "url": "http://localhost:4000/"
+    
+  }
+</script>
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="경호의 블로그 Feed">
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css">
+
+<!--[if IE]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+
+
+
+    <!-- start custom head snippets -->
+<meta name="naver-site-verification" content="d884164c2f43b5d7cfca36d514355ee3ab493511" />
+<meta name="NaverBot" content="All"/>
+<meta name="NaverBot" content="index,follow"/>
+<meta name="Yeti" content="All"/>
+<meta name="Yeti" content="index,follow"/>
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+<link rel="apple-touch-icon" sizes="180x180" href="/assets/logo.ico/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/logo.ico/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/assets/logo.ico/favicon-16x16.png">
+<link rel="mask-icon" href="/assets/logo.ico/safari-pinned-tab.svg" color="#5bbad5">
+<meta name="msapplication-TileColor" content="#da532c">
+<meta name="theme-color" content="#ffffff">
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single">
+    <nav class="skip-links">
+  <h2 class="screen-reader-text">Skip links</h2>
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          ※핵심정리노트※
+          <span class="site-subtitle">version 1.0</span>
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/about/">Introduce</a>
+            </li><li class="masthead__menu-item">
+              <a href="/categories/">Category</a>
+            </li><li class="masthead__menu-item">
+              <a href="/tags/">Tags</a>
+            </li><li class="masthead__menu-item">
+              <a href="/year-archive/">Year</a>
+            </li></ul>
+        
+        <button class="search__toggle" type="button">
+          <span class="visually-hidden">Toggle search</span>
+          <svg class="icon" width="16" height="16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 15.99 16">
+            <path d="M15.5,13.12L13.19,10.8a1.69,1.69,0,0,0-1.28-.55l-0.06-.06A6.5,6.5,0,0,0,5.77,0,6.5,6.5,0,0,0,2.46,11.59a6.47,6.47,0,0,0,7.74.26l0.05,0.05a1.65,1.65,0,0,0,.5,1.24l2.38,2.38A1.68,1.68,0,0,0,15.5,13.12ZM6.4,2A4.41,4.41,0,1,1,2,6.4,4.43,4.43,0,0,1,6.4,2Z" transform="translate(-.01)"></path>
+          </svg>
+        </button>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">토글 메뉴</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person">
+
+  
+    <div class="author__avatar">
+      
+        <img src="/assets/logo.ico/me.jpg" alt="김경호" itemprop="image">
+      
+    </div>
+  
+
+  <div class="author__content">
+    
+      <h3 class="author__name" itemprop="name">김경호</h3>
+    
+    
+      <div class="author__bio" itemprop="description">
+        <p><strong>Slow but steady wins the race</strong><br />2022.01 ~ <br /><br /> <strong><em>느리더라도 꾸준하게…</em></strong></p>
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">팔로우</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="https://schema.org/Place">
+          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name">Republic of Korea</span>
+        </li>
+      
+
+      
+        
+          
+            <li><a href="mailto:rudgh46@naver.com" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i><span class="label">Email</span></a></li>
+          
+        
+          
+            <li><a href="https://github.com/rudgh46" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
+          
+        
+          
+        
+          
+        
+          
+        
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+  </div>
+
+
+
+  <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="[Daily Contents] 블록체인 명세서 이해 향상">
+    <meta itemprop="description" content="">
+    <meta itemprop="datePublished" content="2022-09-02T00:00:00+09:00">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title" itemprop="headline">[Daily Contents] 블록체인 명세서 이해 향상
+</h1>
+          
+
+
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+          <aside class="sidebar__right sticky">
+            <nav class="toc">
+              <header><h4 class="nav__title"><i class="fas fa-bookmark"></i> 블록체인 명세서 이해 향상</h4></header>
+              <ul class="toc__menu">
+  <li><a href="#명세서-활용법">명세서 활용법</a></li>
+  <li><a href="#프로젝트-소개">프로젝트 소개</a>
+    <ul>
+      <li><a href="#p2p-거래중개자-없는-전자-상거래-시스템">P2P 거래(중개자 없는 전자 상거래 시스템)</a></li>
+      <li><a href="#디지털-화폐">디지털 화폐</a></li>
+    </ul>
+  </li>
+  <li><a href="#프로젝트-주안점">프로젝트 주안점</a></li>
+  <li><a href="#faq">FAQ</a></li>
+  <li><a href="#qa">Q&amp;A</a></li>
+</ul>
+
+            </nav>
+          </aside>
+        
+        <p><br /></p>
+
+<h2 id="명세서-활용법">명세서 활용법</h2>
+
+<p><strong>블록체인 프로젝트는 Sub1, Sub2, Sub3으로 진행할수록 뼈대에 기능이 점차 덧붙여지는 애자일 프로젝트</strong></p>
+
+<ul>
+  <li>목차, 프로젝트 개요, 프로젝트 목표를 훑어 전체 구성 파악</li>
+  <li>과제 명세에 프로젝트 별 구현 범위 표시</li>
+  <li>명세서를 읽으며 공식 문서 참고(공식이 아닌 문서에는 틀린 정보, 과거에는 옳았어도 현재는 틀리게 된 정보 등이 혼재되어 있으므로 공식 문서 권장)</li>
+</ul>
+
+<h2 id="프로젝트-소개">프로젝트 소개</h2>
+
+<h3 id="p2p-거래중개자-없는-전자-상거래-시스템">P2P 거래(중개자 없는 전자 상거래 시스템)</h3>
+
+<p><strong>플랫폼의 개입을 최소화한 오픈 마켓 서비스</strong> <br />
+FE - 이더리움 // BE - 이더리움 간 연동 기술</p>
+
+<p><strong>특징</strong></p>
+
+<ul>
+  <li>누구나 전자 상거래의 판매자와 구매자가 될 수 있다.</li>
+  <li>서비스 토큰으로 거래를 진행</li>
+  <li>주요 기능은 스마트 컨트랙트를 통해 구현
+    <ul>
+      <li>판매 상품 등록</li>
+      <li>에스크로 기능</li>
+      <li>구매 이력 기능</li>
+    </ul>
+  </li>
+</ul>
+
+<p><strong>전체 아키텍쳐</strong> <br />
+블록체인 - FE - BE</p>
+
+<p><strong>기술스택</strong> <br />
+Blockchain</p>
+
+<ul>
+  <li>GO-Ethereum : 이더리움 클라이언트 SW</li>
+  <li>Solidity : 스마트 컨트랙트 개발 언어</li>
+  <li>solcjs : 솔리디티 컴파일러</li>
+  <li>Remix IDE : 브라우저 스마트 컨트랙트 통합 개발 환경</li>
+</ul>
+
+<p>FE</p>
+
+<ul>
+  <li>Vue.js/Vue CLI : JS 프레임워크 및 툴</li>
+  <li>web3.js : JS 이더리움 APIs</li>
+</ul>
+
+<p>BE</p>
+
+<ul>
+  <li>Java Spring : Java 프레임워크</li>
+  <li>MySQL : 관계형 데이터베이스</li>
+  <li>Docker : 컨테이너 솔루션</li>
+</ul>
+
+<p>etc.</p>
+
+<ul>
+  <li>VirtualBox : 가상화 솔루션</li>
+  <li>Vagrant : 프로비저닝 툴</li>
+  <li>MetaMask : 블록체인 지갑</li>
+</ul>
+
+<p><strong>PJT 주요 과제</strong> <br />
+Sub1. 블록체인 네트워크 구축 및 활용 <br />
+Sub2. 지갑 기능, ERC-20 구현 <br />
+Sub3. 상품 등록 기능 구현, 에스크로 기능 구현, 구매 이력 관리 구현</p>
+
+<h3 id="디지털-화폐">디지털 화폐</h3>
+
+<p><strong>탈중앙형 NFT 거래 플랫폼</strong> <br />
+OpenSea와 유사한 NFT 거래 플랫폼 구축</p>
+
+<p><strong>특징</strong></p>
+
+<ul>
+  <li>표준을 준수하는 Non-Fungible Token을 구현</li>
+  <li>플랫폼을 통해 디지털 Asset을 NFT화 하고 거래할 수 있다.</li>
+</ul>
+
+<p><strong>전체 아키텍쳐</strong> <br />
+블록체인 - FE - BE</p>
+
+<p><strong>기술스택</strong> <br />
+Blockchain</p>
+
+<ul>
+  <li>Besu : 이더리움 클라이언트 SW</li>
+  <li>Solidity : 스마트 컨트랙트 개발 언어</li>
+  <li>Truffle : 스마트 컨트랙트 프레임워크</li>
+  <li>MetaMask : 블록체인 지갑</li>
+  <li>Remix IDE : 브라우저 스마트 컨트랙트 통합 개발 환경</li>
+</ul>
+
+<p>Filesystem</p>
+
+<ul>
+  <li>IPFS : Inter-Planetary File System 분산형 파일 시스템(Peer-to-Peer Filesystem)</li>
+</ul>
+
+<p>FE</p>
+
+<ul>
+  <li>React : JS 프레임워크</li>
+  <li>web3.js : JS 이더리움 APIs</li>
+</ul>
+
+<p>BE</p>
+
+<ul>
+  <li>Node.js : JS Runtime</li>
+  <li>MySQL : 관계형 데이터베이스</li>
+  <li>Docker : 컨테이너 솔루션</li>
+</ul>
+
+<p><strong>PJT 주요 과제</strong> <br />
+Sub1. ERC-721 구현 및 테스트 <br />
+Sub2. NFT Minting 및 조회 <br />
+Sub3. NFT 거래 기능</p>
+
+<h2 id="프로젝트-주안점">프로젝트 주안점</h2>
+
+<ul>
+  <li>BE는 거들 뿐… Web 3.0 프로젝트</li>
+  <li>블록체인 관련 기술에 초점
+    <ul>
+      <li>지갑과 Cryptocurrency의 개념 이해</li>
+      <li>스마트 컨트랙트 구현 이해도 높이기
+        <ul>
+          <li>표준에 맞게 구현하기(ERC-20, ERC-721)</li>
+          <li>컨트랙트 상속, 호출</li>
+        </ul>
+      </li>
+      <li>블록체인과 상호작용하기(Web3 API 사용하기)</li>
+    </ul>
+  </li>
+  <li>끊임없이 질문 : 호출할 때마다의 비용 문제, 블록체인에 꼭 넣어야 할 데이터는 무엇?? 또한 오픈이 되어도 상관없는 데이터.</li>
+</ul>
+
+<h2 id="faq">FAQ</h2>
+
+<p>Solidity 공부 팁 : 공식 문서, 스마트 컨트랙트 기술을 사용하는 회사의 Github 오픈소스, crypto zombie의 게임으로 학습</p>
+
+<h2 id="qa">Q&amp;A</h2>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Q. Dapp에서 이더리움에 배포된 스마트 컨트랙트와 데이터를 주고받기 위해서는 ABI가 필수인지?
+A. 스마트 컨트랙트 주소는 고유값. 단 컨트랙트 안에 어떤 것을 호출해야 할지는 명시해야 함. 그것을 명시하기 위해 CA와 ABI가 필수.
+</code></pre></div></div>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> 태그: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/tags/#daily-contents" class="page__taxonomy-item" rel="tag">Daily Contents</a>
+    
+    </span>
+  </p>
+
+
+
+
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> 카테고리: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/categories/#daily-contents" class="page__taxonomy-item" rel="tag">Daily Contents</a>
+    
+    </span>
+  </p>
+
+
+        
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> 업데이트:</strong> <time datetime="2022-09-02T00:00:00+09:00">September 2, 2022</time></p>
+
+
+      </footer>
+
+      <section class="page__share">
+  
+    <h4 class="page__share-title">공유하기</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?text=%5BDaily+Contents%5D+%EB%B8%94%EB%A1%9D%EC%B2%B4%EC%9D%B8+%EB%AA%85%EC%84%B8%EC%84%9C+%EC%9D%B4%ED%95%B4+%ED%96%A5%EC%83%81%20http%3A%2F%2Flocalhost%3A4000%2Fdaily%2520contents%2F%25EB%25B8%2594%25EB%25A1%259D%25EC%25B2%25B4%25EC%259D%25B8-%25EB%25AA%2585%25EC%2584%25B8%25EC%2584%259C-%25EC%259D%25B4%25ED%2595%25B4-%25ED%2596%25A5%25EC%2583%2581%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2Fdaily%2520contents%2F%25EB%25B8%2594%25EB%25A1%259D%25EC%25B2%25B4%25EC%259D%25B8-%25EB%25AA%2585%25EC%2584%25B8%25EC%2584%259C-%25EC%259D%25B4%25ED%2595%25B4-%25ED%2596%25A5%25EC%2583%2581%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4000%2Fdaily%2520contents%2F%25EB%25B8%2594%25EB%25A1%259D%25EC%25B2%25B4%25EC%259D%25B8-%25EB%25AA%2585%25EC%2584%25B8%25EC%2584%259C-%25EC%259D%25B4%25ED%2595%25B4-%25ED%2596%25A5%25EC%2583%2581%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="/daily%20contents/%EB%B9%85%EB%8D%B0%EC%9D%B4%ED%84%B0-KNN/" class="pagination--pager" title="[Daily Contents] 빅데이터 KNN
+">이전</a>
+    
+    
+      <a href="/daily%20contents/%EB%AA%A8%EB%B9%8C%EB%A6%AC%ED%8B%B0-%EB%AA%85%EC%84%B8%EC%84%9C-%EC%9D%BD%EB%8A%94-%EB%B2%95/" class="pagination--pager" title="[Daily Contents] 모빌리티 명세서 읽는 법
+">다음</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      <h4 class="page__related-title">참고</h4>
+      <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/daily%20contents/IT-Trends/" rel="permalink">[Daily Contents] IT Trends
+</a>
+      
+    </h2>
+    
+
+
+    <p class="archive__item-excerpt" itemprop="description">
+</p>
+
+    
+    <span class="page__date"><i class="far fa-clock" aria-hidden="true"></i>2022-11-23</span>
+    
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/daily%20contents/%EC%A3%BC%EB%8B%88%EC%96%B4-%EA%B0%9C%EB%B0%9C%EC%9E%90-%EC%84%B1%EC%9E%A5-%EC%B4%89%EC%A7%84%EC%A0%9C/" rel="permalink">[Daily Contents] 주니어 개발자 성장 촉진제
+</a>
+      
+    </h2>
+    
+
+
+    <p class="archive__item-excerpt" itemprop="description">
+</p>
+
+    
+    <span class="page__date"><i class="far fa-clock" aria-hidden="true"></i>2022-11-22</span>
+    
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/daily%20contents/%EC%A0%95%EA%B7%9C-%ED%91%9C%ED%98%84%EC%8B%9D/" rel="permalink">[Daily Contents] 정규 표현식
+</a>
+      
+    </h2>
+    
+
+
+    <p class="archive__item-excerpt" itemprop="description">
+</p>
+
+    
+    <span class="page__date"><i class="far fa-clock" aria-hidden="true"></i>2022-11-15</span>
+    
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/daily%20contents/%ED%85%8C%EC%8A%A4%ED%8A%B8%EC%A3%BC%EB%8F%84%EA%B0%9C%EB%B0%9C-TDD/" rel="permalink">[Daily Contents] 테스트주도개발 TDD
+</a>
+      
+    </h2>
+    
+
+
+    <p class="archive__item-excerpt" itemprop="description">
+</p>
+
+    
+    <span class="page__date"><i class="far fa-clock" aria-hidden="true"></i>2022-11-11</span>
+    
+  </article>
+</div>
+
+        
+      </div>
+    </div>
+  
+  
+</div>
+
+    </div>
+
+    
+      <div class="search-content">
+        <div class="search-content__inner-wrap"></div>
+
+      </div>
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>팔로우:</strong></li>
+    
+
+    
+      
+        
+          <li><a href="mailto:rudgh46@naver.com" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i> Email</a></li>
+        
+      
+        
+      
+        
+      
+        
+          <li><a href="https://github.com/rudgh46" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+        
+      
+        
+      
+        
+      
+        
+      
+    
+
+    <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> 피드</a></li>
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2023 김경호(KyoungHo Kim). Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+
+
+
+
+
+
+
+    
+<script>
+  var disqus_config = function () {
+    this.page.url =
+      "http://localhost:4000/daily%20contents/%EB%B8%94%EB%A1%9D%EC%B2%B4%EC%9D%B8-%EB%AA%85%EC%84%B8%EC%84%9C-%EC%9D%B4%ED%95%B4-%ED%96%A5%EC%83%81/"; /* Replace PAGE_URL with your page's canonical URL variable */
+    this.page.identifier =
+      "/daily%20contents/블록체인 명세서 이해 향상"; /* Replace PAGE_IDENTIFIER with your page's unique identifier variable */
+  };
+  (function () {
+    /* DON'T EDIT BELOW THIS LINE */
+    var d = document,
+      s = d.createElement("script");
+    s.src = "https://https-rudgh46-github-io.disqus.com/embed.js";
+    s.setAttribute("data-timestamp", +new Date());
+    (d.head || d.body).appendChild(s);
+  })();
+</script>
+<noscript
+  >Please enable JavaScript to view the
+  <a href="https://disqus.com/?ref_noscript"
+    >comments powered by Disqus.</a
+  ></noscript
+>
+
+
+  
+
+
+
+
+
+  </body>
+</html>

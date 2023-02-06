@@ -1,0 +1,758 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.20.2 by Michael Rose
+  Copyright 2013-2020 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="ko" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>[Daily Contents] 머신 러닝 알고리즘 - 경호의 블로그</title>
+<meta name="description" content="">
+
+
+  <meta name="author" content="김경호">
+  
+  <meta property="article:author" content="김경호">
+  
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:site_name" content="경호의 블로그">
+<meta property="og:title" content="[Daily Contents] 머신 러닝 알고리즘">
+<meta property="og:url" content="http://localhost:4000/daily%20contents/%EC%9D%B8%EA%B3%B5%EC%A7%80%EB%8A%A5-%EC%84%A0%ED%98%95%ED%9A%8C%EA%B7%80/">
+
+
+  <meta property="og:description" content="">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2022-09-30T00:00:00+09:00">
+
+
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="http://localhost:4000/daily%20contents/%EC%9D%B8%EA%B3%B5%EC%A7%80%EB%8A%A5-%EC%84%A0%ED%98%95%ED%9A%8C%EA%B7%80/">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "김경호(KyoungHo Kim)",
+      "url": "http://localhost:4000/"
+    
+  }
+</script>
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="경호의 블로그 Feed">
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css">
+
+<!--[if IE]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+
+
+
+    <!-- start custom head snippets -->
+<meta name="naver-site-verification" content="d884164c2f43b5d7cfca36d514355ee3ab493511" />
+<meta name="NaverBot" content="All"/>
+<meta name="NaverBot" content="index,follow"/>
+<meta name="Yeti" content="All"/>
+<meta name="Yeti" content="index,follow"/>
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+<link rel="apple-touch-icon" sizes="180x180" href="/assets/logo.ico/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/logo.ico/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/assets/logo.ico/favicon-16x16.png">
+<link rel="mask-icon" href="/assets/logo.ico/safari-pinned-tab.svg" color="#5bbad5">
+<meta name="msapplication-TileColor" content="#da532c">
+<meta name="theme-color" content="#ffffff">
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single">
+    <nav class="skip-links">
+  <h2 class="screen-reader-text">Skip links</h2>
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          ※핵심정리노트※
+          <span class="site-subtitle">version 1.0</span>
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/about/">Introduce</a>
+            </li><li class="masthead__menu-item">
+              <a href="/categories/">Category</a>
+            </li><li class="masthead__menu-item">
+              <a href="/tags/">Tags</a>
+            </li><li class="masthead__menu-item">
+              <a href="/year-archive/">Year</a>
+            </li></ul>
+        
+        <button class="search__toggle" type="button">
+          <span class="visually-hidden">Toggle search</span>
+          <svg class="icon" width="16" height="16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 15.99 16">
+            <path d="M15.5,13.12L13.19,10.8a1.69,1.69,0,0,0-1.28-.55l-0.06-.06A6.5,6.5,0,0,0,5.77,0,6.5,6.5,0,0,0,2.46,11.59a6.47,6.47,0,0,0,7.74.26l0.05,0.05a1.65,1.65,0,0,0,.5,1.24l2.38,2.38A1.68,1.68,0,0,0,15.5,13.12ZM6.4,2A4.41,4.41,0,1,1,2,6.4,4.43,4.43,0,0,1,6.4,2Z" transform="translate(-.01)"></path>
+          </svg>
+        </button>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">토글 메뉴</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person">
+
+  
+    <div class="author__avatar">
+      
+        <img src="/assets/logo.ico/me.jpg" alt="김경호" itemprop="image">
+      
+    </div>
+  
+
+  <div class="author__content">
+    
+      <h3 class="author__name" itemprop="name">김경호</h3>
+    
+    
+      <div class="author__bio" itemprop="description">
+        <p><strong>Slow but steady wins the race</strong><br />2022.01 ~ <br /><br /> <strong><em>느리더라도 꾸준하게…</em></strong></p>
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">팔로우</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="https://schema.org/Place">
+          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name">Republic of Korea</span>
+        </li>
+      
+
+      
+        
+          
+            <li><a href="mailto:rudgh46@naver.com" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i><span class="label">Email</span></a></li>
+          
+        
+          
+            <li><a href="https://github.com/rudgh46" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
+          
+        
+          
+        
+          
+        
+          
+        
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+  </div>
+
+
+
+  <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="[Daily Contents] 머신 러닝 알고리즘">
+    <meta itemprop="description" content="">
+    <meta itemprop="datePublished" content="2022-09-30T00:00:00+09:00">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title" itemprop="headline">[Daily Contents] 머신 러닝 알고리즘
+</h1>
+          
+
+
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+          <aside class="sidebar__right sticky">
+            <nav class="toc">
+              <header><h4 class="nav__title"><i class="fas fa-bookmark"></i> 머신 러닝 알고리즘</h4></header>
+              <ul class="toc__menu">
+  <li><a href="#머신-러닝-알고리즘">머신 러닝 알고리즘</a></li>
+  <li><a href="#선형-회귀">선형 회귀</a>
+    <ul>
+      <li><a href="#회귀-문제-분류">회귀 문제 분류</a></li>
+      <li><a href="#선형-회귀로-풀-수-있는-문제들">선형 회귀로 풀 수 있는 문제들</a></li>
+      <li><a href="#싱나는-수학-시간">싱나는 수학 시간</a></li>
+      <li><a href="#수학으로-찾기">수학으로 찾기</a></li>
+      <li><a href="#머신-러닝으로-선형-회귀이론">머신 러닝으로 선형 회귀(이론)</a></li>
+    </ul>
+  </li>
+  <li><a href="#더-공부하기">더 공부하기</a></li>
+</ul>
+
+            </nav>
+          </aside>
+        
+        <p><br /></p>
+
+<h2 id="머신-러닝-알고리즘">머신 러닝 알고리즘</h2>
+
+<ul>
+  <li>Unsupervised Learning
+    <ul>
+      <li>Clustering</li>
+      <li>Dimensionality Reduction</li>
+    </ul>
+  </li>
+  <li>Supervised Learning
+    <ul>
+      <li>Classification</li>
+      <li>Regression</li>
+    </ul>
+  </li>
+  <li>
+    <p>Reinforcement Learning</p>
+  </li>
+  <li>딥러닝 : 인공 신경망, 합성곱 신경망, 적대적 신경망, 순환 신경망</li>
+  <li>
+    <p>강화학습 : Q-러닝, 유전 알고리즘, SARSA</p>
+  </li>
+  <li>지도학습
+    <ul>
+      <li>회귀 : 선형 회귀, 다항 회귀, 라쏘 회귀</li>
+      <li>분류 : 의사 결정 트리, 로지스틱 회귀, k-최근접 이웃, 서포트 벡터 머신, 나이브 베이즈</li>
+    </ul>
+  </li>
+  <li>비지도학습
+    <ul>
+      <li>군집화 : k-평균, 평균 이동, 밀도 기반 공간 군집, 응집</li>
+      <li>자원 축소 : t-분포 확률적 이웃 임베딩, 주성분 분석</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="선형-회귀">선형 회귀</h2>
+
+<p><strong>정의: 종속 변수 y와 한 개 이상의 독립 변수 x와의 선형 상관 관계를 모델링하는 분석 기법</strong></p>
+
+<h3 id="회귀-문제-분류">회귀 문제 분류</h3>
+
+<ul>
+  <li>종속변수와 독립변수 수에 따라 분류</li>
+  <li>독립변수, 종속변수 1개 » 단변량 단순 회귀</li>
+  <li>독립변수 2개 이상 » 다중 회귀</li>
+  <li>종속변수 2개 이상 » 다변량</li>
+</ul>
+
+<h3 id="선형-회귀로-풀-수-있는-문제들">선형 회귀로 풀 수 있는 문제들</h3>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>- 메신저에 등록된 친구의 수와 한 주 동안 주고받은 메세지의 수
+- 마일리지에 따른 중고차 가격
+- 학습시간과 시험점수
+- 도심에서부터의 거리에 따른 토지 가격
+- 마케팅 비용과 매출 사이의 관계
+- 직선형이 아닌 경우
+  &gt;&gt; 다항 회귀(Polynomial Regression): 지수(x^n) 적용 가능
+  &gt;&gt; 직선형으로 만들어보기: 데이터 변환(transformation)
+</code></pre></div></div>
+
+<h3 id="싱나는-수학-시간">싱나는 수학 시간</h3>
+
+<ul>
+  <li>간단하게 표현한 회귀 모델: $Y = wX + b$
+    <ul>
+      <li>좀 더 정확한 표현(단변량 단순 회귀): $Yi=β0+β1Xi+∈i$(오류항)</li>
+      <li>일반화(다중 회귀): $Y+Xβ+∈$</li>
+    </ul>
+  </li>
+  <li>어떻게 최적의 $(w,b)$를 찾을까?
+    <ul>
+      <li>최량적합선 찾기</li>
+      <li>각 데이터 포인트와의 거리(오류)가 가장 가까운 직선의 방정식</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="수학으로-찾기">수학으로 찾기</h3>
+
+<ul>
+  <li>오차 정의: SSE(Sum of Squared Errors) : $\sum(Y-\hat{Y})^2$
+    <ul>
+      <li>$\hat{Y}$: 적합선의 Y의 값</li>
+    </ul>
+  </li>
+  <li>공식
+    <ul>
+      <li>$w=$${\sum((X-\overline{X})(Y-\overline{Y})}\over\sum(X-\overline{X})^2$
+        <ul>
+          <li>$\overline{X}$: X 평균</li>
+          <li>$\overline{Y}$: Y 평균</li>
+        </ul>
+      </li>
+      <li>$b=\overline{Y} - w\overline{X}$</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="머신-러닝으로-선형-회귀이론">머신 러닝으로 선형 회귀(이론)</h3>
+
+<ul>
+  <li>손실 함수 또는 비용 함수
+    <ul>
+      <li>예측값과 실제값의 오차</li>
+      <li>회귀 문제에서는 일반적으로 MSE(Mean Squared Error)를 사용</li>
+      <li>$MSE =\(1\over n\)\sum(Y-\hat{Y})^2$</li>
+    </ul>
+  </li>
+  <li>최적화
+    <ul>
+      <li>가장 작은 손실 함수 값을 출력하는 파라미터$(w, b)$찾기</li>
+      <li>경사하강법 사용</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="더-공부하기">더 공부하기</h2>
+
+<ul>
+  <li>(책) 파이썬 라이브러리를 활용한 데이터 분석</li>
+  <li>(책) 혼자 공부하는 머신러닝 + 딥러닝</li>
+  <li>(책) 밑바닥부터 시작하는 데이터 과학</li>
+  <li>(책) 파이썬 라이브러리를 활용한 머신러닝</li>
+  <li>(책) 파이썬 데이터 사이언스 핸드북</li>
+  <li>(웹) https://wikidocs.net/53560 (Pytorch로 시작하는 딥러닝 입문)</li>
+  <li>(웹) https://developers.google.com/machine-learning</li>
+  <li>(강의) Coursera - Machine Learning(Andrew Ng)</li>
+</ul>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> 태그: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/tags/#daily-contents" class="page__taxonomy-item" rel="tag">Daily Contents</a>
+    
+    </span>
+  </p>
+
+
+
+
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> 카테고리: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/categories/#daily-contents" class="page__taxonomy-item" rel="tag">Daily Contents</a>
+    
+    </span>
+  </p>
+
+
+        
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> 업데이트:</strong> <time datetime="2022-09-30T00:00:00+09:00">September 30, 2022</time></p>
+
+
+      </footer>
+
+      <section class="page__share">
+  
+    <h4 class="page__share-title">공유하기</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?text=%5BDaily+Contents%5D+%EB%A8%B8%EC%8B%A0+%EB%9F%AC%EB%8B%9D+%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98%20http%3A%2F%2Flocalhost%3A4000%2Fdaily%2520contents%2F%25EC%259D%25B8%25EA%25B3%25B5%25EC%25A7%2580%25EB%258A%25A5-%25EC%2584%25A0%25ED%2598%2595%25ED%259A%258C%25EA%25B7%2580%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2Fdaily%2520contents%2F%25EC%259D%25B8%25EA%25B3%25B5%25EC%25A7%2580%25EB%258A%25A5-%25EC%2584%25A0%25ED%2598%2595%25ED%259A%258C%25EA%25B7%2580%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4000%2Fdaily%2520contents%2F%25EC%259D%25B8%25EA%25B3%25B5%25EC%25A7%2580%25EB%258A%25A5-%25EC%2584%25A0%25ED%2598%2595%25ED%259A%258C%25EA%25B7%2580%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="/daily%20contents/%EC%9E%90%EC%9C%A8%EC%A3%BC%ED%96%89%EC%9D%98-%EA%B0%9C%EC%9A%94-%EB%B0%8F-%ED%98%84%ED%99%A9/" class="pagination--pager" title="[Daily Contents] 자율주행의 개요 및 현황
+">이전</a>
+    
+    
+      <a href="/daily%20contents/Drools&Spark/" class="pagination--pager" title="[Daily Contents] Drools &amp; Spark
+">다음</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      <h4 class="page__related-title">참고</h4>
+      <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/daily%20contents/IT-Trends/" rel="permalink">[Daily Contents] IT Trends
+</a>
+      
+    </h2>
+    
+
+
+    <p class="archive__item-excerpt" itemprop="description">
+</p>
+
+    
+    <span class="page__date"><i class="far fa-clock" aria-hidden="true"></i>2022-11-23</span>
+    
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/daily%20contents/%EC%A3%BC%EB%8B%88%EC%96%B4-%EA%B0%9C%EB%B0%9C%EC%9E%90-%EC%84%B1%EC%9E%A5-%EC%B4%89%EC%A7%84%EC%A0%9C/" rel="permalink">[Daily Contents] 주니어 개발자 성장 촉진제
+</a>
+      
+    </h2>
+    
+
+
+    <p class="archive__item-excerpt" itemprop="description">
+</p>
+
+    
+    <span class="page__date"><i class="far fa-clock" aria-hidden="true"></i>2022-11-22</span>
+    
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/daily%20contents/%EC%A0%95%EA%B7%9C-%ED%91%9C%ED%98%84%EC%8B%9D/" rel="permalink">[Daily Contents] 정규 표현식
+</a>
+      
+    </h2>
+    
+
+
+    <p class="archive__item-excerpt" itemprop="description">
+</p>
+
+    
+    <span class="page__date"><i class="far fa-clock" aria-hidden="true"></i>2022-11-15</span>
+    
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/daily%20contents/%ED%85%8C%EC%8A%A4%ED%8A%B8%EC%A3%BC%EB%8F%84%EA%B0%9C%EB%B0%9C-TDD/" rel="permalink">[Daily Contents] 테스트주도개발 TDD
+</a>
+      
+    </h2>
+    
+
+
+    <p class="archive__item-excerpt" itemprop="description">
+</p>
+
+    
+    <span class="page__date"><i class="far fa-clock" aria-hidden="true"></i>2022-11-11</span>
+    
+  </article>
+</div>
+
+        
+      </div>
+    </div>
+  
+  
+</div>
+
+    </div>
+
+    
+      <div class="search-content">
+        <div class="search-content__inner-wrap"></div>
+
+      </div>
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>팔로우:</strong></li>
+    
+
+    
+      
+        
+          <li><a href="mailto:rudgh46@naver.com" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i> Email</a></li>
+        
+      
+        
+      
+        
+      
+        
+          <li><a href="https://github.com/rudgh46" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+        
+      
+        
+      
+        
+      
+        
+      
+    
+
+    <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> 피드</a></li>
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2023 김경호(KyoungHo Kim). Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+
+
+
+
+
+
+
+    
+<script>
+  var disqus_config = function () {
+    this.page.url =
+      "http://localhost:4000/daily%20contents/%EC%9D%B8%EA%B3%B5%EC%A7%80%EB%8A%A5-%EC%84%A0%ED%98%95%ED%9A%8C%EA%B7%80/"; /* Replace PAGE_URL with your page's canonical URL variable */
+    this.page.identifier =
+      "/daily%20contents/인공지능 선형회귀"; /* Replace PAGE_IDENTIFIER with your page's unique identifier variable */
+  };
+  (function () {
+    /* DON'T EDIT BELOW THIS LINE */
+    var d = document,
+      s = d.createElement("script");
+    s.src = "https://https-rudgh46-github-io.disqus.com/embed.js";
+    s.setAttribute("data-timestamp", +new Date());
+    (d.head || d.body).appendChild(s);
+  })();
+</script>
+<noscript
+  >Please enable JavaScript to view the
+  <a href="https://disqus.com/?ref_noscript"
+    >comments powered by Disqus.</a
+  ></noscript
+>
+
+
+  
+
+
+
+
+
+  </body>
+</html>

@@ -1,0 +1,806 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.20.2 by Michael Rose
+  Copyright 2013-2020 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="ko" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>[Daily Contents] 정규 표현식 - 경호의 블로그</title>
+<meta name="description" content="">
+
+
+  <meta name="author" content="김경호">
+  
+  <meta property="article:author" content="김경호">
+  
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:site_name" content="경호의 블로그">
+<meta property="og:title" content="[Daily Contents] 정규 표현식">
+<meta property="og:url" content="http://localhost:4000/daily%20contents/%EC%A0%95%EA%B7%9C-%ED%91%9C%ED%98%84%EC%8B%9D/">
+
+
+  <meta property="og:description" content="">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2022-11-15T00:00:00+09:00">
+
+
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="http://localhost:4000/daily%20contents/%EC%A0%95%EA%B7%9C-%ED%91%9C%ED%98%84%EC%8B%9D/">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "김경호(KyoungHo Kim)",
+      "url": "http://localhost:4000/"
+    
+  }
+</script>
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="경호의 블로그 Feed">
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css">
+
+<!--[if IE]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+
+
+
+    <!-- start custom head snippets -->
+<meta name="naver-site-verification" content="d884164c2f43b5d7cfca36d514355ee3ab493511" />
+<meta name="NaverBot" content="All"/>
+<meta name="NaverBot" content="index,follow"/>
+<meta name="Yeti" content="All"/>
+<meta name="Yeti" content="index,follow"/>
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+<link rel="apple-touch-icon" sizes="180x180" href="/assets/logo.ico/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/logo.ico/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/assets/logo.ico/favicon-16x16.png">
+<link rel="mask-icon" href="/assets/logo.ico/safari-pinned-tab.svg" color="#5bbad5">
+<meta name="msapplication-TileColor" content="#da532c">
+<meta name="theme-color" content="#ffffff">
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single">
+    <nav class="skip-links">
+  <h2 class="screen-reader-text">Skip links</h2>
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          ※핵심정리노트※
+          <span class="site-subtitle">version 1.0</span>
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/about/">Introduce</a>
+            </li><li class="masthead__menu-item">
+              <a href="/categories/">Category</a>
+            </li><li class="masthead__menu-item">
+              <a href="/tags/">Tags</a>
+            </li><li class="masthead__menu-item">
+              <a href="/year-archive/">Year</a>
+            </li></ul>
+        
+        <button class="search__toggle" type="button">
+          <span class="visually-hidden">Toggle search</span>
+          <svg class="icon" width="16" height="16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 15.99 16">
+            <path d="M15.5,13.12L13.19,10.8a1.69,1.69,0,0,0-1.28-.55l-0.06-.06A6.5,6.5,0,0,0,5.77,0,6.5,6.5,0,0,0,2.46,11.59a6.47,6.47,0,0,0,7.74.26l0.05,0.05a1.65,1.65,0,0,0,.5,1.24l2.38,2.38A1.68,1.68,0,0,0,15.5,13.12ZM6.4,2A4.41,4.41,0,1,1,2,6.4,4.43,4.43,0,0,1,6.4,2Z" transform="translate(-.01)"></path>
+          </svg>
+        </button>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">토글 메뉴</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person">
+
+  
+    <div class="author__avatar">
+      
+        <img src="/assets/logo.ico/me.jpg" alt="김경호" itemprop="image">
+      
+    </div>
+  
+
+  <div class="author__content">
+    
+      <h3 class="author__name" itemprop="name">김경호</h3>
+    
+    
+      <div class="author__bio" itemprop="description">
+        <p><strong>Slow but steady wins the race</strong><br />2022.01 ~ <br /><br /> <strong><em>느리더라도 꾸준하게…</em></strong></p>
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">팔로우</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="https://schema.org/Place">
+          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name">Republic of Korea</span>
+        </li>
+      
+
+      
+        
+          
+            <li><a href="mailto:rudgh46@naver.com" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i><span class="label">Email</span></a></li>
+          
+        
+          
+            <li><a href="https://github.com/rudgh46" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
+          
+        
+          
+        
+          
+        
+          
+        
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+  </div>
+
+
+
+  <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="[Daily Contents] 정규 표현식">
+    <meta itemprop="description" content="">
+    <meta itemprop="datePublished" content="2022-11-15T00:00:00+09:00">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title" itemprop="headline">[Daily Contents] 정규 표현식
+</h1>
+          
+
+
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+          <aside class="sidebar__right sticky">
+            <nav class="toc">
+              <header><h4 class="nav__title"><i class="fas fa-bookmark"></i> 정규 표현식</h4></header>
+              <ul class="toc__menu">
+  <li><a href="#정규-표현식regular-expressions">정규 표현식(Regular expressions)</a>
+    <ul>
+      <li><a href="#정규-표현식-온라인-테스트-도구">정규 표현식 온라인 테스트 도구</a></li>
+      <li><a href="#문자-하나-찾기">문자 하나 찾기</a></li>
+      <li><a href="#문자-집합으로-찾기">문자 집합으로 찾기</a></li>
+      <li><a href="#반복-찾기">반복 찾기</a></li>
+      <li><a href="#위치-찾기">위치 찾기</a></li>
+      <li><a href="#하위-표현식">하위 표현식</a></li>
+      <li><a href="#하위-표현식---역참조">하위 표현식 - 역참조</a></li>
+      <li><a href="#전방-탐색">전방 탐색</a></li>
+      <li><a href="#전후방-탐색-동시-사용">전후방 탐색 동시 사용</a></li>
+      <li><a href="#역참조-조건-사용">역참조 조건 사용</a></li>
+    </ul>
+  </li>
+  <li><a href="#문제">문제</a></li>
+  <li><a href="#정규-표현식-책-추천">정규 표현식 책 추천</a></li>
+  <li><a href="#마지막으로">마지막으로</a></li>
+</ul>
+
+            </nav>
+          </aside>
+        
+        <p><br /></p>
+
+<h2 id="정규-표현식regular-expressions">정규 표현식(Regular expressions)</h2>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>전화번호, 이메일 유효성 체크할 때나 복/붙해서 쓰는 것 아닌가?
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>- 개발에는 편집을 포함한 텍스트 관련 작업이 필수
+- 선배들의 노하우가 담긴 파워풀한 도구
+- 익숙해진다면 손 빠른 개발에 큰 도움을 줄 수 있다
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>- 온전한 프로그래밍 언어는 아님
+- 다른 프로그래밍 언어나 제품에 포함된 '작은 언어'
+- 제품마다 조금씩 다른 문법
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>- 텍스트를 찾고 조작하는데 쓰는 문자열
+- 텍스트 검색, 치환에 사용
+- 수십 라인의 프로그래밍 없이 정규식 1~2줄로 대부분의 문자열 작업 가능
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>- email, 주민번호, 생년월일 등의 형식 검증(validation)
+- 데이터 전처리 작업
+- 프로젝트 리팩토링 작업
+- Database 검색, 치환 작업
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>- IDE, editor, 심지어 MS Word도 지원
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>- SW 엔지니어에게 '외국어'같은 존재
+- 다양한 문제 해결법
+- 친숙해진다면 파워풀한 도구
+</code></pre></div></div>
+
+<h3 id="정규-표현식-온라인-테스트-도구">정규 표현식 온라인 테스트 도구</h3>
+
+<p>https://regexr.com</p>
+
+<h3 id="문자-하나-찾기">문자 하나 찾기</h3>
+
+<ul>
+  <li>일반적인 문자 그대로 기재</li>
+  <li>’.’와 같은 메타 문자를 검색하려면 ‘'로 이스케이프</li>
+</ul>
+
+<h3 id="문자-집합으로-찾기">문자 집합으로 찾기</h3>
+
+<ul>
+  <li>대괄호 ([])를 사용하여 문자 집합 표현</li>
+  <li>[] 집합에 속한 문자 가운데 하나가 일치</li>
+  <li>[] 내에 ‘-‘은 연속 요소를 표현 [1-5] -&gt; [12345]</li>
+  <li>캐럿(‘^’) 문자는 집합 안에 있는 문자나 범위를 모두 제외</li>
+</ul>
+
+<h3 id="반복-찾기">반복 찾기</h3>
+
+<ul>
+  <li>파워풀한 정규 표현 패턴의 능력</li>
+  <li>’+’: 하나 이상 일치</li>
+  <li>’*’: 없거나 하나 이상 일치</li>
+  <li>’?’: 없거나 하나 일치</li>
+  <li>중괄호 ‘{}’ 내에 반복 횟수 기재 {3} : 3번</li>
+  <li>게으른 수량자로 문자를 최소로 일치</li>
+</ul>
+
+<h3 id="위치-찾기">위치 찾기</h3>
+
+<ul>
+  <li>텍스트 영역 내 특정 위치에서 검색 희망</li>
+  <li>‘\b’: 단어 경계</li>
+  <li>’^’: 문자열 경계의 시작</li>
+  <li>’$’: 문자열 경계의 끝</li>
+</ul>
+
+<h3 id="하위-표현식">하위 표현식</h3>
+
+<ul>
+  <li>큰 표현식 안에 속한 일부 표현식을 한 항목으로 다루도록 묶음</li>
+  <li>’()’: 괄호로 묶음 가능</li>
+  <li>&gt;{2,} vs (&gt;){2,}</li>
+  <li>파워풀한 중첩된 하위 표현식</li>
+</ul>
+
+<h3 id="하위-표현식---역참조">하위 표현식 - 역참조</h3>
+
+<ul>
+  <li>하위 표현식으로 매칭된 타겟을 참조</li>
+  <li>일치한 부분을 반복해 찾거나 치환에 사용</li>
+  <li>텍스트를 검색하고 치환하는데 매우 유용</li>
+  <li>‘There is a ball on on the table.’ - 실수로 중복된 전치사?</li>
+</ul>
+
+<h3 id="전방-탐색">전방 탐색</h3>
+
+<ul>
+  <li>일치 영역을 발견해도 그 값을 반환하지 않는 패턴</li>
+  <li>실제로는 하위 표현식이며 같은 형식으로 작성</li>
+  <li>(?=일치할 텍스트)</li>
+</ul>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>http://project.ssafy.com
+ftp://pds.ssafy.com
+https://lab.ssafy.com
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>/.+(?=:)/g
+/(?&lt;=\/\/).+/g
+</code></pre></div></div>
+
+<h3 id="전후방-탐색-동시-사용">전후방 탐색 동시 사용</h3>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;head&gt;
+  &lt;title&gt;SSAFY GIT&lt;/title&gt;
+&lt;/head&gt;
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>/(?&lt;=&lt;title&gt;).*(?=&lt;\/title&gt;)/g
+</code></pre></div></div>
+
+<h3 id="역참조-조건-사용">역참조 조건 사용</h3>
+
+<ul>
+  <li>정규 표현식 조건은 물음표(?)를 사용해 정의</li>
+  <li>역참조 조건은 이전 하위 표현식이 검색에 성공했을 경우에 한하여 다시 해당 표현식을 검사</li>
+  <li>
+    <table>
+      <tbody>
+        <tr>
+          <td>(?(역참조)true</td>
+          <td>false)</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+</ul>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>(02)2256-3112
+(032)-789-3256
+010-2679-9318
+010 4321 1987
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>/(\()?\d{2,3}(?(1)\)|-)\d{3,4}-\d{4}/g
+</code></pre></div></div>
+
+<h2 id="문제">문제</h2>
+
+<ul>
+  <li>전치사 2개가 각각 역순으로 반복 –&gt; 정상으로</li>
+  <li>There is a ball on the the on table</li>
+</ul>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>/(\w+)\*(\w+)\*\2*\1/g
+</code></pre></div></div>
+
+<h2 id="정규-표현식-책-추천">정규 표현식 책 추천</h2>
+
+<p><strong>손에 잡히는 정규 표현식</strong></p>
+
+<ul>
+  <li>AP 개발자에게 필요한 내용을 빠르게 습득 가능</li>
+  <li>마스터 레벨까지 커버하지는 못함</li>
+</ul>
+
+<h2 id="마지막으로">마지막으로</h2>
+
+<ul>
+  <li>비 개발자도 알아두면 유용한 도구</li>
+  <li>텍스트를 다루는 모든 작업에 파워풀한 도구</li>
+  <li>이해가 아닌 체득의 영역</li>
+</ul>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> 태그: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/tags/#daily-contents" class="page__taxonomy-item" rel="tag">Daily Contents</a>
+    
+    </span>
+  </p>
+
+
+
+
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> 카테고리: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/categories/#daily-contents" class="page__taxonomy-item" rel="tag">Daily Contents</a>
+    
+    </span>
+  </p>
+
+
+        
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> 업데이트:</strong> <time datetime="2022-11-15T00:00:00+09:00">November 15, 2022</time></p>
+
+
+      </footer>
+
+      <section class="page__share">
+  
+    <h4 class="page__share-title">공유하기</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?text=%5BDaily+Contents%5D+%EC%A0%95%EA%B7%9C+%ED%91%9C%ED%98%84%EC%8B%9D%20http%3A%2F%2Flocalhost%3A4000%2Fdaily%2520contents%2F%25EC%25A0%2595%25EA%25B7%259C-%25ED%2591%259C%25ED%2598%2584%25EC%258B%259D%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2Fdaily%2520contents%2F%25EC%25A0%2595%25EA%25B7%259C-%25ED%2591%259C%25ED%2598%2584%25EC%258B%259D%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4000%2Fdaily%2520contents%2F%25EC%25A0%2595%25EA%25B7%259C-%25ED%2591%259C%25ED%2598%2584%25EC%258B%259D%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="/daily%20contents/%ED%85%8C%EC%8A%A4%ED%8A%B8%EC%A3%BC%EB%8F%84%EA%B0%9C%EB%B0%9C-TDD/" class="pagination--pager" title="[Daily Contents] 테스트주도개발 TDD
+">이전</a>
+    
+    
+      <a href="/daily%20contents/%EC%A3%BC%EB%8B%88%EC%96%B4-%EA%B0%9C%EB%B0%9C%EC%9E%90-%EC%84%B1%EC%9E%A5-%EC%B4%89%EC%A7%84%EC%A0%9C/" class="pagination--pager" title="[Daily Contents] 주니어 개발자 성장 촉진제
+">다음</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      <h4 class="page__related-title">참고</h4>
+      <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/daily%20contents/IT-Trends/" rel="permalink">[Daily Contents] IT Trends
+</a>
+      
+    </h2>
+    
+
+
+    <p class="archive__item-excerpt" itemprop="description">
+</p>
+
+    
+    <span class="page__date"><i class="far fa-clock" aria-hidden="true"></i>2022-11-23</span>
+    
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/daily%20contents/%EC%A3%BC%EB%8B%88%EC%96%B4-%EA%B0%9C%EB%B0%9C%EC%9E%90-%EC%84%B1%EC%9E%A5-%EC%B4%89%EC%A7%84%EC%A0%9C/" rel="permalink">[Daily Contents] 주니어 개발자 성장 촉진제
+</a>
+      
+    </h2>
+    
+
+
+    <p class="archive__item-excerpt" itemprop="description">
+</p>
+
+    
+    <span class="page__date"><i class="far fa-clock" aria-hidden="true"></i>2022-11-22</span>
+    
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/daily%20contents/%ED%85%8C%EC%8A%A4%ED%8A%B8%EC%A3%BC%EB%8F%84%EA%B0%9C%EB%B0%9C-TDD/" rel="permalink">[Daily Contents] 테스트주도개발 TDD
+</a>
+      
+    </h2>
+    
+
+
+    <p class="archive__item-excerpt" itemprop="description">
+</p>
+
+    
+    <span class="page__date"><i class="far fa-clock" aria-hidden="true"></i>2022-11-11</span>
+    
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/daily%20contents/%EC%BD%94%EB%93%9C%EB%A6%AC%EB%B7%B0/" rel="permalink">[Daily Contents] 코드리뷰
+</a>
+      
+    </h2>
+    
+
+
+    <p class="archive__item-excerpt" itemprop="description">
+</p>
+
+    
+    <span class="page__date"><i class="far fa-clock" aria-hidden="true"></i>2022-11-09</span>
+    
+  </article>
+</div>
+
+        
+      </div>
+    </div>
+  
+  
+</div>
+
+    </div>
+
+    
+      <div class="search-content">
+        <div class="search-content__inner-wrap"></div>
+
+      </div>
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>팔로우:</strong></li>
+    
+
+    
+      
+        
+          <li><a href="mailto:rudgh46@naver.com" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i> Email</a></li>
+        
+      
+        
+      
+        
+      
+        
+          <li><a href="https://github.com/rudgh46" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+        
+      
+        
+      
+        
+      
+        
+      
+    
+
+    <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> 피드</a></li>
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2023 김경호(KyoungHo Kim). Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+
+
+
+
+
+
+
+    
+<script>
+  var disqus_config = function () {
+    this.page.url =
+      "http://localhost:4000/daily%20contents/%EC%A0%95%EA%B7%9C-%ED%91%9C%ED%98%84%EC%8B%9D/"; /* Replace PAGE_URL with your page's canonical URL variable */
+    this.page.identifier =
+      "/daily%20contents/정규 표현식"; /* Replace PAGE_IDENTIFIER with your page's unique identifier variable */
+  };
+  (function () {
+    /* DON'T EDIT BELOW THIS LINE */
+    var d = document,
+      s = d.createElement("script");
+    s.src = "https://https-rudgh46-github-io.disqus.com/embed.js";
+    s.setAttribute("data-timestamp", +new Date());
+    (d.head || d.body).appendChild(s);
+  })();
+</script>
+<noscript
+  >Please enable JavaScript to view the
+  <a href="https://disqus.com/?ref_noscript"
+    >comments powered by Disqus.</a
+  ></noscript
+>
+
+
+  
+
+
+
+
+
+  </body>
+</html>

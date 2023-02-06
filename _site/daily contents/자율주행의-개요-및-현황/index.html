@@ -1,0 +1,992 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.20.2 by Michael Rose
+  Copyright 2013-2020 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="ko" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>[Daily Contents] 자율주행의 개요 및 현황 - 경호의 블로그</title>
+<meta name="description" content="">
+
+
+  <meta name="author" content="김경호">
+  
+  <meta property="article:author" content="김경호">
+  
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:site_name" content="경호의 블로그">
+<meta property="og:title" content="[Daily Contents] 자율주행의 개요 및 현황">
+<meta property="og:url" content="http://localhost:4000/daily%20contents/%EC%9E%90%EC%9C%A8%EC%A3%BC%ED%96%89%EC%9D%98-%EA%B0%9C%EC%9A%94-%EB%B0%8F-%ED%98%84%ED%99%A9/">
+
+
+  <meta property="og:description" content="">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2022-09-28T00:00:00+09:00">
+
+
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="http://localhost:4000/daily%20contents/%EC%9E%90%EC%9C%A8%EC%A3%BC%ED%96%89%EC%9D%98-%EA%B0%9C%EC%9A%94-%EB%B0%8F-%ED%98%84%ED%99%A9/">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "김경호(KyoungHo Kim)",
+      "url": "http://localhost:4000/"
+    
+  }
+</script>
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="경호의 블로그 Feed">
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css">
+
+<!--[if IE]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+
+
+
+    <!-- start custom head snippets -->
+<meta name="naver-site-verification" content="d884164c2f43b5d7cfca36d514355ee3ab493511" />
+<meta name="NaverBot" content="All"/>
+<meta name="NaverBot" content="index,follow"/>
+<meta name="Yeti" content="All"/>
+<meta name="Yeti" content="index,follow"/>
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+<link rel="apple-touch-icon" sizes="180x180" href="/assets/logo.ico/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/logo.ico/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/assets/logo.ico/favicon-16x16.png">
+<link rel="mask-icon" href="/assets/logo.ico/safari-pinned-tab.svg" color="#5bbad5">
+<meta name="msapplication-TileColor" content="#da532c">
+<meta name="theme-color" content="#ffffff">
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single">
+    <nav class="skip-links">
+  <h2 class="screen-reader-text">Skip links</h2>
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          ※핵심정리노트※
+          <span class="site-subtitle">version 1.0</span>
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/about/">Introduce</a>
+            </li><li class="masthead__menu-item">
+              <a href="/categories/">Category</a>
+            </li><li class="masthead__menu-item">
+              <a href="/tags/">Tags</a>
+            </li><li class="masthead__menu-item">
+              <a href="/year-archive/">Year</a>
+            </li></ul>
+        
+        <button class="search__toggle" type="button">
+          <span class="visually-hidden">Toggle search</span>
+          <svg class="icon" width="16" height="16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 15.99 16">
+            <path d="M15.5,13.12L13.19,10.8a1.69,1.69,0,0,0-1.28-.55l-0.06-.06A6.5,6.5,0,0,0,5.77,0,6.5,6.5,0,0,0,2.46,11.59a6.47,6.47,0,0,0,7.74.26l0.05,0.05a1.65,1.65,0,0,0,.5,1.24l2.38,2.38A1.68,1.68,0,0,0,15.5,13.12ZM6.4,2A4.41,4.41,0,1,1,2,6.4,4.43,4.43,0,0,1,6.4,2Z" transform="translate(-.01)"></path>
+          </svg>
+        </button>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">토글 메뉴</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person">
+
+  
+    <div class="author__avatar">
+      
+        <img src="/assets/logo.ico/me.jpg" alt="김경호" itemprop="image">
+      
+    </div>
+  
+
+  <div class="author__content">
+    
+      <h3 class="author__name" itemprop="name">김경호</h3>
+    
+    
+      <div class="author__bio" itemprop="description">
+        <p><strong>Slow but steady wins the race</strong><br />2022.01 ~ <br /><br /> <strong><em>느리더라도 꾸준하게…</em></strong></p>
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">팔로우</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="https://schema.org/Place">
+          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name">Republic of Korea</span>
+        </li>
+      
+
+      
+        
+          
+            <li><a href="mailto:rudgh46@naver.com" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i><span class="label">Email</span></a></li>
+          
+        
+          
+            <li><a href="https://github.com/rudgh46" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
+          
+        
+          
+        
+          
+        
+          
+        
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+  </div>
+
+
+
+  <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="[Daily Contents] 자율주행의 개요 및 현황">
+    <meta itemprop="description" content="">
+    <meta itemprop="datePublished" content="2022-09-28T00:00:00+09:00">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title" itemprop="headline">[Daily Contents] 자율주행의 개요 및 현황
+</h1>
+          
+
+
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+          <aside class="sidebar__right sticky">
+            <nav class="toc">
+              <header><h4 class="nav__title"><i class="fas fa-bookmark"></i> 자율주행의 개요 및 현황</h4></header>
+              <ul class="toc__menu">
+  <li><a href="#자율주행-개요">자율주행 개요</a>
+    <ul>
+      <li><a href="#역사">역사</a></li>
+      <li><a href="#알고리즘-요약">알고리즘 요약</a></li>
+      <li><a href="#자율주행-6단계">자율주행 6단계</a></li>
+      <li><a href="#완성차-업체-및-it-빅-테크-기업의-자율주행차-현황">완성차 업체 및 IT 빅 테크 기업의 자율주행차 현황</a></li>
+    </ul>
+  </li>
+  <li><a href="#주요-자율주행차-및-센서-시스템">주요 자율주행차 및 센서 시스템</a>
+    <ul>
+      <li><a href="#상용화된-주요-자율주행차">상용화된 주요 자율주행차</a></li>
+      <li><a href="#아우디-a8-벤츠-e클래스-센서-사례">아우디 A8, 벤츠 E클래스 센서 사례</a></li>
+      <li><a href="#level-3-차량-라이다-탑재">Level 3 차량 라이다 탑재</a></li>
+      <li><a href="#테슬라-자율-주행용-센서-및-시스템">테슬라 자율 주행용 센서 및 시스템</a></li>
+      <li><a href="#테슬라">테슬라</a></li>
+      <li><a href="#자율주행-연구용테스트-차량">자율주행 연구용/테스트 차량</a></li>
+      <li><a href="#구글-5세대-자율주행-센서-시스템">구글 5세대 자율주행 센서 시스템</a></li>
+      <li><a href="#현대-loniq-5-robotaxi2021">현대 loniq 5 Robotaxi(2021)</a></li>
+      <li><a href="#폭스바겐-id-buzz-ad2021">폭스바겐 I.D Buzz AD(2021)</a></li>
+    </ul>
+  </li>
+  <li><a href="#고성능-자율주행-센서의-필요성">고성능 자율주행 센서의 필요성</a>
+    <ul>
+      <li><a href="#웨이모-보고서">웨이모 보고서</a></li>
+      <li><a href="#4d-이미징-레이더">4D 이미징 레이더</a></li>
+      <li><a href="#3d-초음파-센서">3D 초음파 센서</a></li>
+    </ul>
+  </li>
+  <li><a href="#완전-자율주행-준비">완전 자율주행 준비</a>
+    <ul>
+      <li><a href="#자동차가-책임지는-자율주행">자동차가 책임지는 자율주행</a></li>
+      <li><a href="#level-4-고려">Level 4 고려</a></li>
+      <li><a href="#도심-주행의-어려움">도심 주행의 어려움</a></li>
+      <li><a href="#자율주행-트럭">자율주행 트럭</a></li>
+      <li><a href="#자율주행-시뮬레이터">자율주행 시뮬레이터</a></li>
+      <li><a href="#정밀-자율주행을-위한-시뮬레이션-기술-웨이모">정밀 자율주행을 위한 시뮬레이션 기술-웨이모</a></li>
+      <li><a href="#정밀-자율주행을-위한-시뮬레이션-기술-테슬라-ai-day">정밀 자율주행을 위한 시뮬레이션 기술-테슬라 AI Day</a></li>
+      <li><a href="#정밀-자율주행을-위한-시뮬레이션-기술-모라이">정밀 자율주행을 위한 시뮬레이션 기술-모라이</a></li>
+    </ul>
+  </li>
+  <li><a href="#완전-자율주행-시대">완전 자율주행 시대</a></li>
+</ul>
+
+            </nav>
+          </aside>
+        
+        <p><br /></p>
+
+<h2 id="자율주행-개요">자율주행 개요</h2>
+
+<ul>
+  <li>No 운전자 조작: 자동차 스스로</li>
+  <li>환경인식: 차량 도로 등 환경 인식</li>
+  <li>주행 경로 생성: 차량의 미래 이동 경로 생성</li>
+  <li>차량 주행: 조향, 가속, 제동 조작</li>
+</ul>
+
+<h3 id="역사">역사</h3>
+
+<ul>
+  <li>2010년 구글 자율주행차 발표</li>
+  <li>2015년 자율주행 2단계 상용화 시작(테슬라)</li>
+  <li>2020년 Level 3 가시화, Level 4 시범 서비스 강화(약속의 해, 약속 파기)</li>
+  <li>미래형 서비스에 대한 고려</li>
+</ul>
+
+<h3 id="알고리즘-요약">알고리즘 요약</h3>
+
+<p><strong>사람이 운전하는 것과 유사</strong></p>
+
+<ul>
+  <li>
+    <p>카메라, 라이다 등의 센서 뿐만 아니라 차량의 정보와 교통 인프라 등을 수집해서 해석한 후에 어떤 경로로 가야 할 지, 속도를 높일 건지 줄일 건지 등의 판단을 통해 차량 제어</p>
+  </li>
+  <li>트롤리 딜레마: 자율주행에 대한 윤리적 고민</li>
+  <li>MIT Moral Machine 프로젝트: 딜레마 상황에서 자율주행차 인공지능의 윤리적 결정에 대한 사회적 인식 수집</li>
+</ul>
+
+<h3 id="자율주행-6단계">자율주행 6단계</h3>
+
+<ul>
+  <li>
+    <p>SAE(미국 자동차 공학회) 정의, 업계 표준</p>
+  </li>
+  <li>Level 0 - 비자동화</li>
+  <li>Level 1, 2 - 운전자 개입을 위해 항시 운전 주시 필요</li>
+  <li>Level 3 - 시스템 요청시 운전자 개입</li>
+  <li>Level 4 - 특정 구간에서 운전자 개입 불필요</li>
+  <li>Level 5 - 전 구간에서 운전자 개입 불필요</li>
+</ul>
+
+<h3 id="완성차-업체-및-it-빅-테크-기업의-자율주행차-현황">완성차 업체 및 IT 빅 테크 기업의 자율주행차 현황</h3>
+
+<ul>
+  <li>기술적 측면
+    <ul>
+      <li>빅 테크 기업: 급진적 전략으로 Level 4 이상 자율주행 기술 개발</li>
+      <li>완성차 업체: 점진적 전략으로 Level 1부터 순차적으로 개발</li>
+    </ul>
+  </li>
+  <li>제도적 측면
+    <ul>
+      <li>대부분 Level 2: 사용자 책임(테슬라 포함)</li>
+      <li>법적인 책임이 있는 Level 3 상용화 시작</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="주요-자율주행차-및-센서-시스템">주요 자율주행차 및 센서 시스템</h2>
+
+<h3 id="상용화된-주요-자율주행차">상용화된 주요 자율주행차</h3>
+
+<ul>
+  <li>부분 자율주행차 상용화</li>
+  <li>고속도로 한 차선 자율주행 수준
+    <ul>
+      <li>[ 제네시스 EQ900, 테슬라 모델5, 아우디 A8, 낫산 세레나, 벤츠 E350e ]</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="아우디-a8-벤츠-e클래스-센서-사례">아우디 A8, 벤츠 E클래스 센서 사례</h3>
+
+<ul>
+  <li>연구용 차량에는 라이다 많이 사용</li>
+  <li>실제 차량에는 라이다 제한적 사용(비용 문제)</li>
+</ul>
+
+<h3 id="level-3-차량-라이다-탑재">Level 3 차량 라이다 탑재</h3>
+
+<ul>
+  <li>2021년 혼다(5개), 벤츠 EQS(1개) 등 상용화</li>
+  <li>2022년 현대(2개), 볼보(장거리 라이다) 탑재 예정</li>
+</ul>
+
+<h3 id="테슬라-자율-주행용-센서-및-시스템">테슬라 자율 주행용 센서 및 시스템</h3>
+
+<ul>
+  <li>8개의 카메라
+    <ul>
+      <li>전방 3개
+        <ul>
+          <li>FOV 50도 150m, FOV 35도 250m, FOV 150도 60m</li>
+        </ul>
+      </li>
+      <li>측면 2개 (B-필러)</li>
+      <li>후방 3개</li>
+    </ul>
+  </li>
+  <li>1개 레이더</li>
+  <li>12개 초음파 센서</li>
+  <li>슈퍼 컴퓨터: 엔비디아 드라이브 PX2
+    <ul>
+      <li>Tegra 프로세서 _ 2, GPU _ 2</li>
+      <li>딥러닝 처리속도: 고성능 컴퓨터 150대 동시 처리 수준</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="테슬라">테슬라</h3>
+
+<ul>
+  <li>딥러닝 기반 인식 시스템</li>
+  <li>실 도로 주행 데이터 수집하여 인공지능 학습</li>
+  <li>쉐도우 모드: 자율주행 시능이 사용되지 않을 때에도 데이터 수집</li>
+  <li>FSD(Full Self-Driving)
+    <ul>
+      <li>V8, V9: 도심 자율주행</li>
+      <li>V10: 고도화, 스마트 써몬(Smart Summon)</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="자율주행-연구용테스트-차량">자율주행 연구용/테스트 차량</h3>
+
+<ul>
+  <li>고성능 라이다</li>
+  <li>정밀 GPS</li>
+  <li>고정밀 지도(HD 맵) - 위치 오차 20cm 이내</li>
+</ul>
+
+<h3 id="구글-5세대-자율주행-센서-시스템">구글 5세대 자율주행 센서 시스템</h3>
+
+<ul>
+  <li>라이다: 5개</li>
+  <li>카메라: 500m 표지판 인식</li>
+  <li>레이더: Image Radar</li>
+</ul>
+
+<h3 id="현대-loniq-5-robotaxi2021">현대 loniq 5 Robotaxi(2021)</h3>
+
+<ul>
+  <li>라이다: 5개</li>
+  <li>카메라: 13개</li>
+  <li>레이더: 12개</li>
+</ul>
+
+<h3 id="폭스바겐-id-buzz-ad2021">폭스바겐 I.D Buzz AD(2021)</h3>
+
+<ul>
+  <li>라이다: 6개
+    <ul>
+      <li>장거리 라이다 1개(Argo AI, 1400m)</li>
+      <li>단거리 라이다 5개(Hesal, 900m)</li>
+    </ul>
+  </li>
+  <li>카메라: 14개</li>
+  <li>레이더: 11개</li>
+</ul>
+
+<h2 id="고성능-자율주행-센서의-필요성">고성능 자율주행 센서의 필요성</h2>
+
+<h3 id="웨이모-보고서">웨이모 보고서</h3>
+
+<ul>
+  <li>라이다/카메라/레이더 조합</li>
+  <li>비/안개 등 악조건 인식 가능</li>
+  <li>밤/낮으로 인식 가능</li>
+  <li>보행자 돌발 상황 빠른 인식 가능</li>
+  <li>카메라/라이다는 안개에서 인식 어려움</li>
+  <li>안개에 사용 가능한 4D 이미징 레이더</li>
+</ul>
+
+<h3 id="4d-이미징-레이더">4D 이미징 레이더</h3>
+
+<ul>
+  <li>물체의 대략적인 모양 인식 가능</li>
+  <li>비/안개 등 악조건 인식 가능</li>
+  <li>300m 거리에서도 물체 인식 가능</li>
+  <li>2024년 상용화 예정(빠르면 내년에)</li>
+</ul>
+
+<h3 id="3d-초음파-센서">3D 초음파 센서</h3>
+
+<ul>
+  <li>차량 근거리 환경 인식 중요</li>
+  <li>비/안개 등 악조건 인식 가능</li>
+  <li>근거리에서 라이다 센서 대체 가능</li>
+  <li>가격 및 크기 장점</li>
+</ul>
+
+<h2 id="완전-자율주행-준비">완전 자율주행 준비</h2>
+
+<h3 id="자동차가-책임지는-자율주행">자동차가 책임지는 자율주행</h3>
+
+<ul>
+  <li>자율주행 시 자동차 책임</li>
+  <li>본격화되는 자율주행 3, 4, 5단계 및 상용화 전망
+    <ul>
+      <li>법, 제도 변경: 2020년부터 진행</li>
+      <li>Level 3 상용화: 2021년부터 시작, 2023년 활성화 전망</li>
+      <li>Level 4 시범 서비스 다양화: 도심 자율주행 시범 서비스 다양화</li>
+    </ul>
+  </li>
+</ul>
+
+<p><strong>운전자 중심 자율주행(0, 1, 2)</strong></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>운전자 보조 시스템
+특정 조건일 때만 센서 사용
+차량 외부 상황 위주의 모니터링
+</code></pre></div></div>
+
+<p><strong>자동차 중심 자율주행(3, 4, 5)</strong></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>자동차가 모든 시스템을 관리
+실시간으로 센서 사용
+사용자 모니터링 필수화
+차량 고장 진단 모니터링 필수화
+</code></pre></div></div>
+
+<ul>
+  <li>구글 웨이모 자율주행 택시 서비스</li>
+  <li>모셔널-리프트 자율주행 택시 서비스</li>
+  <li>판교 제로셔틀</li>
+  <li>바이두 무인 자율주행 택시</li>
+</ul>
+
+<h3 id="level-4-고려">Level 4 고려</h3>
+
+<ul>
+  <li>당분간 자율주행 셔틀 위주
+    <ul>
+      <li>교통량이 적거나 정해진 루트의 자율주행</li>
+    </ul>
+  </li>
+  <li>오토노머스 a2z 카카오 모빌리티: 세종시 유료 서비스
+    <ul>
+      <li>2020년 12월 시작</li>
+      <li>카카오 T앱으로 예약 및 호출</li>
+    </ul>
+  </li>
+  <li>오토노머스 a2z: 세종시 자율주행 셔틀
+    <ul>
+      <li>2021년 5월부터 일반인 이용</li>
+    </ul>
+  </li>
+  <li>포티투닷: 상암대로 일대를 주행하는 자율주행 택시 서비스
+    <ul>
+      <li>2022년 2월 10일부터 시작</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="도심-주행의-어려움">도심 주행의 어려움</h3>
+
+<ul>
+  <li>웨이모 문제</li>
+  <li>구글 웨이모의 주요 문제점
+    <ul>
+      <li><strong>좌회전</strong> 상황</li>
+      <li>도로 합류 상황</li>
+      <li>사람이 많은 상황</li>
+      <li>서있는 차량 끼어들기</li>
+      <li>고속도로 램프 진입 상황</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="자율주행-트럭">자율주행 트럭</h3>
+
+<ul>
+  <li>물류 시장 뒷받침</li>
+  <li>대부분 고속도로 운행</li>
+  <li>제도적인 이슈</li>
+  <li>승용차보다 상용차가 수월</li>
+  <li>투심플, 플러스, 임바크, 오로라(전기) 자율주행 트럭</li>
+</ul>
+
+<h3 id="자율주행-시뮬레이터">자율주행 시뮬레이터</h3>
+
+<ul>
+  <li>자율주행 시뮬레이터의 발전
+    <ul>
+      <li>자율주행 알고리즘 고도화를 위한 다양한 상황의 주행 데이터 필요</li>
+      <li>실제 도로에서는 생각보다 다양한 주행 상황 발생하지 않음</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="정밀-자율주행을-위한-시뮬레이션-기술-웨이모">정밀 자율주행을 위한 시뮬레이션 기술-웨이모</h3>
+
+<ul>
+  <li>시뮬레이션 시티</li>
+  <li>2021년 7월 발표한 자율주행 시뮬레이터</li>
+  <li>소나기, 어두워지는 빛, 태양의 눈부심 등 다양한 주행 환경 구현</li>
+  <li>구글이 자율주행으로 모은 3,200km 이상의 데이터와 NHTSA의 충돌 사고 데이터 등 내외부 데이터를 종합하여 테스트</li>
+  <li>시뮬레이션 환경은 수십개의 도시에서 매일 수집되는 정보를 통해 지속적으로 업데이트</li>
+</ul>
+
+<h3 id="정밀-자율주행을-위한-시뮬레이션-기술-테슬라-ai-day">정밀 자율주행을 위한 시뮬레이션 기술-테슬라 AI Day</h3>
+
+<ul>
+  <li>오토라벨링 기술</li>
+  <li>차량과 보행자의 움직임 경로 예측을 통해 가려진 물체에 대해서도 오토라벨링</li>
+  <li>실제 세계와 거의 유사한 시물레이션 World 생성
+    <ul>
+      <li>Real World Clip으로부터 Auto-Labeled Reconstruction을 생성</li>
+      <li>Real World Clip과 Auto-Labeled Reconstruction을 결합하여 시뮬레이션 World 생성</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="정밀-자율주행을-위한-시뮬레이션-기술-모라이">정밀 자율주행을 위한 시뮬레이션 기술-모라이</h3>
+
+<ul>
+  <li>완벽한 자율주행을 위한 시뮬레이션 환경 제공을 위해 디지털 트윈 기반의 가상 환경을 포함한 시뮬레이터</li>
+  <li>유일한 국내 도로 환경을 포함한 시뮬레이터</li>
+  <li>시뮬레이터 내의 가상 차량 및 센서를 현실과 유사하게 모델링하여 실제와 유사한 자율주행 개발 환경 제공</li>
+</ul>
+
+<h2 id="완전-자율주행-시대">완전 자율주행 시대</h2>
+
+<ul>
+  <li>도로 위에 모든 차량이 완전 자율주행차</li>
+  <li>교통 인프라 최소화
+    <ul>
+      <li>교통 신호 불필요: 설치 및 운영에 드는 비용이 매우 큼</li>
+    </ul>
+  </li>
+</ul>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> 태그: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/tags/#daily-contents" class="page__taxonomy-item" rel="tag">Daily Contents</a>
+    
+    </span>
+  </p>
+
+
+
+
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> 카테고리: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/categories/#daily-contents" class="page__taxonomy-item" rel="tag">Daily Contents</a>
+    
+    </span>
+  </p>
+
+
+        
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> 업데이트:</strong> <time datetime="2022-09-28T00:00:00+09:00">September 28, 2022</time></p>
+
+
+      </footer>
+
+      <section class="page__share">
+  
+    <h4 class="page__share-title">공유하기</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?text=%5BDaily+Contents%5D+%EC%9E%90%EC%9C%A8%EC%A3%BC%ED%96%89%EC%9D%98+%EA%B0%9C%EC%9A%94+%EB%B0%8F+%ED%98%84%ED%99%A9%20http%3A%2F%2Flocalhost%3A4000%2Fdaily%2520contents%2F%25EC%259E%2590%25EC%259C%25A8%25EC%25A3%25BC%25ED%2596%2589%25EC%259D%2598-%25EA%25B0%259C%25EC%259A%2594-%25EB%25B0%258F-%25ED%2598%2584%25ED%2599%25A9%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2Fdaily%2520contents%2F%25EC%259E%2590%25EC%259C%25A8%25EC%25A3%25BC%25ED%2596%2589%25EC%259D%2598-%25EA%25B0%259C%25EC%259A%2594-%25EB%25B0%258F-%25ED%2598%2584%25ED%2599%25A9%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4000%2Fdaily%2520contents%2F%25EC%259E%2590%25EC%259C%25A8%25EC%25A3%25BC%25ED%2596%2589%25EC%259D%2598-%25EA%25B0%259C%25EC%259A%2594-%25EB%25B0%258F-%25ED%2598%2584%25ED%2599%25A9%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="/daily%20contents/%EB%B8%94%EB%A1%9D%EC%B2%B4%EC%9D%B8-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8%EC%9D%98-%EA%B5%AC%EC%A1%B0-%EB%9C%AF%EC%96%B4%EB%B3%B4%EA%B8%B0/" class="pagination--pager" title="[Daily Contents] 블록체인 프로젝트의 구조 뜯어보기
+">이전</a>
+    
+    
+      <a href="/daily%20contents/%EC%9D%B8%EA%B3%B5%EC%A7%80%EB%8A%A5-%EC%84%A0%ED%98%95%ED%9A%8C%EA%B7%80/" class="pagination--pager" title="[Daily Contents] 머신 러닝 알고리즘
+">다음</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      <h4 class="page__related-title">참고</h4>
+      <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/daily%20contents/IT-Trends/" rel="permalink">[Daily Contents] IT Trends
+</a>
+      
+    </h2>
+    
+
+
+    <p class="archive__item-excerpt" itemprop="description">
+</p>
+
+    
+    <span class="page__date"><i class="far fa-clock" aria-hidden="true"></i>2022-11-23</span>
+    
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/daily%20contents/%EC%A3%BC%EB%8B%88%EC%96%B4-%EA%B0%9C%EB%B0%9C%EC%9E%90-%EC%84%B1%EC%9E%A5-%EC%B4%89%EC%A7%84%EC%A0%9C/" rel="permalink">[Daily Contents] 주니어 개발자 성장 촉진제
+</a>
+      
+    </h2>
+    
+
+
+    <p class="archive__item-excerpt" itemprop="description">
+</p>
+
+    
+    <span class="page__date"><i class="far fa-clock" aria-hidden="true"></i>2022-11-22</span>
+    
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/daily%20contents/%EC%A0%95%EA%B7%9C-%ED%91%9C%ED%98%84%EC%8B%9D/" rel="permalink">[Daily Contents] 정규 표현식
+</a>
+      
+    </h2>
+    
+
+
+    <p class="archive__item-excerpt" itemprop="description">
+</p>
+
+    
+    <span class="page__date"><i class="far fa-clock" aria-hidden="true"></i>2022-11-15</span>
+    
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/daily%20contents/%ED%85%8C%EC%8A%A4%ED%8A%B8%EC%A3%BC%EB%8F%84%EA%B0%9C%EB%B0%9C-TDD/" rel="permalink">[Daily Contents] 테스트주도개발 TDD
+</a>
+      
+    </h2>
+    
+
+
+    <p class="archive__item-excerpt" itemprop="description">
+</p>
+
+    
+    <span class="page__date"><i class="far fa-clock" aria-hidden="true"></i>2022-11-11</span>
+    
+  </article>
+</div>
+
+        
+      </div>
+    </div>
+  
+  
+</div>
+
+    </div>
+
+    
+      <div class="search-content">
+        <div class="search-content__inner-wrap"></div>
+
+      </div>
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>팔로우:</strong></li>
+    
+
+    
+      
+        
+          <li><a href="mailto:rudgh46@naver.com" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i> Email</a></li>
+        
+      
+        
+      
+        
+      
+        
+          <li><a href="https://github.com/rudgh46" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+        
+      
+        
+      
+        
+      
+        
+      
+    
+
+    <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> 피드</a></li>
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2023 김경호(KyoungHo Kim). Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+
+
+
+
+
+
+
+    
+<script>
+  var disqus_config = function () {
+    this.page.url =
+      "http://localhost:4000/daily%20contents/%EC%9E%90%EC%9C%A8%EC%A3%BC%ED%96%89%EC%9D%98-%EA%B0%9C%EC%9A%94-%EB%B0%8F-%ED%98%84%ED%99%A9/"; /* Replace PAGE_URL with your page's canonical URL variable */
+    this.page.identifier =
+      "/daily%20contents/자율주행의 개요 및 현황"; /* Replace PAGE_IDENTIFIER with your page's unique identifier variable */
+  };
+  (function () {
+    /* DON'T EDIT BELOW THIS LINE */
+    var d = document,
+      s = d.createElement("script");
+    s.src = "https://https-rudgh46-github-io.disqus.com/embed.js";
+    s.setAttribute("data-timestamp", +new Date());
+    (d.head || d.body).appendChild(s);
+  })();
+</script>
+<noscript
+  >Please enable JavaScript to view the
+  <a href="https://disqus.com/?ref_noscript"
+    >comments powered by Disqus.</a
+  ></noscript
+>
+
+
+  
+
+
+
+
+
+  </body>
+</html>

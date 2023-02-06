@@ -1,5 +1,5 @@
 ---
-title: "[React로 FrontEnd 개발해보기]"
+title: "[Daily Contents] React로 FrontEnd 개발해보기"
 categories:
   - Daily Contents
 tags:

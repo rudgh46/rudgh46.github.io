@@ -1,5 +1,5 @@
 ---
-title: "[System과 Infra]"
+title: "[Daily Contents] System과 Infra"
 categories:
   - Daily Contents
 tags:

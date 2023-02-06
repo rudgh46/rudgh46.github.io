@@ -1,5 +1,5 @@
 ---
-title: "[SpringBoot JPA]"
+title: "[Daily Contents] SpringBoot JPA"
 categories:
   - Daily Contents
 tags:

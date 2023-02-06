@@ -1,0 +1,928 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.20.2 by Michael Rose
+  Copyright 2013-2020 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="ko" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>[Daily Contents] SW 테스트케이스 설계 - 경호의 블로그</title>
+<meta name="description" content="">
+
+
+  <meta name="author" content="김경호">
+  
+  <meta property="article:author" content="김경호">
+  
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:site_name" content="경호의 블로그">
+<meta property="og:title" content="[Daily Contents] SW 테스트케이스 설계">
+<meta property="og:url" content="http://localhost:4000/daily%20contents/SW-%ED%85%8C%EC%8A%A4%ED%8A%B8%EC%BC%80%EC%9D%B4%EC%8A%A4-%EC%84%A4%EA%B3%84/">
+
+
+  <meta property="og:description" content="">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2022-08-09T00:00:00+09:00">
+
+
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="http://localhost:4000/daily%20contents/SW-%ED%85%8C%EC%8A%A4%ED%8A%B8%EC%BC%80%EC%9D%B4%EC%8A%A4-%EC%84%A4%EA%B3%84/">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "김경호(KyoungHo Kim)",
+      "url": "http://localhost:4000/"
+    
+  }
+</script>
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="경호의 블로그 Feed">
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css">
+
+<!--[if IE]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+
+
+
+    <!-- start custom head snippets -->
+<meta name="naver-site-verification" content="d884164c2f43b5d7cfca36d514355ee3ab493511" />
+<meta name="NaverBot" content="All"/>
+<meta name="NaverBot" content="index,follow"/>
+<meta name="Yeti" content="All"/>
+<meta name="Yeti" content="index,follow"/>
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+<link rel="apple-touch-icon" sizes="180x180" href="/assets/logo.ico/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/logo.ico/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/assets/logo.ico/favicon-16x16.png">
+<link rel="mask-icon" href="/assets/logo.ico/safari-pinned-tab.svg" color="#5bbad5">
+<meta name="msapplication-TileColor" content="#da532c">
+<meta name="theme-color" content="#ffffff">
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single">
+    <nav class="skip-links">
+  <h2 class="screen-reader-text">Skip links</h2>
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          ※핵심정리노트※
+          <span class="site-subtitle">version 1.0</span>
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/about/">Introduce</a>
+            </li><li class="masthead__menu-item">
+              <a href="/categories/">Category</a>
+            </li><li class="masthead__menu-item">
+              <a href="/tags/">Tags</a>
+            </li><li class="masthead__menu-item">
+              <a href="/year-archive/">Year</a>
+            </li></ul>
+        
+        <button class="search__toggle" type="button">
+          <span class="visually-hidden">Toggle search</span>
+          <svg class="icon" width="16" height="16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 15.99 16">
+            <path d="M15.5,13.12L13.19,10.8a1.69,1.69,0,0,0-1.28-.55l-0.06-.06A6.5,6.5,0,0,0,5.77,0,6.5,6.5,0,0,0,2.46,11.59a6.47,6.47,0,0,0,7.74.26l0.05,0.05a1.65,1.65,0,0,0,.5,1.24l2.38,2.38A1.68,1.68,0,0,0,15.5,13.12ZM6.4,2A4.41,4.41,0,1,1,2,6.4,4.43,4.43,0,0,1,6.4,2Z" transform="translate(-.01)"></path>
+          </svg>
+        </button>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">토글 메뉴</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person">
+
+  
+    <div class="author__avatar">
+      
+        <img src="/assets/logo.ico/me.jpg" alt="김경호" itemprop="image">
+      
+    </div>
+  
+
+  <div class="author__content">
+    
+      <h3 class="author__name" itemprop="name">김경호</h3>
+    
+    
+      <div class="author__bio" itemprop="description">
+        <p><strong>Slow but steady wins the race</strong><br />2022.01 ~ <br /><br /> <strong><em>느리더라도 꾸준하게…</em></strong></p>
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">팔로우</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="https://schema.org/Place">
+          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name">Republic of Korea</span>
+        </li>
+      
+
+      
+        
+          
+            <li><a href="mailto:rudgh46@naver.com" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i><span class="label">Email</span></a></li>
+          
+        
+          
+            <li><a href="https://github.com/rudgh46" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
+          
+        
+          
+        
+          
+        
+          
+        
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+  </div>
+
+
+
+  <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="[Daily Contents] SW 테스트케이스 설계">
+    <meta itemprop="description" content="">
+    <meta itemprop="datePublished" content="2022-08-09T00:00:00+09:00">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title" itemprop="headline">[Daily Contents] SW 테스트케이스 설계
+</h1>
+          
+
+
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+          <aside class="sidebar__right sticky">
+            <nav class="toc">
+              <header><h4 class="nav__title"><i class="fas fa-bookmark"></i> SW 테스트케이스 설계</h4></header>
+              <ul class="toc__menu">
+  <li><a href="#주제">주제</a></li>
+  <li><a href="#테스트-가능한-코드-작성">테스트 가능한 코드 작성</a>
+    <ul>
+      <li><a href="#아예-test-driven-하기">아예 Test Driven 하기</a></li>
+      <li><a href="#아래-두-가지-원칙을-따른다">아래 두 가지 원칙을 따른다.</a></li>
+      <li><a href="#테스트의-기본-형식-input--output">테스트의 기본 형식: Input &amp; Output</a></li>
+      <li><a href="#protocol">Protocol</a></li>
+      <li><a href="#seperating-logic-and-effects">Seperating Logic and Effects</a>
+        <ul>
+          <li><a href="#output-파일-삭제의-위험성">Output 파일 삭제의 위험성</a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li><a href="#fe-테스트">FE 테스트</a>
+    <ul>
+      <li><a href="#시각적-테스트">시각적 테스트</a></li>
+      <li><a href="#시각적-테스트의-한계">시각적 테스트의 한계</a></li>
+      <li><a href="#테스트-대상별">테스트 대상별</a></li>
+      <li><a href="#시각적-테스트-준비">시각적 테스트 준비</a></li>
+      <li><a href="#통합-테스트e2e-테스트">통합 테스트(E2E 테스트)</a></li>
+      <li><a href="#시각적-테스트-vs-기능적-테스트">시각적 테스트 VS 기능적 테스트</a></li>
+      <li><a href="#단위-테스트-vs-통합-테스트">단위 테스트 VS 통합 테스트</a></li>
+    </ul>
+  </li>
+  <li><a href="#정리">정리.</a></li>
+  <li><a href="#qa">Q&amp;A</a></li>
+</ul>
+
+            </nav>
+          </aside>
+        
+        <p><br /></p>
+
+<h2 id="주제">주제</h2>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>테스트 가능한 코드 작성법
+BE 및 FE의 테스트
+</code></pre></div></div>
+
+<h2 id="테스트-가능한-코드-작성">테스트 가능한 코드 작성</h2>
+
+<h3 id="아예-test-driven-하기">아예 Test Driven 하기</h3>
+
+<p>테스트를 먼저 작성하면 테스트가 어려운 코드는 만들어질 수 없음.</p>
+
+<h3 id="아래-두-가지-원칙을-따른다">아래 두 가지 원칙을 따른다.</h3>
+
+<ul>
+  <li>Parameterize</li>
+  <li>Separate Logic and Effect
+    <ul>
+      <li>참조 : https://eunjin3786.tistory.com/90</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="테스트의-기본-형식-input--output">테스트의 기본 형식: Input &amp; Output</h3>
+
+<p>ex) AM, PM을 판별하는 시스템</p>
+
+<ul>
+  <li>현재 시간을 Input함으로서 AM, PM을 판별.</li>
+</ul>
+
+<h3 id="protocol">Protocol</h3>
+
+<ul>
+  <li>
+    <p>Swift언어에서 나오는 데이터 구조체</p>
+  </li>
+  <li>Python의 데이터클래스(Data Class)</li>
+  <li>Swift의 Protocol</li>
+  <li>
+    <p>Java의 record</p>
+  </li>
+  <li>WWDC 발표에서는 파라미터를 Protocol로 전달하여 유연성을 확보</li>
+</ul>
+
+<h3 id="seperating-logic-and-effects">Seperating Logic and Effects</h3>
+
+<p>ex) /temp 디렉토리 내 파일들 중 생성 시간이 현재 기준으로 10분 이내 것만 남기고 나머지 파일을 삭제하는 프로그램</p>
+
+<ul>
+  <li>Input이 없으므로 Parameterize가 안 되었다.</li>
+  <li>Output도 없다.</li>
+  <li>엉뚱한 파일이 삭제될 수도 있는 파일 삭제 테스트의 위험성</li>
+</ul>
+
+<h4 id="output-파일-삭제의-위험성">Output 파일 삭제의 위험성</h4>
+
+<ul>
+  <li>삭제 대상 선정 로직과 실제 삭제 부분(Effect)을 분리하자.</li>
+  <li>CleanTemp() 함수는 삭제 대상 목록을 리턴 -&gt; 이 로직 부분이 테스트 대상</li>
+  <li>별도의 삭제 함수에서 이를 받아 삭제만 함.</li>
+  <li>이제 테스트는 CleanTemp의 변수를 조정하고 이에 맞는 삭제</li>
+</ul>
+
+<h2 id="fe-테스트">FE 테스트</h2>
+
+<h3 id="시각적-테스트">시각적 테스트</h3>
+
+<ul>
+  <li>HTML 출력 비교</li>
+  <li>스냅샷 비교(JEST 활용)</li>
+</ul>
+
+<h3 id="시각적-테스트의-한계">시각적 테스트의 한계</h3>
+
+<ul>
+  <li>실제 결과물의 구조를 예측할 수 있을까?
+-&gt; To Be의 특정이 어렵다.</li>
+  <li>테스트가 성공해도 항상 의도된 결과가 나올까?
+-&gt; 조금씩 틀어지면 항상 실패 테스트?
+-&gt; FE는 결과에 영향을 주는 요소들이 너무 많다 : CSS, 브라우저 환경 등등</li>
+  <li>이게 리팩토링에 도움이 될까?</li>
+  <li>지원 도구들은 많이 있음
+-&gt; Percy, Chromatic, applitools
+-&gt; AI를 활용하여 의미있는 변경점을 찾아줌</li>
+</ul>
+
+<table>
+  <thead>
+    <tr>
+      <th> </th>
+      <th>시각적 테스트</th>
+      <th>기능적 테스트</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>용도</td>
+      <td>회귀 테스트</td>
+      <td>모든 종류 테스트</td>
+    </tr>
+    <tr>
+      <td>TDD</td>
+      <td>불가능</td>
+      <td>가능</td>
+    </tr>
+    <tr>
+      <td>실행 환경</td>
+      <td>브라우저 외부</td>
+      <td>브라우저 외/내부, Node.js</td>
+    </tr>
+    <tr>
+      <td>테스트 도구</td>
+      <td>외부 서비스 필요(유료)</td>
+      <td>Jest, Mocha</td>
+    </tr>
+    <tr>
+      <td>결과 확인</td>
+      <td>이미지 확인 UI 필요</td>
+      <td>커맨드 라인으로 확인</td>
+    </tr>
+    <tr>
+      <td>CI연동/이력 관리</td>
+      <td>별도 UI 필요</td>
+      <td>빌트인으로 확인 가능</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="테스트-대상별">테스트 대상별</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th> </th>
+      <th>Code</th>
+      <th>Component</th>
+      <th>통합</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>대상</td>
+      <td>method</td>
+      <td>개별 컴포넌트</td>
+      <td>화면 + 시나리오</td>
+    </tr>
+    <tr>
+      <td>테스트</td>
+      <td>prop 값, 기타 변수 값</td>
+      <td>컴포넌트의 pixel 등</td>
+      <td>기능 수행 자동화</td>
+    </tr>
+    <tr>
+      <td>도구(추천)</td>
+      <td>JEST</td>
+      <td>Storybook</td>
+      <td>Cypress</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>ex) 버튼을 눌러 숫자를 증가시키는 버튼 <br />
+** 기능적 테스트 **</p>
+
+<ul>
+  <li>기능적 테스트는 클릭을 하여 값이 증가, 감소함을 체크 <br />
+<br /></li>
+</ul>
+
+<p>** 시각적 테스트 ** <br /></p>
+
+<ul>
+  <li>기능적 요소는 제외, 숫자가 제 위치에 있는지, 폰트 크기 등을 체크</li>
+</ul>
+
+<h3 id="시각적-테스트-준비">시각적 테스트 준비</h3>
+
+<ul>
+  <li>StoryBook으로 관리하면 편하다!</li>
+</ul>
+
+<h3 id="통합-테스트e2e-테스트">통합 테스트(E2E 테스트)</h3>
+
+<ul>
+  <li>서버 모킹 : API 모킹 서버 활용(https://resttesttest.com/ 등)</li>
+  <li>테스트 스크립트 : 자동화 도구 사용</li>
+</ul>
+
+<table>
+  <thead>
+    <tr>
+      <th> </th>
+      <th>Selenium Web Driver</th>
+      <th>Cypress</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>주 용도</td>
+      <td>E2E테스트</td>
+      <td>통합 테스트</td>
+    </tr>
+    <tr>
+      <td>주 사용자</td>
+      <td>QA/개발자</td>
+      <td>개발자(프론트)</td>
+    </tr>
+    <tr>
+      <td>사용 언어</td>
+      <td>JS, Java, Python, C#, Ruby</td>
+      <td>JS</td>
+    </tr>
+    <tr>
+      <td>크로스 브라우징</td>
+      <td>지원</td>
+      <td>미지원</td>
+    </tr>
+    <tr>
+      <td>실행환경</td>
+      <td>브라우저 외부</td>
+      <td>브라우저 내부</td>
+    </tr>
+    <tr>
+      <td>실행속도</td>
+      <td>느림</td>
+      <td>빠름</td>
+    </tr>
+    <tr>
+      <td>서버 목킹</td>
+      <td>미지원</td>
+      <td>지원</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="시각적-테스트-vs-기능적-테스트">시각적 테스트 VS 기능적 테스트</h3>
+
+<ul>
+  <li>둘 사이의 구분이 명확하지 않은 경우도 많음.</li>
+  <li>프로젝트, 컴포넌트, 기능별 특징에 따라 적절한 방식 선택</li>
+  <li>테스트의 가치, 효용을 고려하여 균형있는 선택 필요</li>
+</ul>
+
+<h3 id="단위-테스트-vs-통합-테스트">단위 테스트 VS 통합 테스트</h3>
+
+<ul>
+  <li>단위 테스트는 효용성, 비용을 따져 수행 여부를 판단해야 함.
+-&gt; 단위 테스트의 사업적 가치?</li>
+  <li>컴포넌트 단위 통합 테스트를 우선으로 고려.</li>
+  <li>애플리케이션 단위 통합 테스트는 보조적으로 활용.</li>
+</ul>
+
+<h2 id="정리">정리.</h2>
+
+<p>** 테스트 가능한 코드 **</p>
+
+<ul>
+  <li>파라미터화</li>
+  <li>Logic과 Effect의 분리</li>
+</ul>
+
+<p>** 프론트엔드 테스트 **</p>
+
+<ul>
+  <li>시각적 테스트 VS 기능적 테스트</li>
+  <li>컴포넌트 단위 시각적 테스트 : StoryBoard 활용</li>
+  <li>도구를 활용한 통합 테스트 : Cypress 등 활용</li>
+</ul>
+
+<h2 id="qa">Q&amp;A</h2>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Q. cypress는 빠르지만 크로스브라우징을 지원하지 않는 반면 selenium은 크로스브라우징을 지원한다. cypress만을 사용하는 것은 위험하지 않은지?
+A. 용도에 따른 것. selenium은 QA에서 많이 활용. 반면 cypress는 개발자용. 빠르게 하나의 타켓을 체크하고 넘어가기 때문에 가볍기도 하다.
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Q. 테스트해야 할 시기를 정하는 법에 대해 알고 싶다.
+A. 단위 테스트, 통합 테스트, 시스템 테스트 세 가지 등으로 나뉘는데, 각각 기능 범위, 페이지 범위, 전체 시스템 범위로 테스트.
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Q. 현재 FE에서 TDD 도입하여 개발 중이며 유닛테스트에서는 Jset에서 MSW로 서버 목킹해서 테스팅 중. E2E 테스트에서는 서버를 목킹해서 테스트 해도 될 지, 아니면 실 API로 테스트 하는게 좋을지 여쭈어 봄.
+A. API 모킹 서버를 활용하여 테스트할 수 있음. 실 API 테스트가 베스트이나, 어려울 때 모킹 서버 활용.
+</code></pre></div></div>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> 태그: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/tags/#daily-contents" class="page__taxonomy-item" rel="tag">Daily Contents</a>
+    
+    </span>
+  </p>
+
+
+
+
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> 카테고리: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/categories/#daily-contents" class="page__taxonomy-item" rel="tag">Daily Contents</a>
+    
+    </span>
+  </p>
+
+
+        
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> 업데이트:</strong> <time datetime="2022-08-09T00:00:00+09:00">August 9, 2022</time></p>
+
+
+      </footer>
+
+      <section class="page__share">
+  
+    <h4 class="page__share-title">공유하기</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?text=%5BDaily+Contents%5D+SW+%ED%85%8C%EC%8A%A4%ED%8A%B8%EC%BC%80%EC%9D%B4%EC%8A%A4+%EC%84%A4%EA%B3%84%20http%3A%2F%2Flocalhost%3A4000%2Fdaily%2520contents%2FSW-%25ED%2585%258C%25EC%258A%25A4%25ED%258A%25B8%25EC%25BC%2580%25EC%259D%25B4%25EC%258A%25A4-%25EC%2584%25A4%25EA%25B3%2584%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2Fdaily%2520contents%2FSW-%25ED%2585%258C%25EC%258A%25A4%25ED%258A%25B8%25EC%25BC%2580%25EC%259D%25B4%25EC%258A%25A4-%25EC%2584%25A4%25EA%25B3%2584%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4000%2Fdaily%2520contents%2FSW-%25ED%2585%258C%25EC%258A%25A4%25ED%258A%25B8%25EC%25BC%2580%25EC%259D%25B4%25EC%258A%25A4-%25EC%2584%25A4%25EA%25B3%2584%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="/daily%20contents/%EA%B3%B5%ED%86%B5-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-%EB%B0%B0%ED%8F%AC/" class="pagination--pager" title="[Daily Contents] 공통 프로젝트 배포
+">이전</a>
+    
+    
+      <a href="/daily%20contents/Modern-Java%EC%99%80-Python/" class="pagination--pager" title="[Daily Contents] Modern Java와 Python
+">다음</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      <h4 class="page__related-title">참고</h4>
+      <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/daily%20contents/IT-Trends/" rel="permalink">[Daily Contents] IT Trends
+</a>
+      
+    </h2>
+    
+
+
+    <p class="archive__item-excerpt" itemprop="description">
+</p>
+
+    
+    <span class="page__date"><i class="far fa-clock" aria-hidden="true"></i>2022-11-23</span>
+    
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/daily%20contents/%EC%A3%BC%EB%8B%88%EC%96%B4-%EA%B0%9C%EB%B0%9C%EC%9E%90-%EC%84%B1%EC%9E%A5-%EC%B4%89%EC%A7%84%EC%A0%9C/" rel="permalink">[Daily Contents] 주니어 개발자 성장 촉진제
+</a>
+      
+    </h2>
+    
+
+
+    <p class="archive__item-excerpt" itemprop="description">
+</p>
+
+    
+    <span class="page__date"><i class="far fa-clock" aria-hidden="true"></i>2022-11-22</span>
+    
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/daily%20contents/%EC%A0%95%EA%B7%9C-%ED%91%9C%ED%98%84%EC%8B%9D/" rel="permalink">[Daily Contents] 정규 표현식
+</a>
+      
+    </h2>
+    
+
+
+    <p class="archive__item-excerpt" itemprop="description">
+</p>
+
+    
+    <span class="page__date"><i class="far fa-clock" aria-hidden="true"></i>2022-11-15</span>
+    
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/daily%20contents/%ED%85%8C%EC%8A%A4%ED%8A%B8%EC%A3%BC%EB%8F%84%EA%B0%9C%EB%B0%9C-TDD/" rel="permalink">[Daily Contents] 테스트주도개발 TDD
+</a>
+      
+    </h2>
+    
+
+
+    <p class="archive__item-excerpt" itemprop="description">
+</p>
+
+    
+    <span class="page__date"><i class="far fa-clock" aria-hidden="true"></i>2022-11-11</span>
+    
+  </article>
+</div>
+
+        
+      </div>
+    </div>
+  
+  
+</div>
+
+    </div>
+
+    
+      <div class="search-content">
+        <div class="search-content__inner-wrap"></div>
+
+      </div>
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>팔로우:</strong></li>
+    
+
+    
+      
+        
+          <li><a href="mailto:rudgh46@naver.com" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i> Email</a></li>
+        
+      
+        
+      
+        
+      
+        
+          <li><a href="https://github.com/rudgh46" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+        
+      
+        
+      
+        
+      
+        
+      
+    
+
+    <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> 피드</a></li>
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2023 김경호(KyoungHo Kim). Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+
+
+
+
+
+
+
+    
+<script>
+  var disqus_config = function () {
+    this.page.url =
+      "http://localhost:4000/daily%20contents/SW-%ED%85%8C%EC%8A%A4%ED%8A%B8%EC%BC%80%EC%9D%B4%EC%8A%A4-%EC%84%A4%EA%B3%84/"; /* Replace PAGE_URL with your page's canonical URL variable */
+    this.page.identifier =
+      "/daily%20contents/SW 테스트케이스 설계"; /* Replace PAGE_IDENTIFIER with your page's unique identifier variable */
+  };
+  (function () {
+    /* DON'T EDIT BELOW THIS LINE */
+    var d = document,
+      s = d.createElement("script");
+    s.src = "https://https-rudgh46-github-io.disqus.com/embed.js";
+    s.setAttribute("data-timestamp", +new Date());
+    (d.head || d.body).appendChild(s);
+  })();
+</script>
+<noscript
+  >Please enable JavaScript to view the
+  <a href="https://disqus.com/?ref_noscript"
+    >comments powered by Disqus.</a
+  ></noscript
+>
+
+
+  
+
+
+
+
+
+  </body>
+</html>

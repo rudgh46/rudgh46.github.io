@@ -1,0 +1,840 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.20.2 by Michael Rose
+  Copyright 2013-2020 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="ko" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>[Daily Contents] 블록체인 프로젝트의 구조 뜯어보기 - 경호의 블로그</title>
+<meta name="description" content="">
+
+
+  <meta name="author" content="김경호">
+  
+  <meta property="article:author" content="김경호">
+  
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:site_name" content="경호의 블로그">
+<meta property="og:title" content="[Daily Contents] 블록체인 프로젝트의 구조 뜯어보기">
+<meta property="og:url" content="http://localhost:4000/daily%20contents/%EB%B8%94%EB%A1%9D%EC%B2%B4%EC%9D%B8-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8%EC%9D%98-%EA%B5%AC%EC%A1%B0-%EB%9C%AF%EC%96%B4%EB%B3%B4%EA%B8%B0/">
+
+
+  <meta property="og:description" content="">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2022-09-27T00:00:00+09:00">
+
+
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="http://localhost:4000/daily%20contents/%EB%B8%94%EB%A1%9D%EC%B2%B4%EC%9D%B8-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8%EC%9D%98-%EA%B5%AC%EC%A1%B0-%EB%9C%AF%EC%96%B4%EB%B3%B4%EA%B8%B0/">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "김경호(KyoungHo Kim)",
+      "url": "http://localhost:4000/"
+    
+  }
+</script>
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="경호의 블로그 Feed">
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css">
+
+<!--[if IE]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+
+
+
+    <!-- start custom head snippets -->
+<meta name="naver-site-verification" content="d884164c2f43b5d7cfca36d514355ee3ab493511" />
+<meta name="NaverBot" content="All"/>
+<meta name="NaverBot" content="index,follow"/>
+<meta name="Yeti" content="All"/>
+<meta name="Yeti" content="index,follow"/>
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+<link rel="apple-touch-icon" sizes="180x180" href="/assets/logo.ico/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/logo.ico/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/assets/logo.ico/favicon-16x16.png">
+<link rel="mask-icon" href="/assets/logo.ico/safari-pinned-tab.svg" color="#5bbad5">
+<meta name="msapplication-TileColor" content="#da532c">
+<meta name="theme-color" content="#ffffff">
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single">
+    <nav class="skip-links">
+  <h2 class="screen-reader-text">Skip links</h2>
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          ※핵심정리노트※
+          <span class="site-subtitle">version 1.0</span>
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/about/">Introduce</a>
+            </li><li class="masthead__menu-item">
+              <a href="/categories/">Category</a>
+            </li><li class="masthead__menu-item">
+              <a href="/tags/">Tags</a>
+            </li><li class="masthead__menu-item">
+              <a href="/year-archive/">Year</a>
+            </li></ul>
+        
+        <button class="search__toggle" type="button">
+          <span class="visually-hidden">Toggle search</span>
+          <svg class="icon" width="16" height="16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 15.99 16">
+            <path d="M15.5,13.12L13.19,10.8a1.69,1.69,0,0,0-1.28-.55l-0.06-.06A6.5,6.5,0,0,0,5.77,0,6.5,6.5,0,0,0,2.46,11.59a6.47,6.47,0,0,0,7.74.26l0.05,0.05a1.65,1.65,0,0,0,.5,1.24l2.38,2.38A1.68,1.68,0,0,0,15.5,13.12ZM6.4,2A4.41,4.41,0,1,1,2,6.4,4.43,4.43,0,0,1,6.4,2Z" transform="translate(-.01)"></path>
+          </svg>
+        </button>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">토글 메뉴</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person">
+
+  
+    <div class="author__avatar">
+      
+        <img src="/assets/logo.ico/me.jpg" alt="김경호" itemprop="image">
+      
+    </div>
+  
+
+  <div class="author__content">
+    
+      <h3 class="author__name" itemprop="name">김경호</h3>
+    
+    
+      <div class="author__bio" itemprop="description">
+        <p><strong>Slow but steady wins the race</strong><br />2022.01 ~ <br /><br /> <strong><em>느리더라도 꾸준하게…</em></strong></p>
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">팔로우</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="https://schema.org/Place">
+          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name">Republic of Korea</span>
+        </li>
+      
+
+      
+        
+          
+            <li><a href="mailto:rudgh46@naver.com" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i><span class="label">Email</span></a></li>
+          
+        
+          
+            <li><a href="https://github.com/rudgh46" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
+          
+        
+          
+        
+          
+        
+          
+        
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+  </div>
+
+
+
+  <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="[Daily Contents] 블록체인 프로젝트의 구조 뜯어보기">
+    <meta itemprop="description" content="">
+    <meta itemprop="datePublished" content="2022-09-27T00:00:00+09:00">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title" itemprop="headline">[Daily Contents] 블록체인 프로젝트의 구조 뜯어보기
+</h1>
+          
+
+
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+          <aside class="sidebar__right sticky">
+            <nav class="toc">
+              <header><h4 class="nav__title"><i class="fas fa-bookmark"></i> 블록체인 프로젝트의 구조 뜯어보기</h4></header>
+              <ul class="toc__menu">
+  <li><a href="#어떤-체인을-사용할-것인가">어떤 체인을 사용할 것인가?</a></li>
+  <li><a href="#오라클-문제">오라클 문제</a></li>
+  <li><a href="#어떤-체인을-사용할-것인가-1">어떤 체인을 사용할 것인가</a></li>
+  <li><a href="#전체-구조를-이해해보자">전체 구조를 이해해보자</a></li>
+  <li><a href="#메타마스크">메타마스크</a></li>
+  <li><a href="#프론트엔드에서-블록체인과-통신하는-법">프론트엔드에서 블록체인과 통신하는 법</a></li>
+  <li><a href="#abi">ABI?</a></li>
+  <li><a href="#컴파일된-바이너리의-모습">컴파일된 바이너리의 모습</a></li>
+  <li><a href="#human-readable한-형태">Human Readable한 형태</a></li>
+  <li><a href="#how-to-build-use-solc">How to build? Use solc</a></li>
+  <li><a href="#how-to-deploy">How to deploy?</a></li>
+  <li><a href="#payable-modifier">Payable modifier</a></li>
+  <li><a href="#q-블록체인에-영상을-저장하고-싶어요">Q. 블록체인에 영상을 저장하고 싶어요.</a></li>
+  <li><a href="#이더리움-vs-자체-코인">이더리움 VS 자체 코인</a></li>
+  <li><a href="#wrapper-class">Wrapper Class?</a></li>
+  <li><a href="#유저가-블록체인을-불편해-할-때">유저가 블록체인을 불편해 할 때?</a></li>
+  <li><a href="#fe-vs-be-어디서-처리할까">FE VS BE 어디서 처리할까?</a></li>
+  <li><a href="#어떤-네트워크를-사용할-것인가">어떤 네트워크를 사용할 것인가?</a></li>
+  <li><a href="#public-network를-쓸-때의-장점">Public network를 쓸 때의 장점</a></li>
+</ul>
+
+            </nav>
+          </aside>
+        
+        <p><br /></p>
+
+<h2 id="어떤-체인을-사용할-것인가">어떤 체인을 사용할 것인가?</h2>
+
+<ul>
+  <li>
+    <p>Private Chain</p>
+  </li>
+  <li>
+    <p>Public Chain</p>
+    <ul>
+      <li>누구나 접근이 가능하며 진정한 의미의 탈중앙화라는 장점이 있음</li>
+      <li>데이터를 저장하는 것이 매우 비싸고, Transaction이 발생할 때마다 비용을 지불해야 함.</li>
+      <li>다소 복잡한 Smart Contract의 배포 비용(0.5ETH)</li>
+      <li>이더리움
+        <ul>
+          <li>Middle man의 제거가 가능해짐</li>
+          <li>닷컴 버블 이후 가장 성장한 비즈니스는 광고 플랫폼 등 Middle man이 필요한 산업</li>
+          <li>Smart Contract은 바로 이 Middle man의 개입 없이 공정한 분배가 이루어질 수 있음</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="오라클-문제">오라클 문제</h2>
+
+<ul>
+  <li>Oracle이란 블록체인 밖의 데이터를 블록체인 안(On-chain)으로 가져오는 것을 의미함.</li>
+  <li>비가 오면 John에게 10$를 주겠다 » 비가 왔다는 정보</li>
+  <li>주사위를 던져서 3보다 큰 수가 나오면 1$를 지불한다 » 코드로 구현 가능</li>
+  <li>10월 11일이 되면 이 빌딩의 소유권을 Paul에게 양도한다 » 10월 11일이 되었다는 정보</li>
+</ul>
+
+<h2 id="어떤-체인을-사용할-것인가-1">어떤 체인을 사용할 것인가</h2>
+
+<ul>
+  <li>Private Chain은 DB에 준하는 빠른 속도</li>
+  <li>사전에 약속된 사용자만 참가 가능</li>
+  <li>주로 Hyperledger fabric을 사용</li>
+  <li>사용자가 인지할 수 없는 사이에 블록체인 활용 가능</li>
+</ul>
+
+<h2 id="전체-구조를-이해해보자">전체 구조를 이해해보자</h2>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[FrontEnd]
+&lt;&lt;&lt;&gt;&gt;&gt;
+[Application Binary Interface] &lt;&lt;&lt;&gt;&gt;&gt; [Ethereum Network]
+&lt;&lt;&lt;&gt;&gt;&gt;
+[BackEnd(Spring), Wrapper Class]
+</code></pre></div></div>
+
+<h2 id="메타마스크">메타마스크</h2>
+
+<ul>
+  <li>쉽게 사용할 수 있는 크롬 익스텐션.</li>
+  <li>Key를 보관하고 서명을 안전하게 하는 역할을 한다.</li>
+  <li>Web3를 이용해서 쉽게 서명할 수 있다.</li>
+  <li>개발자는 추상화된 API를 이용해서 쉽게 개발 가능.</li>
+  <li>아 잘 모르겠고 우선 지갑이나 만들어볼까 할 때 학습.</li>
+</ul>
+
+<h2 id="프론트엔드에서-블록체인과-통신하는-법">프론트엔드에서 블록체인과 통신하는 법</h2>
+
+<ul>
+  <li>Web3.js를 이용한다.</li>
+  <li>직접 private key를 이용해서 서명하는 것도 가능하지만 metamask와 같은 서비스를 이용하는 것이 안전.</li>
+  <li>다른 사람의 지갑 주소로 ETH를 전송하거나 Smart Contract과 통신해서 데이터를 받아오는 것도 가능.</li>
+</ul>
+
+<h2 id="abi">ABI?</h2>
+
+<ul>
+  <li>Application Binary Interface</li>
+  <li>API랑 좀 닮지 않았습니까?
+    <ul>
+      <li>API가 프로그램과 통신하기 위한 인터페이스라면 ABI는 Binary와 통신하기 위한 인터페이스</li>
+    </ul>
+  </li>
+  <li>Binary 형태로 컴파일된 Smart Contract과 통신하기 위한 Interface</li>
+</ul>
+
+<h2 id="컴파일된-바이너리의-모습">컴파일된 바이너리의 모습</h2>
+
+<ul>
+  <li>문자열. 단, 0과 f로 표현된 영역이 많기에 해석하려면 해석할 수 있기는 함.</li>
+</ul>
+
+<h2 id="human-readable한-형태">Human Readable한 형태</h2>
+
+<ul>
+  <li>Json의 형태.</li>
+</ul>
+
+<h2 id="how-to-build-use-solc">How to build? Use solc</h2>
+
+<ul>
+  <li>solc 이외에도 truffle이라는 라이브러리를 활용</li>
+</ul>
+
+<h2 id="how-to-deploy">How to deploy?</h2>
+
+<ul>
+  <li>bytecode와 ABI를 이용해서 deploy한다.</li>
+  <li>Remix가 있지 않나요?
+    <ul>
+      <li>개발 단계에서 배포할 수는 있으나 파이프라인을 구축해 놓은 뒤에 매번 수정하고 배포하는 것은 번거롭기에 Remix는 개발 때만 활용하는 것을 추천.</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="payable-modifier">Payable modifier</h2>
+
+<ul>
+  <li>
+    <p>가장 핵심적인 Modifier</p>
+  </li>
+  <li>이더리움에 깔려있는 전제가 하나 있다.</li>
+  <li>핵심 로직은 이더리움을 이용한 결제를 통해 발생한다.</li>
+  <li>이더리움이 스마트 컨트랙에 입금될 때의 로직을 만들고 싶다면?</li>
+  <li>payable modifier를 붙여준다면 구현 가능하다!</li>
+  <li>(이더리움) 모임 통장 만들기, 경매, 안전 거래 등등</li>
+  <li>대부분의 핵심 로직은 payable modifier를 이용해서 구현한다.</li>
+</ul>
+
+<h2 id="q-블록체인에-영상을-저장하고-싶어요">Q. 블록체인에 영상을 저장하고 싶어요.</h2>
+
+<ul>
+  <li>이더리움의 블록 크기는 1~8MB 수준</li>
+  <li>여기에 영상을 저장할 수 있을까?</li>
+  <li>텍스트 형태의 데이터라도 200개 이상 저장하는 것이 어렵다</li>
+  <li>그렇다면 어떤 방법이 있을까?
+    <ul>
+      <li>일반적으로 파일을 정합성을 확인할 때는 해시값을 이용한다.</li>
+      <li>동영상의 해시값을 블록체인에 저장한다면?</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="이더리움-vs-자체-코인">이더리움 VS 자체 코인</h2>
+
+<p><strong>화폐의 가치는 어떻게 결정되는가?</strong></p>
+
+<ul>
+  <li>화폐의 가치는 그 화폐를 사람들이 얼마나 신용하는지에 따라서 결정된다.</li>
+  <li>코인의 가치 혹은 블록체인의 가치도 사람들의 신용도에 따라서 결정.</li>
+  <li>이더리움은 많은 사람들이 사용하기 때문에 신용도가 높고 가치도 높다.</li>
+  <li>우리가 만든 자체 코인은 자유도가 높지만 신용도는 매우 낮을 것.</li>
+  <li>하지만 사람들은 가치를 떠나서 그냥 받는 것을 좋아하기도 한다.</li>
+</ul>
+
+<h2 id="wrapper-class">Wrapper Class?</h2>
+
+<ul>
+  <li>Web3j를 이용해서 Smart Contract와 통신하기 위해서는 Wrapper Class를 생성해야 한다!</li>
+  <li>Compile된 Binary로부터 Wrapper Class를 생성함.</li>
+  <li>Compile된 Binary가 조금이라도 변경된다면 Wrapper Class를 다시 만들어야 한다.</li>
+  <li>주석, 공백을 포함해서 어떤 것이 바뀌어도 Wrapper Class는 다시 만들어야 한다.
+    <ul>
+      <li>Jenkins 같은 자동화된 빌드 도구를 사용하는 것이 좋은 방법</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="유저가-블록체인을-불편해-할-때">유저가 블록체인을 불편해 할 때?</h2>
+
+<ul>
+  <li>서비스 제공자가 사용자 별로 키를 보관하고 관리해 줄 수 있다.</li>
+  <li>신규 유저가 생기면 지갑을 생성하고 보관한다.</li>
+  <li>로그인 인증을 통해서 유저를 확인하고 대신 서명을 해 준다.</li>
+  <li>일반적인 거래소들이 많이 활용하는 방법!</li>
+  <li>대부분의 유저들에게 블록체인을 이해시키기 어렵기 때문에 사용한다.</li>
+</ul>
+
+<h2 id="fe-vs-be-어디서-처리할까">FE VS BE 어디서 처리할까?</h2>
+
+<ul>
+  <li>완전한 탈중앙화를 추구한다면 FE에서 유저에게 서명하는 것이 옳다.</li>
+  <li>그러나 유저 입장에서는 블록체인에 익숙하지 않기 때문에 우리 서비스의 BE에서 대신 관리해주는 것도 가능하다.</li>
+  <li>구조를 설계할 때에 반드시 미리 결정해야 하는 부분이 이곳이다.</li>
+</ul>
+
+<h2 id="어떤-네트워크를-사용할-것인가">어떤 네트워크를 사용할 것인가?</h2>
+
+<ul>
+  <li>SUB PJT1에 했던 것들이 무엇이었을까?</li>
+  <li>우리만 사용할 수 있는 Private Network를 구성한 것!</li>
+  <li>Infura와 같은 public하게 구성된 테스트넷들이 많이 있다.</li>
+  <li>실제로 이더리움 메인넷과 동일한 환경인 테스트넷을 사용하는 것이 가능하다.</li>
+  <li>실 서비스를 운영한다면 이더리움 메인넷에 배포해야 할 것.</li>
+</ul>
+
+<h2 id="public-network를-쓸-때의-장점">Public network를 쓸 때의 장점</h2>
+
+<ul>
+  <li>익스플로러를 지원. 디버깅이 편하다.</li>
+</ul>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Q. BE에서 서명할 때 DB에서 개인키를 저장하는 것인가?
+A. 개인키는 DB에 저장, 한 번 더 암호화를 할 수는 있으나 DB가 털렸는데 암호화 키가 안전할 거라는 보장은 없음. 설계가 중요.
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Q. BE에서 트랜잭션을 발생시키면 대리서명의 이슈는 어떻게 해결해야 하나요?
+A. 대리서명을 해 줄 수밖에 없음.
+</code></pre></div></div>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> 태그: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/tags/#daily-contents" class="page__taxonomy-item" rel="tag">Daily Contents</a>
+    
+    </span>
+  </p>
+
+
+
+
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> 카테고리: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/categories/#daily-contents" class="page__taxonomy-item" rel="tag">Daily Contents</a>
+    
+    </span>
+  </p>
+
+
+        
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> 업데이트:</strong> <time datetime="2022-09-27T00:00:00+09:00">September 27, 2022</time></p>
+
+
+      </footer>
+
+      <section class="page__share">
+  
+    <h4 class="page__share-title">공유하기</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?text=%5BDaily+Contents%5D+%EB%B8%94%EB%A1%9D%EC%B2%B4%EC%9D%B8+%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8%EC%9D%98+%EA%B5%AC%EC%A1%B0+%EB%9C%AF%EC%96%B4%EB%B3%B4%EA%B8%B0%20http%3A%2F%2Flocalhost%3A4000%2Fdaily%2520contents%2F%25EB%25B8%2594%25EB%25A1%259D%25EC%25B2%25B4%25EC%259D%25B8-%25ED%2594%2584%25EB%25A1%259C%25EC%25A0%259D%25ED%258A%25B8%25EC%259D%2598-%25EA%25B5%25AC%25EC%25A1%25B0-%25EB%259C%25AF%25EC%2596%25B4%25EB%25B3%25B4%25EA%25B8%25B0%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2Fdaily%2520contents%2F%25EB%25B8%2594%25EB%25A1%259D%25EC%25B2%25B4%25EC%259D%25B8-%25ED%2594%2584%25EB%25A1%259C%25EC%25A0%259D%25ED%258A%25B8%25EC%259D%2598-%25EA%25B5%25AC%25EC%25A1%25B0-%25EB%259C%25AF%25EC%2596%25B4%25EB%25B3%25B4%25EA%25B8%25B0%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4000%2Fdaily%2520contents%2F%25EB%25B8%2594%25EB%25A1%259D%25EC%25B2%25B4%25EC%259D%25B8-%25ED%2594%2584%25EB%25A1%259C%25EC%25A0%259D%25ED%258A%25B8%25EC%259D%2598-%25EA%25B5%25AC%25EC%25A1%25B0-%25EB%259C%25AF%25EC%2596%25B4%25EB%25B3%25B4%25EA%25B8%25B0%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="/daily%20contents/%ED%95%9C%EA%B5%AD%EC%96%B4-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EC%A0%84%EC%B2%98%EB%A6%AC/" class="pagination--pager" title="[Daily Contents] 한국어 데이터 전처리
+">이전</a>
+    
+    
+      <a href="/daily%20contents/%EC%9E%90%EC%9C%A8%EC%A3%BC%ED%96%89%EC%9D%98-%EA%B0%9C%EC%9A%94-%EB%B0%8F-%ED%98%84%ED%99%A9/" class="pagination--pager" title="[Daily Contents] 자율주행의 개요 및 현황
+">다음</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      <h4 class="page__related-title">참고</h4>
+      <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/daily%20contents/IT-Trends/" rel="permalink">[Daily Contents] IT Trends
+</a>
+      
+    </h2>
+    
+
+
+    <p class="archive__item-excerpt" itemprop="description">
+</p>
+
+    
+    <span class="page__date"><i class="far fa-clock" aria-hidden="true"></i>2022-11-23</span>
+    
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/daily%20contents/%EC%A3%BC%EB%8B%88%EC%96%B4-%EA%B0%9C%EB%B0%9C%EC%9E%90-%EC%84%B1%EC%9E%A5-%EC%B4%89%EC%A7%84%EC%A0%9C/" rel="permalink">[Daily Contents] 주니어 개발자 성장 촉진제
+</a>
+      
+    </h2>
+    
+
+
+    <p class="archive__item-excerpt" itemprop="description">
+</p>
+
+    
+    <span class="page__date"><i class="far fa-clock" aria-hidden="true"></i>2022-11-22</span>
+    
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/daily%20contents/%EC%A0%95%EA%B7%9C-%ED%91%9C%ED%98%84%EC%8B%9D/" rel="permalink">[Daily Contents] 정규 표현식
+</a>
+      
+    </h2>
+    
+
+
+    <p class="archive__item-excerpt" itemprop="description">
+</p>
+
+    
+    <span class="page__date"><i class="far fa-clock" aria-hidden="true"></i>2022-11-15</span>
+    
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/daily%20contents/%ED%85%8C%EC%8A%A4%ED%8A%B8%EC%A3%BC%EB%8F%84%EA%B0%9C%EB%B0%9C-TDD/" rel="permalink">[Daily Contents] 테스트주도개발 TDD
+</a>
+      
+    </h2>
+    
+
+
+    <p class="archive__item-excerpt" itemprop="description">
+</p>
+
+    
+    <span class="page__date"><i class="far fa-clock" aria-hidden="true"></i>2022-11-11</span>
+    
+  </article>
+</div>
+
+        
+      </div>
+    </div>
+  
+  
+</div>
+
+    </div>
+
+    
+      <div class="search-content">
+        <div class="search-content__inner-wrap"></div>
+
+      </div>
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>팔로우:</strong></li>
+    
+
+    
+      
+        
+          <li><a href="mailto:rudgh46@naver.com" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i> Email</a></li>
+        
+      
+        
+      
+        
+      
+        
+          <li><a href="https://github.com/rudgh46" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+        
+      
+        
+      
+        
+      
+        
+      
+    
+
+    <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> 피드</a></li>
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2023 김경호(KyoungHo Kim). Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+
+
+
+
+
+
+
+    
+<script>
+  var disqus_config = function () {
+    this.page.url =
+      "http://localhost:4000/daily%20contents/%EB%B8%94%EB%A1%9D%EC%B2%B4%EC%9D%B8-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8%EC%9D%98-%EA%B5%AC%EC%A1%B0-%EB%9C%AF%EC%96%B4%EB%B3%B4%EA%B8%B0/"; /* Replace PAGE_URL with your page's canonical URL variable */
+    this.page.identifier =
+      "/daily%20contents/블록체인 프로젝트의 구조 뜯어보기"; /* Replace PAGE_IDENTIFIER with your page's unique identifier variable */
+  };
+  (function () {
+    /* DON'T EDIT BELOW THIS LINE */
+    var d = document,
+      s = d.createElement("script");
+    s.src = "https://https-rudgh46-github-io.disqus.com/embed.js";
+    s.setAttribute("data-timestamp", +new Date());
+    (d.head || d.body).appendChild(s);
+  })();
+</script>
+<noscript
+  >Please enable JavaScript to view the
+  <a href="https://disqus.com/?ref_noscript"
+    >comments powered by Disqus.</a
+  ></noscript
+>
+
+
+  
+
+
+
+
+
+  </body>
+</html>

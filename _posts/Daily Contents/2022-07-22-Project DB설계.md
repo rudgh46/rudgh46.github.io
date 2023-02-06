@@ -1,5 +1,5 @@
 ---
-title: "[Project DB설계]"
+title: "[Daily Contents] Project DB설계"
 categories:
   - Daily Contents
 tags:

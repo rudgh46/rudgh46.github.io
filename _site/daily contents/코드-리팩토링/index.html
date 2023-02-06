@@ -1,0 +1,877 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.20.2 by Michael Rose
+  Copyright 2013-2020 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="ko" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>[Daily Contents] 코드 리팩토링 - 경호의 블로그</title>
+<meta name="description" content="">
+
+
+  <meta name="author" content="김경호">
+  
+  <meta property="article:author" content="김경호">
+  
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:site_name" content="경호의 블로그">
+<meta property="og:title" content="[Daily Contents] 코드 리팩토링">
+<meta property="og:url" content="http://localhost:4000/daily%20contents/%EC%BD%94%EB%93%9C-%EB%A6%AC%ED%8C%A9%ED%86%A0%EB%A7%81/">
+
+
+  <meta property="og:description" content="">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2022-11-02T00:00:00+09:00">
+
+
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="http://localhost:4000/daily%20contents/%EC%BD%94%EB%93%9C-%EB%A6%AC%ED%8C%A9%ED%86%A0%EB%A7%81/">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "김경호(KyoungHo Kim)",
+      "url": "http://localhost:4000/"
+    
+  }
+</script>
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="경호의 블로그 Feed">
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css">
+
+<!--[if IE]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+
+
+
+    <!-- start custom head snippets -->
+<meta name="naver-site-verification" content="d884164c2f43b5d7cfca36d514355ee3ab493511" />
+<meta name="NaverBot" content="All"/>
+<meta name="NaverBot" content="index,follow"/>
+<meta name="Yeti" content="All"/>
+<meta name="Yeti" content="index,follow"/>
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+<link rel="apple-touch-icon" sizes="180x180" href="/assets/logo.ico/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/logo.ico/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/assets/logo.ico/favicon-16x16.png">
+<link rel="mask-icon" href="/assets/logo.ico/safari-pinned-tab.svg" color="#5bbad5">
+<meta name="msapplication-TileColor" content="#da532c">
+<meta name="theme-color" content="#ffffff">
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single">
+    <nav class="skip-links">
+  <h2 class="screen-reader-text">Skip links</h2>
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          ※핵심정리노트※
+          <span class="site-subtitle">version 1.0</span>
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/about/">Introduce</a>
+            </li><li class="masthead__menu-item">
+              <a href="/categories/">Category</a>
+            </li><li class="masthead__menu-item">
+              <a href="/tags/">Tags</a>
+            </li><li class="masthead__menu-item">
+              <a href="/year-archive/">Year</a>
+            </li></ul>
+        
+        <button class="search__toggle" type="button">
+          <span class="visually-hidden">Toggle search</span>
+          <svg class="icon" width="16" height="16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 15.99 16">
+            <path d="M15.5,13.12L13.19,10.8a1.69,1.69,0,0,0-1.28-.55l-0.06-.06A6.5,6.5,0,0,0,5.77,0,6.5,6.5,0,0,0,2.46,11.59a6.47,6.47,0,0,0,7.74.26l0.05,0.05a1.65,1.65,0,0,0,.5,1.24l2.38,2.38A1.68,1.68,0,0,0,15.5,13.12ZM6.4,2A4.41,4.41,0,1,1,2,6.4,4.43,4.43,0,0,1,6.4,2Z" transform="translate(-.01)"></path>
+          </svg>
+        </button>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">토글 메뉴</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person">
+
+  
+    <div class="author__avatar">
+      
+        <img src="/assets/logo.ico/me.jpg" alt="김경호" itemprop="image">
+      
+    </div>
+  
+
+  <div class="author__content">
+    
+      <h3 class="author__name" itemprop="name">김경호</h3>
+    
+    
+      <div class="author__bio" itemprop="description">
+        <p><strong>Slow but steady wins the race</strong><br />2022.01 ~ <br /><br /> <strong><em>느리더라도 꾸준하게…</em></strong></p>
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">팔로우</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="https://schema.org/Place">
+          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name">Republic of Korea</span>
+        </li>
+      
+
+      
+        
+          
+            <li><a href="mailto:rudgh46@naver.com" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i><span class="label">Email</span></a></li>
+          
+        
+          
+            <li><a href="https://github.com/rudgh46" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
+          
+        
+          
+        
+          
+        
+          
+        
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+  </div>
+
+
+
+  <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="[Daily Contents] 코드 리팩토링">
+    <meta itemprop="description" content="">
+    <meta itemprop="datePublished" content="2022-11-02T00:00:00+09:00">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title" itemprop="headline">[Daily Contents] 코드 리팩토링
+</h1>
+          
+
+
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+          <aside class="sidebar__right sticky">
+            <nav class="toc">
+              <header><h4 class="nav__title"><i class="fas fa-bookmark"></i> 코드 리팩토링</h4></header>
+              <ul class="toc__menu">
+  <li><a href="#학습-목표">학습 목표</a></li>
+  <li><a href="#코드-리팩토링이란">코드 리팩토링이란?</a></li>
+  <li><a href="#언제-해야-할까">언제 해야 할까?</a></li>
+  <li><a href="#어떻게-해야-할까">어떻게 해야 할까?</a></li>
+  <li><a href="#코드-리팩토링의-유형">코드 리팩토링의 유형</a>
+    <ul>
+      <li><a href="#준비를-위한-리팩토링">준비를 위한 리팩토링</a></li>
+      <li><a href="#예제1-파편화된-코드">예제1) 파편화된 코드</a></li>
+      <li><a href="#예제2-중복된-유사-로직">예제2) 중복된 유사 로직</a></li>
+      <li><a href="#예제3-모든-분기마다-동일-로직">예제3) 모든 분기마다 동일 로직</a></li>
+    </ul>
+  </li>
+  <li><a href="#이해를-위한-리팩토링">이해를 위한 리팩토링</a>
+    <ul>
+      <li><a href="#예제1-모호한-변수명">예제1) 모호한 변수명</a></li>
+      <li><a href="#예제2-길어지는-표현식">예제2) 길어지는 표현식</a></li>
+      <li><a href="#예제3-변수가-한-번만-변경">예제3) 변수가 한 번만 변경</a></li>
+    </ul>
+  </li>
+  <li><a href="#비효율적인-때는">비효율적인 때는?</a></li>
+  <li><a href="#성능개선-vs-리팩토링">성능개선 vs 리팩토링</a></li>
+  <li><a href="#왜-필요해요">왜 필요해요?</a></li>
+  <li><a href="#궁극적-목적">궁극적 목적</a></li>
+  <li><a href="#퀴즈">퀴즈</a></li>
+</ul>
+
+            </nav>
+          </aside>
+        
+        <p><br /></p>
+
+<h2 id="학습-목표">학습 목표</h2>
+
+<ul>
+  <li>코드 리팩토링이란?</li>
+  <li>언제 해야 할까?</li>
+  <li>어떻게 해야 할까?</li>
+  <li>필요한 이유</li>
+</ul>
+
+<h2 id="코드-리팩토링이란">코드 리팩토링이란?</h2>
+
+<ul>
+  <li>소프트웨어의 <strong>겉보기 동작은 그대로 유지한 채…</strong></li>
+  <li>코드를 깨끗하고 이해하기 쉽게 <strong>구조만 변경</strong>하는 것</li>
+  <li>핵심은 “이 코드를 더 좋게 만들 수 있습니까?”에 있으며…
+    <ul>
+      <li>이에 대한 판단 기준으로는 <strong>확장성, 가독성, 유지보수성</strong></li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="언제-해야-할까">언제 해야 할까?</h2>
+
+<ul>
+  <li>기능 구현이 우선이고, 정상작동되는지 확인한 후에 진행한다.</li>
+  <li>한 번에 <strong>하나의 작업</strong>에만 집중하고 동시에 진행하지 않는다.
+    <ul>
+      <li>기능추가 단계 : 기존 코드는 건드리지 말고, <strong>신규 기능 추가</strong>에만 집중</li>
+      <li>리팩토링 단계 : 기능을 추가하지 말 것, 좋은 설계로 <strong>코드를 재구성</strong></li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="어떻게-해야-할까">어떻게 해야 할까?</h2>
+
+<ul>
+  <li>개발 프로세스에서는 리팩토링할 <strong>시점을 결정</strong>하는 게 매우 중요하며…</li>
+  <li>시점을 정하는 가장 좋은 방법은 <strong>범위를 정하는 것</strong></li>
+  <li><strong>한 번에 한 가지</strong> 명확하고 구체적인 목표를 갖고 진행하는 것이 중요</li>
+</ul>
+
+<h2 id="코드-리팩토링의-유형">코드 리팩토링의 유형</h2>
+
+<ul>
+  <li>신규 기능 추가를 대비한 <strong>“준비를 위한 리팩토링”</strong></li>
+  <li>높은 가독성을 고려한 <strong>“이해를 위한 리팩토링”</strong></li>
+</ul>
+
+<h3 id="준비를-위한-리팩토링">준비를 위한 리팩토링</h3>
+
+<ul>
+  <li>목적 : 신규 기능을 추가하기 전에, 코드를 <strong>쉽게 추가</strong>할 수 있도록 대비
+    <ul>
+      <li>현재 구조를 살펴보고, 추가되는 코드가 기존 구조에 녹여지기 어렵다면… 해당 구조를 다듬어서 새로운 기능을 쉽게 적용 가능할 수 있도록 만들어주자</li>
+      <li>Good Fit? »Yes» Add New Feature</li>
+      <li>Good Fit? »No» Refactoring to Good Fit » Add New Feature</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="예제1-파편화된-코드">예제1) 파편화된 코드</h3>
+
+<ul>
+  <li>동일 코드가 반복적으로 작성되어 있다면…</li>
+  <li><strong>별도의 Function</strong>으로 만들고, 이를 호출하는 방식으로 관심사를 분리</li>
+</ul>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function printOwing(invoice) {
+  printBanner();
+  let outstanding = calculateOutstanding();
+
+  // print details
+  console.log(`name: ${invoice.customer}`);
+  console.log(`amount: ${outstanding}`);
+}
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function printOwing(invoice) {
+  printBanner();
+  let outstanding = calculateOutstanding();
+  printDetails(outstanding);
+
+  function printDetails(outstanding) {
+    console.log(`name: ${invoice.customer}`);
+    console.log(`amount: ${outstanding}`);
+  }
+}
+</code></pre></div></div>
+
+<h3 id="예제2-중복된-유사-로직">예제2) 중복된 유사 로직</h3>
+
+<ul>
+  <li>의미가 유사한 function이 2개 이상 존재하면…</li>
+  <li><strong>매개변수를 이용</strong>하는 것으로 function을 통합</li>
+</ul>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function tenPercentRaise(aPerson) {
+  aPerson, salary = aPerson.salary.multiply(1.1);
+}
+function fivePercentRaise(aPerson) {
+  aPerson, salary = aPerson.salary.multiply(1.05);
+}
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function raise(aPerson, factor) {
+  aPerson, salary = aPerson.salary.multiply(1 + factor);
+}
+</code></pre></div></div>
+
+<h3 id="예제3-모든-분기마다-동일-로직">예제3) 모든 분기마다 동일 로직</h3>
+
+<ul>
+  <li>조건부 모든 분기에 동일 로직을 구현했다면…</li>
+  <li>분기 밖으로 <strong>해당 로직을 이동</strong>시켜서, 한 번만 작성</li>
+</ul>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>if(isSepcialDeal()) {
+  total = price * 0.95;
+  send();
+}
+else {
+  total = price * 0.98;
+  send();
+}
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>if(isSepcialDeal()) {
+  total = price * 0.95;
+}
+else {
+  total = price * 0.98;
+}
+send();
+</code></pre></div></div>
+
+<h2 id="이해를-위한-리팩토링">이해를 위한 리팩토링</h2>
+
+<ul>
+  <li>목적 : 코드의 의도를 이해할 수 있도록 <strong>가독성</strong>을 높인다.
+    <ul>
+      <li>코드를 수정하기 위한 전제조건은 <strong>그 코드가 무슨 일을 하는지 파악</strong>하는 것</li>
+      <li>협업하는 동료와 함께 보는 코드는 의도가 명확하게 드러나야 함</li>
+      <li>더 좋은 설계를 위해서는 <strong>사소한 것부터 명확하게</strong> 만드는 것이 중요</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="예제1-모호한-변수명">예제1) 모호한 변수명</h3>
+
+<ul>
+  <li>a, b, c 등의 의도를 알 수 없는 모호한 변수명이라면…</li>
+  <li>변수명을 <strong>직관적</strong>으로 선언</li>
+  <li>좋은 프로그래머는 <strong>사람이 이해</strong>할 수 있는 코드를 작성</li>
+</ul>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>let a = height * width;
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>let area = height * width;
+</code></pre></div></div>
+
+<h3 id="예제2-길어지는-표현식">예제2) 길어지는 표현식</h3>
+
+<ul>
+  <li>하나의 표현식이 너무 길어지는 경우에는…</li>
+  <li>표현식 또는 해당 부분의 결과를 <strong>의도 파악이 가능한 개별 변수</strong>로 선언</li>
+</ul>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>return order.quantity * order.itemPrice -
+  Math.max(0, order.quantity - 500) * order.itemPrice * 0.05 * Math.min(order.quantity * order.itemPrice * 0.1, 100);
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>const basePrice = order.quantity * order.itemPrice;
+const quantityDiscount = Math.max(0, order.quantity - 500) * order.itemPrice * 0.05;
+const shipping = Math.min(basePrice * 0.1, 100);
+return basePrice - quantityDiscount * shipping;
+</code></pre></div></div>
+
+<h3 id="예제3-변수가-한-번만-변경">예제3) 변수가 한 번만 변경</h3>
+
+<ul>
+  <li>변경되는 변수가 하나뿐이라면…</li>
+  <li>해당변수가 원래 표현식과 다를 바 없을 때는, 변수 선언 대신 <strong>인라인해서 리턴값</strong>으로 처리</li>
+</ul>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>let basePrice = anOrder.basePrice;
+return (basePrice &gt; 1000);
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>return anOrder.basePrice &gt; 1000;
+</code></pre></div></div>
+
+<h2 id="비효율적인-때는">비효율적인 때는?</h2>
+
+<ul>
+  <li>코드 판독 자체가 불가하여 오히려 <strong>시간 낭비</strong>인 경우</li>
+  <li>코드가 정상 작동하지 않는다면, <strong>새로 짜는 것이 낫다</strong></li>
+  <li>납기가 임박했을 때는 지양</li>
+</ul>
+
+<h2 id="성능개선-vs-리팩토링">성능개선 vs 리팩토링</h2>
+
+<ul>
+  <li>성능을 높이는 작업도, 리팩토링의 작업 패턴은 유사</li>
+  <li>그러나 성능 개선은 속도를 높이기 위한 목적이고…</li>
+  <li>코드 리팩토링은 <strong>코드를 깨끗하게</strong> 만들기 위함</li>
+</ul>
+
+<h2 id="왜-필요해요">왜 필요해요?</h2>
+
+<ul>
+  <li>코드 리팩토링을 왜 해야 하나요?</li>
+  <li>시간 낭비하는 거 아닌가요?</li>
+  <li><strong>“깨끗하고 좋은 코드를 만들기 위해서”</strong></li>
+  <li>설계에 대한 고민없이 작성된 코드는 <strong>초반에는 개발속도가 빠르지만…</strong></li>
+  <li>코드 구조는 한 번 엉망이 되면, 시간이 갈수록 <strong>더 엉망진창</strong>이 되고…</li>
+  <li><strong>새로운 기능을 추가</strong>할수록, 개발 속도가 점점 뎌뎌진다.</li>
+  <li>반면, 좋은 설계의 프로그램은 <strong>시간이 갈수록 개발 생산성이 높아진다</strong></li>
+</ul>
+
+<h2 id="궁극적-목적">궁극적 목적</h2>
+
+<ul>
+  <li>Enconomics(경제성)</li>
+  <li>적은 인력으로 짧은 시간에 많은 기능을 개발하기 위해…</li>
+</ul>
+
+<h2 id="퀴즈">퀴즈</h2>
+
+<ul>
+  <li>좋은 코드의 판단 기준은 대표적으로 유지보수성, 확장성, 가독성이 있습니다.</li>
+  <li>코드 리팩토링을 하기에 적절한 시점은? 기능 개발이 완료된 후</li>
+  <li>코드 리팩토링의 대표적 유형 두 가지는? 준비, 이해</li>
+  <li>코드 리팩토링의 궁극적 목적은? Economics(경제성)</li>
+</ul>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> 태그: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/tags/#daily-contents" class="page__taxonomy-item" rel="tag">Daily Contents</a>
+    
+    </span>
+  </p>
+
+
+
+
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> 카테고리: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/categories/#daily-contents" class="page__taxonomy-item" rel="tag">Daily Contents</a>
+    
+    </span>
+  </p>
+
+
+        
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> 업데이트:</strong> <time datetime="2022-11-02T00:00:00+09:00">November 2, 2022</time></p>
+
+
+      </footer>
+
+      <section class="page__share">
+  
+    <h4 class="page__share-title">공유하기</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?text=%5BDaily+Contents%5D+%EC%BD%94%EB%93%9C+%EB%A6%AC%ED%8C%A9%ED%86%A0%EB%A7%81%20http%3A%2F%2Flocalhost%3A4000%2Fdaily%2520contents%2F%25EC%25BD%2594%25EB%2593%259C-%25EB%25A6%25AC%25ED%258C%25A9%25ED%2586%25A0%25EB%25A7%2581%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2Fdaily%2520contents%2F%25EC%25BD%2594%25EB%2593%259C-%25EB%25A6%25AC%25ED%258C%25A9%25ED%2586%25A0%25EB%25A7%2581%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4000%2Fdaily%2520contents%2F%25EC%25BD%2594%25EB%2593%259C-%25EB%25A6%25AC%25ED%258C%25A9%25ED%2586%25A0%25EB%25A7%2581%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="/daily%20contents/OS-%EC%BB%A4%EB%84%90%EA%B3%BC-DB-%EB%AA%A8%EB%8D%B8/" class="pagination--pager" title="[Daily Contents] OS 커널과 DB 모델
+">이전</a>
+    
+    
+      <a href="/daily%20contents/%EC%95%8C%EC%95%84%EB%91%90%EB%A9%B4-%EC%93%B8%EB%AA%A8%EC%9E%88%EB%8A%94-%EB%8D%B0%EC%9D%B4%ED%84%B0%EB%B2%A0%EC%9D%B4%EC%8A%A4-%EA%B0%9D%EC%B2%B4(%EA%B8%B0%EB%8A%A5%ED%8E%B83)/" class="pagination--pager" title="[Daily Contents] 알아두면 쓸모있는 데이터베이스 객체(기능편3)
+">다음</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      <h4 class="page__related-title">참고</h4>
+      <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/daily%20contents/IT-Trends/" rel="permalink">[Daily Contents] IT Trends
+</a>
+      
+    </h2>
+    
+
+
+    <p class="archive__item-excerpt" itemprop="description">
+</p>
+
+    
+    <span class="page__date"><i class="far fa-clock" aria-hidden="true"></i>2022-11-23</span>
+    
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/daily%20contents/%EC%A3%BC%EB%8B%88%EC%96%B4-%EA%B0%9C%EB%B0%9C%EC%9E%90-%EC%84%B1%EC%9E%A5-%EC%B4%89%EC%A7%84%EC%A0%9C/" rel="permalink">[Daily Contents] 주니어 개발자 성장 촉진제
+</a>
+      
+    </h2>
+    
+
+
+    <p class="archive__item-excerpt" itemprop="description">
+</p>
+
+    
+    <span class="page__date"><i class="far fa-clock" aria-hidden="true"></i>2022-11-22</span>
+    
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/daily%20contents/%EC%A0%95%EA%B7%9C-%ED%91%9C%ED%98%84%EC%8B%9D/" rel="permalink">[Daily Contents] 정규 표현식
+</a>
+      
+    </h2>
+    
+
+
+    <p class="archive__item-excerpt" itemprop="description">
+</p>
+
+    
+    <span class="page__date"><i class="far fa-clock" aria-hidden="true"></i>2022-11-15</span>
+    
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/daily%20contents/%ED%85%8C%EC%8A%A4%ED%8A%B8%EC%A3%BC%EB%8F%84%EA%B0%9C%EB%B0%9C-TDD/" rel="permalink">[Daily Contents] 테스트주도개발 TDD
+</a>
+      
+    </h2>
+    
+
+
+    <p class="archive__item-excerpt" itemprop="description">
+</p>
+
+    
+    <span class="page__date"><i class="far fa-clock" aria-hidden="true"></i>2022-11-11</span>
+    
+  </article>
+</div>
+
+        
+      </div>
+    </div>
+  
+  
+</div>
+
+    </div>
+
+    
+      <div class="search-content">
+        <div class="search-content__inner-wrap"></div>
+
+      </div>
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>팔로우:</strong></li>
+    
+
+    
+      
+        
+          <li><a href="mailto:rudgh46@naver.com" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i> Email</a></li>
+        
+      
+        
+      
+        
+      
+        
+          <li><a href="https://github.com/rudgh46" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+        
+      
+        
+      
+        
+      
+        
+      
+    
+
+    <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> 피드</a></li>
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2023 김경호(KyoungHo Kim). Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+
+
+
+
+
+
+
+    
+<script>
+  var disqus_config = function () {
+    this.page.url =
+      "http://localhost:4000/daily%20contents/%EC%BD%94%EB%93%9C-%EB%A6%AC%ED%8C%A9%ED%86%A0%EB%A7%81/"; /* Replace PAGE_URL with your page's canonical URL variable */
+    this.page.identifier =
+      "/daily%20contents/코드 리팩토링"; /* Replace PAGE_IDENTIFIER with your page's unique identifier variable */
+  };
+  (function () {
+    /* DON'T EDIT BELOW THIS LINE */
+    var d = document,
+      s = d.createElement("script");
+    s.src = "https://https-rudgh46-github-io.disqus.com/embed.js";
+    s.setAttribute("data-timestamp", +new Date());
+    (d.head || d.body).appendChild(s);
+  })();
+</script>
+<noscript
+  >Please enable JavaScript to view the
+  <a href="https://disqus.com/?ref_noscript"
+    >comments powered by Disqus.</a
+  ></noscript
+>
+
+
+  
+
+
+
+
+
+  </body>
+</html>

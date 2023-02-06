@@ -1,0 +1,938 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.20.2 by Michael Rose
+  Copyright 2013-2020 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="ko" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>[Daily Contents] Modern Java와 Python - 경호의 블로그</title>
+<meta name="description" content="">
+
+
+  <meta name="author" content="김경호">
+  
+  <meta property="article:author" content="김경호">
+  
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:site_name" content="경호의 블로그">
+<meta property="og:title" content="[Daily Contents] Modern Java와 Python">
+<meta property="og:url" content="http://localhost:4000/daily%20contents/Modern-Java%EC%99%80-Python/">
+
+
+  <meta property="og:description" content="">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2022-08-10T00:00:00+09:00">
+
+
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="http://localhost:4000/daily%20contents/Modern-Java%EC%99%80-Python/">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "김경호(KyoungHo Kim)",
+      "url": "http://localhost:4000/"
+    
+  }
+</script>
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="경호의 블로그 Feed">
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css">
+
+<!--[if IE]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+
+
+
+    <!-- start custom head snippets -->
+<meta name="naver-site-verification" content="d884164c2f43b5d7cfca36d514355ee3ab493511" />
+<meta name="NaverBot" content="All"/>
+<meta name="NaverBot" content="index,follow"/>
+<meta name="Yeti" content="All"/>
+<meta name="Yeti" content="index,follow"/>
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+<link rel="apple-touch-icon" sizes="180x180" href="/assets/logo.ico/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/logo.ico/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/assets/logo.ico/favicon-16x16.png">
+<link rel="mask-icon" href="/assets/logo.ico/safari-pinned-tab.svg" color="#5bbad5">
+<meta name="msapplication-TileColor" content="#da532c">
+<meta name="theme-color" content="#ffffff">
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single">
+    <nav class="skip-links">
+  <h2 class="screen-reader-text">Skip links</h2>
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          ※핵심정리노트※
+          <span class="site-subtitle">version 1.0</span>
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/about/">Introduce</a>
+            </li><li class="masthead__menu-item">
+              <a href="/categories/">Category</a>
+            </li><li class="masthead__menu-item">
+              <a href="/tags/">Tags</a>
+            </li><li class="masthead__menu-item">
+              <a href="/year-archive/">Year</a>
+            </li></ul>
+        
+        <button class="search__toggle" type="button">
+          <span class="visually-hidden">Toggle search</span>
+          <svg class="icon" width="16" height="16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 15.99 16">
+            <path d="M15.5,13.12L13.19,10.8a1.69,1.69,0,0,0-1.28-.55l-0.06-.06A6.5,6.5,0,0,0,5.77,0,6.5,6.5,0,0,0,2.46,11.59a6.47,6.47,0,0,0,7.74.26l0.05,0.05a1.65,1.65,0,0,0,.5,1.24l2.38,2.38A1.68,1.68,0,0,0,15.5,13.12ZM6.4,2A4.41,4.41,0,1,1,2,6.4,4.43,4.43,0,0,1,6.4,2Z" transform="translate(-.01)"></path>
+          </svg>
+        </button>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">토글 메뉴</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person">
+
+  
+    <div class="author__avatar">
+      
+        <img src="/assets/logo.ico/me.jpg" alt="김경호" itemprop="image">
+      
+    </div>
+  
+
+  <div class="author__content">
+    
+      <h3 class="author__name" itemprop="name">김경호</h3>
+    
+    
+      <div class="author__bio" itemprop="description">
+        <p><strong>Slow but steady wins the race</strong><br />2022.01 ~ <br /><br /> <strong><em>느리더라도 꾸준하게…</em></strong></p>
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">팔로우</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="https://schema.org/Place">
+          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name">Republic of Korea</span>
+        </li>
+      
+
+      
+        
+          
+            <li><a href="mailto:rudgh46@naver.com" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i><span class="label">Email</span></a></li>
+          
+        
+          
+            <li><a href="https://github.com/rudgh46" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
+          
+        
+          
+        
+          
+        
+          
+        
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+  </div>
+
+
+
+  <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="[Daily Contents] Modern Java와 Python">
+    <meta itemprop="description" content="">
+    <meta itemprop="datePublished" content="2022-08-10T00:00:00+09:00">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title" itemprop="headline">[Daily Contents] Modern Java와 Python
+</h1>
+          
+
+
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+          <aside class="sidebar__right sticky">
+            <nav class="toc">
+              <header><h4 class="nav__title"><i class="fas fa-bookmark"></i> Modern Java와 Python</h4></header>
+              <ul class="toc__menu">
+  <li><a href="#모던-자바란-함수형-프로그래밍-도입으로-큰-변화가-있었던-java8-이후">모던 자바란? 함수형 프로그래밍 도입으로 큰 변화가 있었던 Java8 이후</a></li>
+  <li><a href="#오늘-다룰-내용">오늘 다룰 내용</a>
+    <ul>
+      <li><a href="#java의-간략한-역사">Java의 간략한 역사</a></li>
+      <li><a href="#모던-자바의-특징">모던 자바의 특징</a>
+        <ul>
+          <li><a href="#예제-1">예제 1</a></li>
+          <li><a href="#예제-2">예제 2</a></li>
+        </ul>
+      </li>
+      <li><a href="#함수형">함수형</a>
+        <ul>
+          <li><a href="#함수형_람다-메서드-참조">함수형_람다, 메서드 참조</a></li>
+          <li><a href="#함수형_use-case">함수형_Use Case</a></li>
+        </ul>
+      </li>
+      <li><a href="#스트림">스트림</a>
+        <ul>
+          <li><a href="#스트림_주요-개념">스트림_주요 개념</a></li>
+          <li><a href="#스트림_예제">스트림_예제</a></li>
+        </ul>
+      </li>
+      <li><a href="#한편-파이썬은">한편 파이썬은…</a></li>
+      <li><a href="#병렬동시성_concurrent">병렬/동시성_concurrent</a>
+        <ul>
+          <li><a href="#executor--service--etc">Executor / Service / Etc</a></li>
+        </ul>
+      </li>
+      <li><a href="#비동기-지원_async">비동기 지원_Async</a></li>
+      <li><a href="#예제_스프링에서">예제_스프링에서</a></li>
+      <li><a href="#한편-파이썬은-1">한편 파이썬은</a></li>
+      <li><a href="#마지막으로_오늘-못-다룬-것들">마지막으로_오늘 못 다룬 것들</a></li>
+      <li><a href="#마지막으로2">마지막으로2</a></li>
+    </ul>
+  </li>
+</ul>
+
+            </nav>
+          </aside>
+        
+        <p><br /></p>
+
+<h2 id="모던-자바란-함수형-프로그래밍-도입으로-큰-변화가-있었던-java8-이후">모던 자바란? 함수형 프로그래밍 도입으로 큰 변화가 있었던 Java8 이후</h2>
+
+<h2 id="오늘-다룰-내용">오늘 다룰 내용</h2>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>함수형과 스트림
+고수준 병렬/동시성 지원
+And more....
+그리고 파이썬
+</code></pre></div></div>
+
+<h3 id="java의-간략한-역사">Java의 간략한 역사</h3>
+
+<ul>
+  <li>1996년 1월 23에 Java1 출시 -&gt; 당시에는 느리다는 비판(1.2, 1.3 버전에서 JIT Compiler, HotSpot JVM 도입으로 많이 해결)</li>
+  <li>국내에서는 Java5(2004)부터 많이 활용</li>
+  <li>6, 7은 큰 변화가 없었음</li>
+  <li>8에서 큰 변화</li>
+  <li>2022년 현재 최신 버전은 Java18</li>
+</ul>
+
+<h3 id="모던-자바의-특징">모던 자바의 특징</h3>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>함수형 패러다임 도입
+쉬운 동시성(병렬처리) 도입
+모듈성 강화
+개발자 편의 API 추가
+</code></pre></div></div>
+
+<p><strong>변화의 원인은?</strong></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>세상의 변화, 개발자의 요구 반영, 파생언어/라이브러리의 장점 수용, 어른의 사정? 등
+</code></pre></div></div>
+
+<h4 id="예제-1">예제 1</h4>
+
+<p>** 음양 더하기 ** <br />
+자연수 배열과 부호 배열의 SumProduct 구하기 <br />
+ex) func({1, 2, 3}), {T, F, T}) = (1<em>1) + (2</em>-1) + (3*1) = 2 <br />
+<br />
+** 옛날 자바 **</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>int answer = 0;
+for (int i=0; i&lt;sign.length; i++)
+	answer += absolutes[i] + (signs[i]? 1: -1);
+return answer;
+</code></pre></div></div>
+
+<p>** 모던 자바 **</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>return IntStream.range(0, absolutes.length)
+	.map(i -&gt; absolutes[i] * (signs[i]? 1: -1))
+	.reduce(0, Integer::sum);
+</code></pre></div></div>
+
+<h4 id="예제-2">예제 2</h4>
+
+<p>** 문자열 리스트에서 길이가 5~10인 것만 대문자로 출력 ** <br />
+** 단 반복문, 조건문 없이… ** <br />
+<br />
+** 옛날 자바 **</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>안 될 듯?
+</code></pre></div></div>
+
+<p>** 모던 자바 **</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>list.stream().filter(s -&gt; s.length() &gt;= 5 &amp;&amp; s.length() &lt;= 10)
+	.map(s-&gt; s.toUpperCase()).forEach(System.out::println);
+</code></pre></div></div>
+
+<h3 id="함수형">함수형</h3>
+
+<p>** OOP라는 특징에 맞게, 객체지향적으로 함수를 도입했다! ** <br />
+완전한 함수라고 보기에는 어려움~</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>함수를 일급 시민(First Class Citizen)에 포함 -&gt; 사실은...
+익명 클래스의 번거로움을 람다로 간편하게, 메서드 참조로 재사용
+코드 블록을 주입(동작 파라미터화)하고 조합(Pipeline)할 수 있게 됨.
+스트림의 기반, 병렬처리와 조화
+</code></pre></div></div>
+
+<p>** 주요 패키지, 클래스</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@FunctionalInterface
+java.util.function
+Consumer, Supplier, Function, Predicate...
+Operator
+기본형 Int, Long, Double
+</code></pre></div></div>
+
+<h4 id="함수형_람다-메서드-참조">함수형_람다, 메서드 참조</h4>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>람다(lambda) = 익명 함수, 익명 클래스를 대체
+함수형 인터페이스(이름 있는 람다) : 하나의 추상 메서드를 가진 인터페이스
+메서드 참조 : 메서드나 생성자를 참조하기(::)
+</code></pre></div></div>
+
+<p>ex) 문자열 리스트를 길이에 따라 정렬)</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Collections.sort(words, new Comparator&lt;String&gt;() {
+	public int compare(String o1, String o2) {
+		return Integer.compare(o1.length(), o2.length());
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>- Collection.sort(words, (o1, o2) -&gt; Integer.compare(o1.length(), o2.length()));
+- Collection.sort(words, Comparator.comparingInt(String::length));
+- words.sort(Comparator.comparingInt(String::length));
+</code></pre></div></div>
+
+<h4 id="함수형_use-case">함수형_Use Case</h4>
+
+<p>** 공식 문서 : “함수형은 이런 데다 쓰세요~” ** <br />
+주요 인터페이스와 용례: 함수형이 적합한 곳 vs 아닌 곳</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>predicate : test 메서드, true, false 반환
+- 조합 : and, or, not, negate
+- Use case : 필터, 실행 결과만 확인할 때, stream.filter
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Function : apply 메서드, 인자와 리턴 존재, 여러 용도로 사용
+- 조합 : andThen, compose
+- Use Case : 범용적, stream.map
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Consumer : accept 메서드, 리턴 없음, 최종 소비자일 때
+- 조합 : andThen
+- Use Case : 메세지 소비자, 처리기, stream.forEach, peek
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Supplier : get 메서드, 인자 없음(리턴만)
+- Use Case : 메세지 생산, 조회, 실행 지연, 의존성 주입, stream.collect, generate
+</code></pre></div></div>
+
+<h3 id="스트림">스트림</h3>
+
+<p>** 컬렉션 + 함수형, 데이터 처리 연산을 지원하도록 소스에서 추출된 연속된 요소 **</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>외부 순환(for, while) vs 내부 순환(VM아 이것 좀 해조)
+SQL처럼 선언형 스타일로 데이터를 처리
+쉽게 병렬처리 적용 : parallelStream 메서드
+</code></pre></div></div>
+
+<p>** 주요 패키지, 클래스, 메서드 **</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>java.util.stream
+BaseStream, Stream
+map(), filter(), reduce(), min()
+C.stream(), C.parallelStream()
+</code></pre></div></div>
+
+<h4 id="스트림_주요-개념">스트림_주요 개념</h4>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>중간 연산과 최종 연산
+- 중간 연산은 스트림을 반환, 여러 연산을 조합할 수 있음
+- 최종 연산을 스트림을 모두 소비하고 닫음
+- 스트림은 1회용(최종 연산 이후 사용 불가)
+</code></pre></div></div>
+
+<h4 id="스트림_예제">스트림_예제</h4>
+
+<p>** 직원 리스트 -&gt; 부서별 직원 리스트 **</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Map&lt;Department, List&lt;Empliyee&gt;&gt; byDept = employees.stream()
+	.collect(Collectors.groupingBy(Employee::getDepartment));
+</code></pre></div></div>
+
+<p>** 직원 리스트 -&gt; 부서별 급여 합계 **</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Map&lt;Department, Integer&gt; totalByDept = employees.stream()
+	.collect(Collectors.groupingBy(Employee::getDepartment,
+	Collectors.summingInt(Employee::getSalary)));
+</code></pre></div></div>
+
+<p>** 좋은 직원, 안 좋은 직원 나누기 **</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Map&lt;Boolean, List&lt;Employee&gt;&gt; byGood = employees.stream()
+	.collect(Collectors.partitioningBy(Employee::isGood));
+</code></pre></div></div>
+
+<h3 id="한편-파이썬은">한편 파이썬은…</h3>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>원래 함수형(v1.0, since 1994)
+내장 컬렉션 = 리스트, 맵(딕셔너리), 튜플, 세트, ...
+lambda, itertools, functools, generator
+</code></pre></div></div>
+
+<h3 id="병렬동시성_concurrent">병렬/동시성_concurrent</h3>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>저수준 병렬 처리의 어려움 : Thread, Lock, synchronized, ..
+안전하고 쉬운 병렬처리 방법 제공 -&gt; 마법은 아니야~
+- 많이 사용되는 패턴들을 언어 차원에서 API로 지원
+- 고수준, 추상화, Thread Safety, 비동기 지원
+</code></pre></div></div>
+
+<p>주요 패키지, 클래스</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>java.util, concurrent
+Executor(s), ExecutorService
+xxThreadPool, ForkJoinPool
+Future, CompletableFucture
+Runnable, Callable
+</code></pre></div></div>
+
+<h4 id="executor--service--etc">Executor / Service / Etc</h4>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Thread를 직접 생성, 관리하지 않고 ExecutorService에서 스레드 관리
+작업(Runnable, Callable)을 Executor 서비스에 요청하고 결과 받기
+작업 스케쥴링(cron, at) 기능 : ScheduledExecutorService
+Concurrent Collection
+- 스레드 안전한 List / Map 제공
+Atomic Variable
+- 변수 자체가 원자성을 보장
+Lock 객체
+- 동기화 패턴에 따라 사용할 수 있는 유틸리티
+</code></pre></div></div>
+
+<h3 id="비동기-지원_async">비동기 지원_Async</h3>
+
+<p>** 동기는 7기, 비동기는 8기 아 ㅋㅋ**</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>동기 vs 비동기 and 블록(block) vs 넌블록(non-block)
+작업이 끝날 때까지 기다리기 vs 하고 있어. 나중에 물어볼게.
+Future : 비동기 연산 지원, 완료 확인/대기/결과 조회/취소
+CompletableFuture : Future 작업 연결, 순서 정의 등
+</code></pre></div></div>
+
+<h3 id="예제_스프링에서">예제_스프링에서</h3>
+
+<p>** 여러 API 호출을 병렬로 실행 **</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>for(ApiService api : apis) {
+	apiResults.add(api.callApi(param)):
+}
+for(CompletableFuture&lt;void&gt; future : apiResults) {
+	future.get();
+}
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@Async
+public CompletableFuture&lt;void&gt; callApi(String param) {
+	/// ..api를 호출
+	return new CompletableFuture&lt;&gt;();
+}
+</code></pre></div></div>
+
+<h3 id="한편-파이썬은-1">한편 파이썬은</h3>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>파이썬은 느려요~!? 일부만 맞는 이야기
+GIL 문제: 스레드 활용을 제한하는 요소
+multiprocessing
+asyncio, conroutine
+future, executors, ThreadPoolExecutor..
+</code></pre></div></div>
+
+<h3 id="마지막으로_오늘-못-다룬-것들">마지막으로_오늘 못 다룬 것들</h3>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Reactive(Flow API)
+모듈화
+Optional
+타입 추론
+컬렉션 API 개선
+날짜와 시간 API 개선
+Fork-Join 프레임 워크
+Spliterator
+인터페이스에 구현을 포함(static, default, private)
+try-with resources(AutoCloseable)
+http client
+강화된 switch문
+etc..
+</code></pre></div></div>
+
+<h3 id="마지막으로2">마지막으로2</h3>
+
+<p>** Java Support Tools **</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>- visualVM, Jconsole
+- jps, jstack, jstat, jhat, jmap
+- jshell
+- flight recorder, jmx, Spring Actuator
+</code></pre></div></div>
+
+<p>** Python Tools **</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>-profile(cProfile), memory_profiler, vProf
+</code></pre></div></div>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> 태그: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/tags/#daily-contents" class="page__taxonomy-item" rel="tag">Daily Contents</a>
+    
+    </span>
+  </p>
+
+
+
+
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> 카테고리: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/categories/#daily-contents" class="page__taxonomy-item" rel="tag">Daily Contents</a>
+    
+    </span>
+  </p>
+
+
+        
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> 업데이트:</strong> <time datetime="2022-08-10T00:00:00+09:00">August 10, 2022</time></p>
+
+
+      </footer>
+
+      <section class="page__share">
+  
+    <h4 class="page__share-title">공유하기</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?text=%5BDaily+Contents%5D+Modern+Java%EC%99%80+Python%20http%3A%2F%2Flocalhost%3A4000%2Fdaily%2520contents%2FModern-Java%25EC%2599%2580-Python%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2Fdaily%2520contents%2FModern-Java%25EC%2599%2580-Python%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4000%2Fdaily%2520contents%2FModern-Java%25EC%2599%2580-Python%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="/daily%20contents/SW-%ED%85%8C%EC%8A%A4%ED%8A%B8%EC%BC%80%EC%9D%B4%EC%8A%A4-%EC%84%A4%EA%B3%84/" class="pagination--pager" title="[Daily Contents] SW 테스트케이스 설계
+">이전</a>
+    
+    
+      <a href="/daily%20contents/%EB%B0%9C%ED%91%9C%ED%9A%8C-tip-%EC%A0%95%EB%A6%AC/" class="pagination--pager" title="[Daily Contents] 발표회 tip 정리
+">다음</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      <h4 class="page__related-title">참고</h4>
+      <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/daily%20contents/IT-Trends/" rel="permalink">[Daily Contents] IT Trends
+</a>
+      
+    </h2>
+    
+
+
+    <p class="archive__item-excerpt" itemprop="description">
+</p>
+
+    
+    <span class="page__date"><i class="far fa-clock" aria-hidden="true"></i>2022-11-23</span>
+    
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/daily%20contents/%EC%A3%BC%EB%8B%88%EC%96%B4-%EA%B0%9C%EB%B0%9C%EC%9E%90-%EC%84%B1%EC%9E%A5-%EC%B4%89%EC%A7%84%EC%A0%9C/" rel="permalink">[Daily Contents] 주니어 개발자 성장 촉진제
+</a>
+      
+    </h2>
+    
+
+
+    <p class="archive__item-excerpt" itemprop="description">
+</p>
+
+    
+    <span class="page__date"><i class="far fa-clock" aria-hidden="true"></i>2022-11-22</span>
+    
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/daily%20contents/%EC%A0%95%EA%B7%9C-%ED%91%9C%ED%98%84%EC%8B%9D/" rel="permalink">[Daily Contents] 정규 표현식
+</a>
+      
+    </h2>
+    
+
+
+    <p class="archive__item-excerpt" itemprop="description">
+</p>
+
+    
+    <span class="page__date"><i class="far fa-clock" aria-hidden="true"></i>2022-11-15</span>
+    
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/daily%20contents/%ED%85%8C%EC%8A%A4%ED%8A%B8%EC%A3%BC%EB%8F%84%EA%B0%9C%EB%B0%9C-TDD/" rel="permalink">[Daily Contents] 테스트주도개발 TDD
+</a>
+      
+    </h2>
+    
+
+
+    <p class="archive__item-excerpt" itemprop="description">
+</p>
+
+    
+    <span class="page__date"><i class="far fa-clock" aria-hidden="true"></i>2022-11-11</span>
+    
+  </article>
+</div>
+
+        
+      </div>
+    </div>
+  
+  
+</div>
+
+    </div>
+
+    
+      <div class="search-content">
+        <div class="search-content__inner-wrap"></div>
+
+      </div>
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>팔로우:</strong></li>
+    
+
+    
+      
+        
+          <li><a href="mailto:rudgh46@naver.com" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i> Email</a></li>
+        
+      
+        
+      
+        
+      
+        
+          <li><a href="https://github.com/rudgh46" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+        
+      
+        
+      
+        
+      
+        
+      
+    
+
+    <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> 피드</a></li>
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2023 김경호(KyoungHo Kim). Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+
+
+
+
+
+
+
+    
+<script>
+  var disqus_config = function () {
+    this.page.url =
+      "http://localhost:4000/daily%20contents/Modern-Java%EC%99%80-Python/"; /* Replace PAGE_URL with your page's canonical URL variable */
+    this.page.identifier =
+      "/daily%20contents/Modern Java와 Python"; /* Replace PAGE_IDENTIFIER with your page's unique identifier variable */
+  };
+  (function () {
+    /* DON'T EDIT BELOW THIS LINE */
+    var d = document,
+      s = d.createElement("script");
+    s.src = "https://https-rudgh46-github-io.disqus.com/embed.js";
+    s.setAttribute("data-timestamp", +new Date());
+    (d.head || d.body).appendChild(s);
+  })();
+</script>
+<noscript
+  >Please enable JavaScript to view the
+  <a href="https://disqus.com/?ref_noscript"
+    >comments powered by Disqus.</a
+  ></noscript
+>
+
+
+  
+
+
+
+
+
+  </body>
+</html>

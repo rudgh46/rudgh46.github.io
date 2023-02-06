@@ -1,0 +1,920 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.20.2 by Michael Rose
+  Copyright 2013-2020 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="ko" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>[Daily Contents] 웹 서버 프로그래밍 시 주의할 점 - 경호의 블로그</title>
+<meta name="description" content="">
+
+
+  <meta name="author" content="김경호">
+  
+  <meta property="article:author" content="김경호">
+  
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:site_name" content="경호의 블로그">
+<meta property="og:title" content="[Daily Contents] 웹 서버 프로그래밍 시 주의할 점">
+<meta property="og:url" content="http://localhost:4000/daily%20contents/%EC%9B%B9-%EC%84%9C%EB%B2%84-%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D-%EC%8B%9C-%EC%A3%BC%EC%9D%98%ED%95%A0-%EC%A0%90/">
+
+
+  <meta property="og:description" content="">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2022-08-03T00:00:00+09:00">
+
+
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="http://localhost:4000/daily%20contents/%EC%9B%B9-%EC%84%9C%EB%B2%84-%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D-%EC%8B%9C-%EC%A3%BC%EC%9D%98%ED%95%A0-%EC%A0%90/">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "김경호(KyoungHo Kim)",
+      "url": "http://localhost:4000/"
+    
+  }
+</script>
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="경호의 블로그 Feed">
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css">
+
+<!--[if IE]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+
+
+
+    <!-- start custom head snippets -->
+<meta name="naver-site-verification" content="d884164c2f43b5d7cfca36d514355ee3ab493511" />
+<meta name="NaverBot" content="All"/>
+<meta name="NaverBot" content="index,follow"/>
+<meta name="Yeti" content="All"/>
+<meta name="Yeti" content="index,follow"/>
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+<link rel="apple-touch-icon" sizes="180x180" href="/assets/logo.ico/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/logo.ico/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/assets/logo.ico/favicon-16x16.png">
+<link rel="mask-icon" href="/assets/logo.ico/safari-pinned-tab.svg" color="#5bbad5">
+<meta name="msapplication-TileColor" content="#da532c">
+<meta name="theme-color" content="#ffffff">
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single">
+    <nav class="skip-links">
+  <h2 class="screen-reader-text">Skip links</h2>
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          ※핵심정리노트※
+          <span class="site-subtitle">version 1.0</span>
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/about/">Introduce</a>
+            </li><li class="masthead__menu-item">
+              <a href="/categories/">Category</a>
+            </li><li class="masthead__menu-item">
+              <a href="/tags/">Tags</a>
+            </li><li class="masthead__menu-item">
+              <a href="/year-archive/">Year</a>
+            </li></ul>
+        
+        <button class="search__toggle" type="button">
+          <span class="visually-hidden">Toggle search</span>
+          <svg class="icon" width="16" height="16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 15.99 16">
+            <path d="M15.5,13.12L13.19,10.8a1.69,1.69,0,0,0-1.28-.55l-0.06-.06A6.5,6.5,0,0,0,5.77,0,6.5,6.5,0,0,0,2.46,11.59a6.47,6.47,0,0,0,7.74.26l0.05,0.05a1.65,1.65,0,0,0,.5,1.24l2.38,2.38A1.68,1.68,0,0,0,15.5,13.12ZM6.4,2A4.41,4.41,0,1,1,2,6.4,4.43,4.43,0,0,1,6.4,2Z" transform="translate(-.01)"></path>
+          </svg>
+        </button>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">토글 메뉴</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person">
+
+  
+    <div class="author__avatar">
+      
+        <img src="/assets/logo.ico/me.jpg" alt="김경호" itemprop="image">
+      
+    </div>
+  
+
+  <div class="author__content">
+    
+      <h3 class="author__name" itemprop="name">김경호</h3>
+    
+    
+      <div class="author__bio" itemprop="description">
+        <p><strong>Slow but steady wins the race</strong><br />2022.01 ~ <br /><br /> <strong><em>느리더라도 꾸준하게…</em></strong></p>
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">팔로우</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="https://schema.org/Place">
+          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name">Republic of Korea</span>
+        </li>
+      
+
+      
+        
+          
+            <li><a href="mailto:rudgh46@naver.com" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i><span class="label">Email</span></a></li>
+          
+        
+          
+            <li><a href="https://github.com/rudgh46" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
+          
+        
+          
+        
+          
+        
+          
+        
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+  </div>
+
+
+
+  <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="[Daily Contents] 웹 서버 프로그래밍 시 주의할 점">
+    <meta itemprop="description" content="">
+    <meta itemprop="datePublished" content="2022-08-03T00:00:00+09:00">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title" itemprop="headline">[Daily Contents] 웹 서버 프로그래밍 시 주의할 점
+</h1>
+          
+
+
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+          <aside class="sidebar__right sticky">
+            <nav class="toc">
+              <header><h4 class="nav__title"><i class="fas fa-bookmark"></i> 웹 서버 프로그래밍 시 주의할 점</h4></header>
+              <ul class="toc__menu">
+  <li><a href="#좋은-웹-ap가-구동될-것-같은-제품">좋은 웹 AP가 구동될 것 같은 제품?</a></li>
+  <li><a href="#싱글-게임">싱글 게임</a></li>
+  <li><a href="#온라인-게임-서버">온라인 게임, 서버</a></li>
+  <li><a href="#너를-의심">‘너’를 의심</a></li>
+  <li><a href="#클라이언트---서버-통신-프로토콜">클라이언트 - 서버 통신 프로토콜</a>
+    <ul>
+      <li><a href="#http">HTTP</a></li>
+    </ul>
+  </li>
+  <li><a href="#사용자-인증인가">사용자 인증&amp;인가</a>
+    <ul>
+      <li><a href="#사용자-인증인가---worst-사례">사용자 인증&amp;인가 - worst 사례</a></li>
+    </ul>
+  </li>
+  <li><a href="#요청-검증">요청 검증</a>
+    <ul>
+      <li><a href="#요청-검증---파일-업로드-worst-사례">요청 검증 - 파일 업로드 worst 사례</a></li>
+      <li><a href="#클라이언트-요청은-쉽게-변경-가능-">클라이언트 요청은 쉽게 변경 가능 </a></li>
+    </ul>
+  </li>
+  <li><a href="#sql-injection">SQL Injection</a>
+    <ul>
+      <li><a href="#잠깐-dos-공격">잠깐! Dos 공격?</a></li>
+      <li><a href="#xss-공격">XSS 공격</a></li>
+      <li><a href="#xss-방어">XSS 방어</a></li>
+    </ul>
+  </li>
+  <li><a href="#나를-의심">‘나’를 의심</a>
+    <ul>
+      <li><a href="#부하-테스트">부하 테스트</a></li>
+      <li><a href="#응답-시간">응답 시간</a></li>
+      <li><a href="#응답-시간---비동기-처리">응답 시간 - 비동기 처리</a></li>
+    </ul>
+  </li>
+  <li><a href="#데이터-신뢰성---관리자-환경-설정-예제">데이터 신뢰성 - 관리자 환경 설정 예제</a></li>
+  <li><a href="#데이터-신뢰성---싱글-서버">데이터 신뢰성 - 싱글 서버?</a></li>
+  <li><a href="#데이터-신뢰성---db까지도">데이터 신뢰성 - DB까지도?</a></li>
+  <li><a href="#-트랜잭션----결제-예제-중요">[ 트랜잭션 ] - 결제 예제, 중요**</a></li>
+  <li><a href="#암호화">암호화</a></li>
+  <li><a href="#암호화---네트워크">암호화 - 네트워크</a></li>
+  <li><a href="#logging">logging</a></li>
+  <li><a href="#서버-테스트-시나리오">서버 테스트 시나리오</a></li>
+  <li><a href="#정리_서버-프로그래밍">정리_서버 프로그래밍</a></li>
+</ul>
+
+            </nav>
+          </aside>
+        
+        <p><br /></p>
+
+<h2 id="좋은-웹-ap가-구동될-것-같은-제품">좋은 웹 AP가 구동될 것 같은 제품?</h2>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>누가, 어떤 목적으로, 어떻게 사용하느냐에 따라 다르다!
+</code></pre></div></div>
+
+<p>** ex) 좋은 사진이 갖춰야 할 것들 **</p>
+
+<ul>
+  <li>균형, 색감, 이야기</li>
+  <li>전문가용 고성능 카메라, 작가의 장비 활용 스킬</li>
+</ul>
+
+<p>** -&gt; 좋은 웹 AP가 가져야 할 것들 **</p>
+
+<ul>
+  <li>성능, 안정(신뢰)성, 보안 등…</li>
+</ul>
+
+<h2 id="싱글-게임">싱글 게임</h2>
+
+<p>** 개발자는 언어를 사용해 궁극적으로 메모리에 저장되는 값을 제어해가며 원하는 기능을 만들어 나간다 ** <br />
+** 치트 엔진으로 값 손쉽게 변경 가능 **</p>
+
+<h2 id="온라인-게임-서버">온라인 게임, 서버</h2>
+
+<p>** 클라이언트의 데이터 vs 서버가 알고 있는 데이터 뭐가 우선일까? 이유는? **</p>
+
+<ul>
+  <li>서버의 데이터. 이러한 서비스가 제대로 돌아가려면 공평해야 하기 때문.</li>
+  <li>과거 몬스터 헌터 프론티어라는 게임이 클라이언트의 데이터를 우선한 결과 서비스 종료의 길을 걷게 됨.
+    <ul>
+      <li>클라이언트 의심의 중요성!</li>
+      <li>서버 중심의 능동적인 대처 필요</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="너를-의심">‘너’를 의심</h2>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>- 사용자 인증&amp;인가
+- 서버 중심의 견고한 로직 처리
+- 사용자 요청의 유효성 검증
+- SQL Injection, XSS 방어
+</code></pre></div></div>
+
+<h2 id="클라이언트---서버-통신-프로토콜">클라이언트 - 서버 통신 프로토콜</h2>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>HTTP
+</code></pre></div></div>
+
+<h3 id="http">HTTP</h3>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Hyper Text Tranfer Protocol
+Stateless
+-&gt; 요청을 한 번 받고 응답하면, 연결을 끊음. 중요한 특징
+HTTP 서버는 불특정 다수의 요청을 전제
+-&gt; 연결을 끊기 때문에 맥시멈이 높지 않아도 수용이 가능
+</code></pre></div></div>
+
+<p>** Stateless 프로토콜의 단점은 무엇이며 이를 해결하기 위한 방법은? **</p>
+
+<ul>
+  <li>세션과 쿠키를 이용해서 로그인 구현을 할 경우 그 부분을 노리고 공격이 들어옴 -&gt; 토큰 방식으로 해결</li>
+</ul>
+
+<h2 id="사용자-인증인가">사용자 인증&amp;인가</h2>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>- 복잡하고 긴 URL을 암호처럼 사용? NO
+- 장소를 알더라도 사용자는 허가를 받고 진입할 수 있어야 함.
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>사진첩의 '사진'들은 비공개 데이터가 다수
+긴 URL만 알고 있다면 그대로 접근 가능했던 시절이 있었음
+-&gt; 물론 의도한 기능이라면 사용자에게 위임 가능함(구글 문서)
+</code></pre></div></div>
+
+<h3 id="사용자-인증인가---worst-사례">사용자 인증&amp;인가 - worst 사례</h3>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1. 최초 로그인을 통한 인증 과정 이후 차후 서비스 구동에 필요한 모든 API 호출은 URL이 곧 암호인 것처럼 사용
+-&gt; 셋탑 박스 내부에서 호출하는 것이라 일반 고객들은 URL을 알 수 없다는 가정 하에 진행한 무모한 사례
+</code></pre></div></div>
+
+<h2 id="요청-검증">요청 검증</h2>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>요청 필드 값들이 유효한지 서버에서도 검증
+특히 리소스 변경에 대한 건은 철저하게 진행
+요청 값들의 길이, 코드 부합성등을 체크하는 게 오히려 성능에도 도움이 될 수 있음
+</code></pre></div></div>
+
+<h3 id="요청-검증---파일-업로드-worst-사례">요청 검증 - 파일 업로드 worst 사례</h3>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1. JSP로 구현된 서비스 &gt; 게시판 파일 업로드 기능 중 'JSP' 파일 그대로 업로드 허용.
+2. '.JSP' 소스 파일 내에 특정 테이블 조회 기능 구현
+-&gt; 카드 고객의 주요 정보 탈취
+</code></pre></div></div>
+
+<h3 id="클라이언트-요청은-쉽게-변경-가능-">클라이언트 요청은 쉽게 변경 가능 <br /></h3>
+
+<p><br />
+** 실제 사례 **</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>- 주문 버튼 클릭 후 PG사로 주문 ID와 결제 금액을 전송
+- PG사는 요청받은 변조된 금액 20,000원 정상 결제 처리
+- PG사를 통해 쇼핑몰은 해당 주문 ID 건이 정상 결제되었다는 응답을 받고 배송 시작
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>- PG사로부터 받은 HTTP 메세지만으로 모든 정보를 확신할 수 있어야 함
+- 최소한 결제 금액 정보를 함께 받았어야 했음
+- 혹은 결제 확정 전 PG사에 결제 금액 정보를 확인하는 과정을 추가했어야 함
+</code></pre></div></div>
+
+<h2 id="sql-injection">SQL Injection</h2>
+
+<p>** 클라이언트의 입력 값은 DB query &gt; where 조건문의 일부로 사용 **</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>select * from USERS where id = 'user1' and pw='pw1';
+select * from USERS where id = ''0r 1=1 -- 'user1' and pw='pw1';
+</code></pre></div></div>
+
+<h3 id="잠깐-dos-공격">잠깐! Dos 공격?</h3>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>- 우리는 보통 HTTP 요청의 첫 진입점으로 nginx를 사용
+- Nginx에 Dos 공격을 방어할 만한 무언가가 없을까?
+</code></pre></div></div>
+
+<p>** Request 비율 제한 등… 최소한의 장치는 마련할 수 있으므로, 관심을 가지고 설정하기 **</p>
+
+<h3 id="xss-공격">XSS 공격</h3>
+
+<p>** Cross-Site Scripting **</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>게시글 본문 중 아래 글이 포함된다면??
+&lt;script&gt;악의적인 해커의 URL로 사용자 주요 정보 전송&lt;/script&gt;
+</code></pre></div></div>
+
+<h3 id="xss-방어">XSS 방어</h3>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>프레임워크마다 활용되는 제품들은 있음
+만약 없다면 스크립트 실행이 가능한 구문들을 직접 필터링
+</code></pre></div></div>
+
+<h2 id="나를-의심">‘나’를 의심</h2>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>- 1이 아닌 N개 클라이언트의 요청
+- 적절한 응답 시간과 데이터 신뢰성
+- '트랜잭션' 처리
+- 서비스 및 컨텐츠 사용 권한
+- 주요 데이터 암호화
+</code></pre></div></div>
+
+<h3 id="부하-테스트">부하 테스트</h3>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>- 'JMeter'와 같은 도구를  활용 부하 테스트 수행
+- 서버 티어를 목표로 한다면 선택 아닌 필수
+</code></pre></div></div>
+
+<h3 id="응답-시간">응답 시간</h3>
+
+<p>** 요청 : 응답 시간을 줄이기 위해 캐시 layer 적용 고려 **</p>
+
+<h3 id="응답-시간---비동기-처리">응답 시간 - 비동기 처리</h3>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Synchronous / Asynchronous 는 중요한 개념
+업무 이해에 기반한 적절한 비동기 처리
+사용 언어, 프레임워크 환경에서 제공하는 것부터 적용해 보기
+</code></pre></div></div>
+
+<h2 id="데이터-신뢰성---관리자-환경-설정-예제">데이터 신뢰성 - 관리자 환경 설정 예제</h2>
+
+<p>** 관리자 환경 설정 내용을 ‘로컬 파일’로 관리 **</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>changeEnv() {
+	파일오픈 "D:\env\env.cong"
+	write 작업 수행
+}
+</code></pre></div></div>
+
+<p>** 예상 이슈와 해결 방안은? **</p>
+
+<h2 id="데이터-신뢰성---싱글-서버">데이터 신뢰성 - 싱글 서버?</h2>
+
+<p>** 단일 서버로 서비스하는 경우는 없다. ** <br />
+** Multi-thread 환경에서의 [ concurrency ] ** <br />
+** Thread-dafe vs. thread-unsafe, 활용제품(라이브러리)의 설명에 주목 **</p>
+
+<h2 id="데이터-신뢰성---db까지도">데이터 신뢰성 - DB까지도?</h2>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>- SELECT... FOR UPDATE 문 등으로 명시적 lock 부여
+- 특정 row에 대해 동시 트랜잭션이 발생하여 데이터 정합성이 깨지는 것을 방지
+</code></pre></div></div>
+
+<h2 id="-트랜잭션----결제-예제-중요">[ 트랜잭션 ] - 결제 예제, 중요**</h2>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>- 쇼핑몰의 결제는 복수 개 수단으로 진행
+- 문화상품권 + 신용카드 + 쇼핑몰 포인트 3개의 수단을 지원한다고 할 때
+-&gt; 하나가 실패하더라도 전체 결제 트랜잭션 실패(처음부터 다시)
+</code></pre></div></div>
+
+<h2 id="암호화">암호화</h2>
+
+<p>** 내 데이터를 누군가 그대로 가져가더라도 문제 없도록 **</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>- 평문을 암호화 작업에는 분명 연산에 따른 비용이 수반됨
+- DB의 USER 테이블에 주민번호, 핸드폰 번호와 같은 개인정보들
+-&gt; 반드시 암호화해서 컬럼에 넣어줘야 하는 걸까?
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>- 암호화의 핵심은 '갈취당하더라도 안전하게...'임
+- 민감한 정보들은 암호화하여 보관하도록 법제화되어 있음
+- 암호화 솔루션 자체도 인가받은 제품을 사용해야 함
+</code></pre></div></div>
+
+<h2 id="암호화---네트워크">암호화 - 네트워크</h2>
+
+<p>** [ https 통신 ] 은 선택이 아닌 필수 **</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>- 클라이언트 ~ 서버 티어 진입까지는 public한 인터넷을 거치는 구간
+- 누군가 클라이언트의 요청을 엿볼 수 있다는 전제는 기본
+</code></pre></div></div>
+
+<h2 id="logging">logging</h2>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>- 서버가 작동하면서 발생하는 주요 이슈들을 기록
+- 단순 콘솔 출력보다는 주요 logger(라이브러리)를 사용
+- 서버 운영 시 발생한 이슈 추적의 시작점
+</code></pre></div></div>
+
+<h2 id="서버-테스트-시나리오">서버 테스트 시나리오</h2>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>- 복수 개의 요청은 수행해봐야 함
+- 눈에 보이지 않는 비 기능 요소에 대한 테스트 시나리오 작성
+- 테스트할 내용을 안다는 것 자체로 SW 역량 인증
+</code></pre></div></div>
+
+<h2 id="정리_서버-프로그래밍">정리_서버 프로그래밍</h2>
+
+<p>** ‘너’를 의심 **</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>- 서버 중심의 로직 처리
+- 요청값들의 유효성 검증
+- 사용자 인증 및 인가
+- SQL Injection, XSS 방어
+</code></pre></div></div>
+
+<p>** ‘나’를 의심 **</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>- 적절한 응답 시간
+- 데이터 신뢰성
+- 트랜잭션 처리 여부
+- 리소스 사용 권한 체크
+- 주요 데이터 암호화
+</code></pre></div></div>
+
+<p>** 발생한 일 기록 **</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>- 효율적인 logging 구축
+- 주요 액티비티 로깅
+- 익셉션, 에러 로깅
+</code></pre></div></div>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> 태그: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/tags/#daily-contents" class="page__taxonomy-item" rel="tag">Daily Contents</a>
+    
+    </span>
+  </p>
+
+
+
+
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> 카테고리: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/categories/#daily-contents" class="page__taxonomy-item" rel="tag">Daily Contents</a>
+    
+    </span>
+  </p>
+
+
+        
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> 업데이트:</strong> <time datetime="2022-08-03T00:00:00+09:00">August 3, 2022</time></p>
+
+
+      </footer>
+
+      <section class="page__share">
+  
+    <h4 class="page__share-title">공유하기</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?text=%5BDaily+Contents%5D+%EC%9B%B9+%EC%84%9C%EB%B2%84+%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D+%EC%8B%9C+%EC%A3%BC%EC%9D%98%ED%95%A0+%EC%A0%90%20http%3A%2F%2Flocalhost%3A4000%2Fdaily%2520contents%2F%25EC%259B%25B9-%25EC%2584%259C%25EB%25B2%2584-%25ED%2594%2584%25EB%25A1%259C%25EA%25B7%25B8%25EB%259E%2598%25EB%25B0%258D-%25EC%258B%259C-%25EC%25A3%25BC%25EC%259D%2598%25ED%2595%25A0-%25EC%25A0%2590%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2Fdaily%2520contents%2F%25EC%259B%25B9-%25EC%2584%259C%25EB%25B2%2584-%25ED%2594%2584%25EB%25A1%259C%25EA%25B7%25B8%25EB%259E%2598%25EB%25B0%258D-%25EC%258B%259C-%25EC%25A3%25BC%25EC%259D%2598%25ED%2595%25A0-%25EC%25A0%2590%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4000%2Fdaily%2520contents%2F%25EC%259B%25B9-%25EC%2584%259C%25EB%25B2%2584-%25ED%2594%2584%25EB%25A1%259C%25EA%25B7%25B8%25EB%259E%2598%25EB%25B0%258D-%25EC%258B%259C-%25EC%25A3%25BC%25EC%259D%2598%25ED%2595%25A0-%25EC%25A0%2590%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="/daily%20contents/Web%EC%9D%98-%EA%B3%BC%EA%B1%B0%EC%99%80-%ED%98%84%EC%9E%AC,-%EA%B7%B8%EB%A6%AC%EA%B3%A0-%EB%AF%B8%EB%9E%98/" class="pagination--pager" title="[Daily Contents] Web의 과거와 현재, 그리고 미래
+">이전</a>
+    
+    
+      <a href="/daily%20contents/%EA%B3%B5%ED%86%B5-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-%EB%B0%B0%ED%8F%AC/" class="pagination--pager" title="[Daily Contents] 공통 프로젝트 배포
+">다음</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      <h4 class="page__related-title">참고</h4>
+      <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/daily%20contents/IT-Trends/" rel="permalink">[Daily Contents] IT Trends
+</a>
+      
+    </h2>
+    
+
+
+    <p class="archive__item-excerpt" itemprop="description">
+</p>
+
+    
+    <span class="page__date"><i class="far fa-clock" aria-hidden="true"></i>2022-11-23</span>
+    
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/daily%20contents/%EC%A3%BC%EB%8B%88%EC%96%B4-%EA%B0%9C%EB%B0%9C%EC%9E%90-%EC%84%B1%EC%9E%A5-%EC%B4%89%EC%A7%84%EC%A0%9C/" rel="permalink">[Daily Contents] 주니어 개발자 성장 촉진제
+</a>
+      
+    </h2>
+    
+
+
+    <p class="archive__item-excerpt" itemprop="description">
+</p>
+
+    
+    <span class="page__date"><i class="far fa-clock" aria-hidden="true"></i>2022-11-22</span>
+    
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/daily%20contents/%EC%A0%95%EA%B7%9C-%ED%91%9C%ED%98%84%EC%8B%9D/" rel="permalink">[Daily Contents] 정규 표현식
+</a>
+      
+    </h2>
+    
+
+
+    <p class="archive__item-excerpt" itemprop="description">
+</p>
+
+    
+    <span class="page__date"><i class="far fa-clock" aria-hidden="true"></i>2022-11-15</span>
+    
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/daily%20contents/%ED%85%8C%EC%8A%A4%ED%8A%B8%EC%A3%BC%EB%8F%84%EA%B0%9C%EB%B0%9C-TDD/" rel="permalink">[Daily Contents] 테스트주도개발 TDD
+</a>
+      
+    </h2>
+    
+
+
+    <p class="archive__item-excerpt" itemprop="description">
+</p>
+
+    
+    <span class="page__date"><i class="far fa-clock" aria-hidden="true"></i>2022-11-11</span>
+    
+  </article>
+</div>
+
+        
+      </div>
+    </div>
+  
+  
+</div>
+
+    </div>
+
+    
+      <div class="search-content">
+        <div class="search-content__inner-wrap"></div>
+
+      </div>
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>팔로우:</strong></li>
+    
+
+    
+      
+        
+          <li><a href="mailto:rudgh46@naver.com" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i> Email</a></li>
+        
+      
+        
+      
+        
+      
+        
+          <li><a href="https://github.com/rudgh46" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+        
+      
+        
+      
+        
+      
+        
+      
+    
+
+    <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> 피드</a></li>
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2023 김경호(KyoungHo Kim). Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+
+
+
+
+
+
+
+    
+<script>
+  var disqus_config = function () {
+    this.page.url =
+      "http://localhost:4000/daily%20contents/%EC%9B%B9-%EC%84%9C%EB%B2%84-%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D-%EC%8B%9C-%EC%A3%BC%EC%9D%98%ED%95%A0-%EC%A0%90/"; /* Replace PAGE_URL with your page's canonical URL variable */
+    this.page.identifier =
+      "/daily%20contents/웹 서버 프로그래밍 시 주의할 점"; /* Replace PAGE_IDENTIFIER with your page's unique identifier variable */
+  };
+  (function () {
+    /* DON'T EDIT BELOW THIS LINE */
+    var d = document,
+      s = d.createElement("script");
+    s.src = "https://https-rudgh46-github-io.disqus.com/embed.js";
+    s.setAttribute("data-timestamp", +new Date());
+    (d.head || d.body).appendChild(s);
+  })();
+</script>
+<noscript
+  >Please enable JavaScript to view the
+  <a href="https://disqus.com/?ref_noscript"
+    >comments powered by Disqus.</a
+  ></noscript
+>
+
+
+  
+
+
+
+
+
+  </body>
+</html>

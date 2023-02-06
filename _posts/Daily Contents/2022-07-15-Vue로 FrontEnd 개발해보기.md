@@ -1,5 +1,5 @@
 ---
-title: "[Vue로 FrontEnd 개발해보기]"
+title: "[Daily Contents] Vue로 FrontEnd 개발해보기"
 categories:
   - Daily Contents
 tags:
